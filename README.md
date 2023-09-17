@@ -1,2 +1,3 @@
-# BETMORE-Betting-Website
-BETMORE_Betting_Website
+# TOFI-2023-053502
+# Аралин Игорь Олегович
+# Шаргородский Игнат Сергеевич
