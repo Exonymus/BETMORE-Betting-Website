@@ -80,7 +80,6 @@ body {
 
 .brand__name {
   position: relative;
-  background-image: url("../img/logos/site-logo.png");
   line-height: 2rem;
 }
 
@@ -164,6 +163,8 @@ body {
 
 .link:visited,
 .link:link {
+  transition: 0.35s;
+  cursor: pointer;
   text-decoration: none;
   color: var(--color-dimgray);
 }
@@ -207,8 +208,8 @@ body {
 }
 
 .search__button {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 2.1rem;
+  width: 2.1rem;
   border: 1px solid #dadada;
   background-color: #f5f5f5;
   border-radius: var(--br-8xs);
@@ -315,6 +316,7 @@ body {
 
 .auth-data__footer__link:visited,
 .auth-data__footer__link:link {
+  transition: 0.15s;
   text-decoration: none;
   color: #354545;
 }
