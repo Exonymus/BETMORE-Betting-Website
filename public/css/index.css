@@ -101,6 +101,10 @@
     align-items: center;
 }
 
+.carousel-control {
+
+}
+
 .category-button {
     margin: 10px;
     padding: 8px 16px;
