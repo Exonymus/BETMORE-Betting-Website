@@ -1,88 +1,32 @@
-const carousel = document.querySelector('.carousel');
-const liveBetsButton = document.getElementById('live-bets-button');
-const preBetsButton = document.getElementById('pre-bets-button');
-const carouselDots = document.querySelector('.carousel-dots');
-const prevButton = document.querySelector('.prev-button');
-const nextButton = document.querySelector('.next-button');
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
 
-let currentCategory = 'live-bets'; // Default category
-let currentPage = 0; // Current page index
-let betsPerPage = 3; // Number of bets per page
+/***/ "./resources/js/index.js":
+/*!*******************************!*\
+  !*** ./resources/js/index.js ***!
+  \*******************************/
+/***/ (() => {
 
-// Function to update the displayed category
-function updateCategory(category) {
-    currentCategory = category;
-    document.querySelectorAll('.carousel-inner').forEach(inner => {
-        inner.style.display = inner.id === category ? 'flex' : 'none';
-    });
-    currentPage = 0; // Reset the page index when changing the category
-    updateDots(category);
-    showCurrentPage(category);
-}
+eval("function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }\nfunction _nonIterableSpread() { throw new TypeError(\"Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\nfunction _iterableToArray(iter) { if (typeof Symbol !== \"undefined\" && iter[Symbol.iterator] != null || iter[\"@@iterator\"] != null) return Array.from(iter); }\nfunction _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }\nvar carousel = document.querySelector('.carousel');\nvar liveBetsButton = document.getElementById('live-bets-button');\nvar preBetsButton = document.getElementById('pre-bets-button');\nvar carouselDots = document.querySelector('.carousel-dots');\nvar prevButton = document.querySelector('.prev-button');\nvar nextButton = document.querySelector('.next-button');\nvar currentCategory = 'live-bets'; // Default category\nvar currentPage = 0; // Current page index\nvar betsPerPage = 3; // Number of bets per page\n\n// Function to update the displayed category\nfunction updateCategory(category) {\n  currentCategory = category;\n  document.querySelectorAll('.carousel-inner').forEach(function (inner) {\n    inner.style.display = inner.id === category ? 'flex' : 'none';\n  });\n  currentPage = 0; // Reset the page index when changing the category\n  updateDots(category);\n  showCurrentPage(category);\n}\n\n// Function to update dots based on the number of bets\nfunction updateDots(category) {\n  var cards = document.querySelectorAll(\"#\".concat(category, \" .carousel-card\"));\n  var totalPages = Math.ceil(cards.length / betsPerPage);\n  carouselDots.innerHTML = _toConsumableArray(Array(totalPages).keys()).map(function (index) {\n    return \"<div class=\\\"carousel-dot\".concat(index === currentPage ? ' active' : '', \"\\\" data-index=\\\"\").concat(index, \"\\\"></div>\");\n  }).join('');\n}\n\n// Function to show the current page of bets\nfunction showCurrentPage(category) {\n  var cards = document.querySelectorAll(\"#\".concat(category, \" .carousel-card\"));\n  var startIndex = currentPage * betsPerPage;\n  var endIndex = startIndex + betsPerPage;\n  cards.forEach(function (card, index) {\n    if (index >= startIndex && index < endIndex) {\n      card.style.display = 'block';\n    } else {\n      card.style.display = 'none';\n    }\n  });\n}\n\n// Function to navigate to the next page\nfunction nextPage(category) {\n  var cards = document.querySelectorAll(\"#\".concat(category, \" .carousel-card\"));\n  var totalPages = Math.ceil(cards.length / betsPerPage);\n  if (currentPage < totalPages - 1) {\n    currentPage++;\n    showCurrentPage(category);\n    updateDots(category);\n  }\n}\n\n// Function to navigate to the previous page\nfunction prevPage(category) {\n  if (currentPage > 0) {\n    currentPage--;\n    showCurrentPage(category);\n    updateDots(category);\n  }\n}\n\n// Event listeners for category buttons\nliveBetsButton.addEventListener('click', function () {\n  updateCategory('live-bets');\n});\npreBetsButton.addEventListener('click', function () {\n  updateCategory('pre-bets');\n});\n\n// Event listeners for navigation buttons\nnextButton.addEventListener('click', function () {\n  nextPage(currentCategory);\n});\nprevButton.addEventListener('click', function () {\n  prevPage(currentCategory);\n});\n\n// Initialize the category and dots\nupdateCategory(currentCategory);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjYXJvdXNlbCIsImRvY3VtZW50IiwicXVlcnlTZWxlY3RvciIsImxpdmVCZXRzQnV0dG9uIiwiZ2V0RWxlbWVudEJ5SWQiLCJwcmVCZXRzQnV0dG9uIiwiY2Fyb3VzZWxEb3RzIiwicHJldkJ1dHRvbiIsIm5leHRCdXR0b24iLCJjdXJyZW50Q2F0ZWdvcnkiLCJjdXJyZW50UGFnZSIsImJldHNQZXJQYWdlIiwidXBkYXRlQ2F0ZWdvcnkiLCJjYXRlZ29yeSIsInF1ZXJ5U2VsZWN0b3JBbGwiLCJmb3JFYWNoIiwiaW5uZXIiLCJzdHlsZSIsImRpc3BsYXkiLCJpZCIsInVwZGF0ZURvdHMiLCJzaG93Q3VycmVudFBhZ2UiLCJjYXJkcyIsImNvbmNhdCIsInRvdGFsUGFnZXMiLCJNYXRoIiwiY2VpbCIsImxlbmd0aCIsImlubmVySFRNTCIsIl90b0NvbnN1bWFibGVBcnJheSIsIkFycmF5Iiwia2V5cyIsIm1hcCIsImluZGV4Iiwiam9pbiIsInN0YXJ0SW5kZXgiLCJlbmRJbmRleCIsImNhcmQiLCJuZXh0UGFnZSIsInByZXZQYWdlIiwiYWRkRXZlbnRMaXN0ZW5lciJdLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvaW5kZXguanM/YmY3ZSJdLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBjYXJvdXNlbCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5jYXJvdXNlbCcpO1xuY29uc3QgbGl2ZUJldHNCdXR0b24gPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbGl2ZS1iZXRzLWJ1dHRvbicpO1xuY29uc3QgcHJlQmV0c0J1dHRvbiA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdwcmUtYmV0cy1idXR0b24nKTtcbmNvbnN0IGNhcm91c2VsRG90cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5jYXJvdXNlbC1kb3RzJyk7XG5jb25zdCBwcmV2QnV0dG9uID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcignLnByZXYtYnV0dG9uJyk7XG5jb25zdCBuZXh0QnV0dG9uID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcignLm5leHQtYnV0dG9uJyk7XG5cbmxldCBjdXJyZW50Q2F0ZWdvcnkgPSAnbGl2ZS1iZXRzJzsgLy8gRGVmYXVsdCBjYXRlZ29yeVxubGV0IGN1cnJlbnRQYWdlID0gMDsgLy8gQ3VycmVudCBwYWdlIGluZGV4XG5sZXQgYmV0c1BlclBhZ2UgPSAzOyAvLyBOdW1iZXIgb2YgYmV0cyBwZXIgcGFnZVxuXG4vLyBGdW5jdGlvbiB0byB1cGRhdGUgdGhlIGRpc3BsYXllZCBjYXRlZ29yeVxuZnVuY3Rpb24gdXBkYXRlQ2F0ZWdvcnkoY2F0ZWdvcnkpIHtcbiAgICBjdXJyZW50Q2F0ZWdvcnkgPSBjYXRlZ29yeTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcuY2Fyb3VzZWwtaW5uZXInKS5mb3JFYWNoKGlubmVyID0+IHtcbiAgICAgICAgaW5uZXIuc3R5bGUuZGlzcGxheSA9IGlubmVyLmlkID09PSBjYXRlZ29yeSA/ICdmbGV4JyA6ICdub25lJztcbiAgICB9KTtcbiAgICBjdXJyZW50UGFnZSA9IDA7IC8vIFJlc2V0IHRoZSBwYWdlIGluZGV4IHdoZW4gY2hhbmdpbmcgdGhlIGNhdGVnb3J5XG4gICAgdXBkYXRlRG90cyhjYXRlZ29yeSk7XG4gICAgc2hvd0N1cnJlbnRQYWdlKGNhdGVnb3J5KTtcbn1cblxuLy8gRnVuY3Rpb24gdG8gdXBkYXRlIGRvdHMgYmFzZWQgb24gdGhlIG51bWJlciBvZiBiZXRzXG5mdW5jdGlvbiB1cGRhdGVEb3RzKGNhdGVnb3J5KSB7XG4gICAgY29uc3QgY2FyZHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKGAjJHtjYXRlZ29yeX0gLmNhcm91c2VsLWNhcmRgKTtcbiAgICBjb25zdCB0b3RhbFBhZ2VzID0gTWF0aC5jZWlsKGNhcmRzLmxlbmd0aCAvIGJldHNQZXJQYWdlKTtcblxuICAgIGNhcm91c2VsRG90cy5pbm5lckhUTUwgPSBbLi4uQXJyYXkodG90YWxQYWdlcykua2V5cygpXS5tYXAoaW5kZXggPT5cbiAgICAgICAgYDxkaXYgY2xhc3M9XCJjYXJvdXNlbC1kb3Qke2luZGV4ID09PSBjdXJyZW50UGFnZSA/ICcgYWN0aXZlJyA6ICcnfVwiIGRhdGEtaW5kZXg9XCIke2luZGV4fVwiPjwvZGl2PmBcbiAgICApLmpvaW4oJycpO1xufVxuXG4vLyBGdW5jdGlvbiB0byBzaG93IHRoZSBjdXJyZW50IHBhZ2Ugb2YgYmV0c1xuZnVuY3Rpb24gc2hvd0N1cnJlbnRQYWdlKGNhdGVnb3J5KSB7XG4gICAgY29uc3QgY2FyZHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKGAjJHtjYXRlZ29yeX0gLmNhcm91c2VsLWNhcmRgKTtcbiAgICBjb25zdCBzdGFydEluZGV4ID0gY3VycmVudFBhZ2UgKiBiZXRzUGVyUGFnZTtcbiAgICBjb25zdCBlbmRJbmRleCA9IHN0YXJ0SW5kZXggKyBiZXRzUGVyUGFnZTtcblxuICAgIGNhcmRzLmZvckVhY2goKGNhcmQsIGluZGV4KSA9PiB7XG4gICAgICAgIGlmIChpbmRleCA+PSBzdGFydEluZGV4ICYmIGluZGV4IDwgZW5kSW5kZXgpIHtcbiAgICAgICAgICAgIGNhcmQuc3R5bGUuZGlzcGxheSA9ICdibG9jayc7XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICBjYXJkLnN0eWxlLmRpc3BsYXkgPSAnbm9uZSc7XG4gICAgICAgIH1cbiAgICB9KTtcbn1cblxuLy8gRnVuY3Rpb24gdG8gbmF2aWdhdGUgdG8gdGhlIG5leHQgcGFnZVxuZnVuY3Rpb24gbmV4dFBhZ2UoY2F0ZWdvcnkpIHtcbiAgICBjb25zdCBjYXJkcyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoYCMke2NhdGVnb3J5fSAuY2Fyb3VzZWwtY2FyZGApO1xuICAgIGNvbnN0IHRvdGFsUGFnZXMgPSBNYXRoLmNlaWwoY2FyZHMubGVuZ3RoIC8gYmV0c1BlclBhZ2UpO1xuXG4gICAgaWYgKGN1cnJlbnRQYWdlIDwgdG90YWxQYWdlcyAtIDEpIHtcbiAgICAgICAgY3VycmVudFBhZ2UrKztcbiAgICAgICAgc2hvd0N1cnJlbnRQYWdlKGNhdGVnb3J5KTtcbiAgICAgICAgdXBkYXRlRG90cyhjYXRlZ29yeSk7XG4gICAgfVxufVxuXG4vLyBGdW5jdGlvbiB0byBuYXZpZ2F0ZSB0byB0aGUgcHJldmlvdXMgcGFnZVxuZnVuY3Rpb24gcHJldlBhZ2UoY2F0ZWdvcnkpIHtcbiAgICBpZiAoY3VycmVudFBhZ2UgPiAwKSB7XG4gICAgICAgIGN1cnJlbnRQYWdlLS07XG4gICAgICAgIHNob3dDdXJyZW50UGFnZShjYXRlZ29yeSk7XG4gICAgICAgIHVwZGF0ZURvdHMoY2F0ZWdvcnkpO1xuICAgIH1cbn1cblxuLy8gRXZlbnQgbGlzdGVuZXJzIGZvciBjYXRlZ29yeSBidXR0b25zXG5saXZlQmV0c0J1dHRvbi5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsICgpID0+IHtcbiAgICB1cGRhdGVDYXRlZ29yeSgnbGl2ZS1iZXRzJyk7XG59KTtcblxucHJlQmV0c0J1dHRvbi5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsICgpID0+IHtcbiAgICB1cGRhdGVDYXRlZ29yeSgncHJlLWJldHMnKTtcbn0pO1xuXG4vLyBFdmVudCBsaXN0ZW5lcnMgZm9yIG5hdmlnYXRpb24gYnV0dG9uc1xubmV4dEJ1dHRvbi5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsICgpID0+IHtcbiAgICBuZXh0UGFnZShjdXJyZW50Q2F0ZWdvcnkpO1xufSk7XG5cbnByZXZCdXR0b24uYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCAoKSA9PiB7XG4gICAgcHJldlBhZ2UoY3VycmVudENhdGVnb3J5KTtcbn0pO1xuXG4vLyBJbml0aWFsaXplIHRoZSBjYXRlZ29yeSBhbmQgZG90c1xudXBkYXRlQ2F0ZWdvcnkoY3VycmVudENhdGVnb3J5KTtcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUEsSUFBTUEsUUFBUSxHQUFHQyxRQUFRLENBQUNDLGFBQWEsQ0FBQyxXQUFXLENBQUM7QUFDcEQsSUFBTUMsY0FBYyxHQUFHRixRQUFRLENBQUNHLGNBQWMsQ0FBQyxrQkFBa0IsQ0FBQztBQUNsRSxJQUFNQyxhQUFhLEdBQUdKLFFBQVEsQ0FBQ0csY0FBYyxDQUFDLGlCQUFpQixDQUFDO0FBQ2hFLElBQU1FLFlBQVksR0FBR0wsUUFBUSxDQUFDQyxhQUFhLENBQUMsZ0JBQWdCLENBQUM7QUFDN0QsSUFBTUssVUFBVSxHQUFHTixRQUFRLENBQUNDLGFBQWEsQ0FBQyxjQUFjLENBQUM7QUFDekQsSUFBTU0sVUFBVSxHQUFHUCxRQUFRLENBQUNDLGFBQWEsQ0FBQyxjQUFjLENBQUM7QUFFekQsSUFBSU8sZUFBZSxHQUFHLFdBQVcsQ0FBQyxDQUFDO0FBQ25DLElBQUlDLFdBQVcsR0FBRyxDQUFDLENBQUMsQ0FBQztBQUNyQixJQUFJQyxXQUFXLEdBQUcsQ0FBQyxDQUFDLENBQUM7O0FBRXJCO0FBQ0EsU0FBU0MsY0FBY0EsQ0FBQ0MsUUFBUSxFQUFFO0VBQzlCSixlQUFlLEdBQUdJLFFBQVE7RUFDMUJaLFFBQVEsQ0FBQ2EsZ0JBQWdCLENBQUMsaUJBQWlCLENBQUMsQ0FBQ0MsT0FBTyxDQUFDLFVBQUFDLEtBQUssRUFBSTtJQUMxREEsS0FBSyxDQUFDQyxLQUFLLENBQUNDLE9BQU8sR0FBR0YsS0FBSyxDQUFDRyxFQUFFLEtBQUtOLFFBQVEsR0FBRyxNQUFNLEdBQUcsTUFBTTtFQUNqRSxDQUFDLENBQUM7RUFDRkgsV0FBVyxHQUFHLENBQUMsQ0FBQyxDQUFDO0VBQ2pCVSxVQUFVLENBQUNQLFFBQVEsQ0FBQztFQUNwQlEsZUFBZSxDQUFDUixRQUFRLENBQUM7QUFDN0I7O0FBRUE7QUFDQSxTQUFTTyxVQUFVQSxDQUFDUCxRQUFRLEVBQUU7RUFDMUIsSUFBTVMsS0FBSyxHQUFHckIsUUFBUSxDQUFDYSxnQkFBZ0IsS0FBQVMsTUFBQSxDQUFLVixRQUFRLG9CQUFpQixDQUFDO0VBQ3RFLElBQU1XLFVBQVUsR0FBR0MsSUFBSSxDQUFDQyxJQUFJLENBQUNKLEtBQUssQ0FBQ0ssTUFBTSxHQUFHaEIsV0FBVyxDQUFDO0VBRXhETCxZQUFZLENBQUNzQixTQUFTLEdBQUdDLGtCQUFBLENBQUlDLEtBQUssQ0FBQ04sVUFBVSxDQUFDLENBQUNPLElBQUksQ0FBQyxDQUFDLEVBQUVDLEdBQUcsQ0FBQyxVQUFBQyxLQUFLO0lBQUEsbUNBQUFWLE1BQUEsQ0FDakNVLEtBQUssS0FBS3ZCLFdBQVcsR0FBRyxTQUFTLEdBQUcsRUFBRSxzQkFBQWEsTUFBQSxDQUFpQlUsS0FBSztFQUFBLENBQzNGLENBQUMsQ0FBQ0MsSUFBSSxDQUFDLEVBQUUsQ0FBQztBQUNkOztBQUVBO0FBQ0EsU0FBU2IsZUFBZUEsQ0FBQ1IsUUFBUSxFQUFFO0VBQy9CLElBQU1TLEtBQUssR0FBR3JCLFFBQVEsQ0FBQ2EsZ0JBQWdCLEtBQUFTLE1BQUEsQ0FBS1YsUUFBUSxvQkFBaUIsQ0FBQztFQUN0RSxJQUFNc0IsVUFBVSxHQUFHekIsV0FBVyxHQUFHQyxXQUFXO0VBQzVDLElBQU15QixRQUFRLEdBQUdELFVBQVUsR0FBR3hCLFdBQVc7RUFFekNXLEtBQUssQ0FBQ1AsT0FBTyxDQUFDLFVBQUNzQixJQUFJLEVBQUVKLEtBQUssRUFBSztJQUMzQixJQUFJQSxLQUFLLElBQUlFLFVBQVUsSUFBSUYsS0FBSyxHQUFHRyxRQUFRLEVBQUU7TUFDekNDLElBQUksQ0FBQ3BCLEtBQUssQ0FBQ0MsT0FBTyxHQUFHLE9BQU87SUFDaEMsQ0FBQyxNQUFNO01BQ0htQixJQUFJLENBQUNwQixLQUFLLENBQUNDLE9BQU8sR0FBRyxNQUFNO0lBQy9CO0VBQ0osQ0FBQyxDQUFDO0FBQ047O0FBRUE7QUFDQSxTQUFTb0IsUUFBUUEsQ0FBQ3pCLFFBQVEsRUFBRTtFQUN4QixJQUFNUyxLQUFLLEdBQUdyQixRQUFRLENBQUNhLGdCQUFnQixLQUFBUyxNQUFBLENBQUtWLFFBQVEsb0JBQWlCLENBQUM7RUFDdEUsSUFBTVcsVUFBVSxHQUFHQyxJQUFJLENBQUNDLElBQUksQ0FBQ0osS0FBSyxDQUFDSyxNQUFNLEdBQUdoQixXQUFXLENBQUM7RUFFeEQsSUFBSUQsV0FBVyxHQUFHYyxVQUFVLEdBQUcsQ0FBQyxFQUFFO0lBQzlCZCxXQUFXLEVBQUU7SUFDYlcsZUFBZSxDQUFDUixRQUFRLENBQUM7SUFDekJPLFVBQVUsQ0FBQ1AsUUFBUSxDQUFDO0VBQ3hCO0FBQ0o7O0FBRUE7QUFDQSxTQUFTMEIsUUFBUUEsQ0FBQzFCLFFBQVEsRUFBRTtFQUN4QixJQUFJSCxXQUFXLEdBQUcsQ0FBQyxFQUFFO0lBQ2pCQSxXQUFXLEVBQUU7SUFDYlcsZUFBZSxDQUFDUixRQUFRLENBQUM7SUFDekJPLFVBQVUsQ0FBQ1AsUUFBUSxDQUFDO0VBQ3hCO0FBQ0o7O0FBRUE7QUFDQVYsY0FBYyxDQUFDcUMsZ0JBQWdCLENBQUMsT0FBTyxFQUFFLFlBQU07RUFDM0M1QixjQUFjLENBQUMsV0FBVyxDQUFDO0FBQy9CLENBQUMsQ0FBQztBQUVGUCxhQUFhLENBQUNtQyxnQkFBZ0IsQ0FBQyxPQUFPLEVBQUUsWUFBTTtFQUMxQzVCLGNBQWMsQ0FBQyxVQUFVLENBQUM7QUFDOUIsQ0FBQyxDQUFDOztBQUVGO0FBQ0FKLFVBQVUsQ0FBQ2dDLGdCQUFnQixDQUFDLE9BQU8sRUFBRSxZQUFNO0VBQ3ZDRixRQUFRLENBQUM3QixlQUFlLENBQUM7QUFDN0IsQ0FBQyxDQUFDO0FBRUZGLFVBQVUsQ0FBQ2lDLGdCQUFnQixDQUFDLE9BQU8sRUFBRSxZQUFNO0VBQ3ZDRCxRQUFRLENBQUM5QixlQUFlLENBQUM7QUFDN0IsQ0FBQyxDQUFDOztBQUVGO0FBQ0FHLGNBQWMsQ0FBQ0gsZUFBZSxDQUFDIiwiZmlsZSI6Ii4vcmVzb3VyY2VzL2pzL2luZGV4LmpzIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/index.js\n");
 
-// Function to update dots based on the number of bets
-function updateDots(category) {
-    const cards = document.querySelectorAll(`#${category} .carousel-card`);
-    const totalPages = Math.ceil(cards.length / betsPerPage);
+/***/ })
 
-    carouselDots.innerHTML = [...Array(totalPages).keys()].map(index =>
-        `<div class="carousel-dot${index === currentPage ? ' active' : ''}" data-index="${index}"></div>`
-    ).join('');
-}
-
-// Function to show the current page of bets
-function showCurrentPage(category) {
-    const cards = document.querySelectorAll(`#${category} .carousel-card`);
-    const startIndex = currentPage * betsPerPage;
-    const endIndex = startIndex + betsPerPage;
-
-    cards.forEach((card, index) => {
-        if (index >= startIndex && index < endIndex) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
-
-// Function to navigate to the next page
-function nextPage(category) {
-    const cards = document.querySelectorAll(`#${category} .carousel-card`);
-    const totalPages = Math.ceil(cards.length / betsPerPage);
-
-    if (currentPage < totalPages - 1) {
-        currentPage++;
-        showCurrentPage(category);
-        updateDots(category);
-    }
-}
-
-// Function to navigate to the previous page
-function prevPage(category) {
-    if (currentPage > 0) {
-        currentPage--;
-        showCurrentPage(category);
-        updateDots(category);
-    }
-}
-
-// Event listeners for category buttons
-liveBetsButton.addEventListener('click', () => {
-    updateCategory('live-bets');
-});
-
-preBetsButton.addEventListener('click', () => {
-    updateCategory('pre-bets');
-});
-
-// Event listeners for navigation buttons
-nextButton.addEventListener('click', () => {
-    nextPage(currentCategory);
-});
-
-prevButton.addEventListener('click', () => {
-    prevPage(currentCategory);
-});
-
-// Initialize the category and dots
-updateCategory(currentCategory);
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval-source-map devtool is used.
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./resources/js/index.js"]();
+/******/ 	
+/******/ })()
+;

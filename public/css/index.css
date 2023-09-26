@@ -177,7 +177,8 @@
     border-radius: var(--br-3xs);
     width: 6.5rem;
     height: 6.5rem;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 }
 
 .profile__name {
@@ -207,4 +208,5 @@
         justify-content: center;
     }
 }
+
 
