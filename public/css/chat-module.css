@@ -1,6 +1,6 @@
 .chat {
     height: 100vh;
-    width: auto;
+    min-width: auto;
 }
 
 .chat-header {
@@ -9,7 +9,7 @@
     font-family: var(--paragraph);
     font-weight: bolder;
     font-size: 2rem;
-    border-style: double;
+    border-style: solid;
     margin-bottom: 1rem;
     border-color: #7a7a7a;
 }
