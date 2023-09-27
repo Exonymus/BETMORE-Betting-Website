@@ -22,3 +22,4 @@ Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 
 Route::get('/login', [\App\Http\Controllers\Auth\SessionController::class, 'create'])->name('session.create');
 Route::post('/login', [\App\Http\Controllers\Auth\SessionController::class, 'store'])->name('session.store');
 Route::get('/logout', [\App\Http\Controllers\Auth\SessionController::class, 'destroy'])->name('session.destroy');
+

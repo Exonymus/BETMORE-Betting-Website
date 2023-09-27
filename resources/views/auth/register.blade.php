@@ -7,7 +7,7 @@
                     <b>SIGN UP</b>
                 </header>
                 <main class="auth-data__main">
-                    <form class="main__form" method="POST" action="/register" id="authForm" name="signup">
+                    <form class="main__form" method="POST" action="/register" id="authForm" name="signup" enctype="multipart/form-data">
                         @csrf
                         <input
                             class="form__input-field"
@@ -32,13 +32,15 @@
                             placeholder="Repeat password"
                             minlength="8"
                             required/>
-
-                        <input class="hidden" type="file" id="avatar" accept="image/*"/>
+                        <input class="hidden" type="file" id="avatar" name="image"/>
                         <label class="paragraph form__input-file" for="avatar">Click to upload the avatar</label>
 
                         <button class="form__submit-btn" type="submit">
                             <b class="submit-btn__text">Sign Up</b>
                         </button>
+                        @if($errors->any())
+                            {!! implode('', $errors->all('<div>:message</div>')) !!}
+                        @endif
                     </form>
                 </main>
                 <footer class="auth-data__footer">

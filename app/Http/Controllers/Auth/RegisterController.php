@@ -43,7 +43,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
     }
     /**
@@ -63,9 +63,16 @@ class RegisterController extends Controller
      */
     protected function register(array $data)
     {
+        $data['image'] = "uploads/avatars/default.jpg";
+        if (request()->hasFile('image')) {
+            $imagePath = request('image')->store('uploads/avatars', 'public');
+            $data['image'] = $imagePath;
+        }
+
         return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'image' => $data['image'],
         ]);
     }
 

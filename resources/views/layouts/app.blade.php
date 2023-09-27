@@ -63,6 +63,7 @@
                                 <li class="nav-link" id="page-signOut">
                                     <a href="{{ route('session.destroy') }}" class="link">Sign-Out</a>
                                 </li>
+                                <img src="{{ asset('storage/'.Auth::user()->image) }}" style="height: 50px;width:100px;">
                             @endguest
                         </ul>
                     </div>
