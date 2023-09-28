@@ -89,7 +89,7 @@ body {
     width: 50.94rem;
     flex-shrink: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -153,6 +153,17 @@ body {
     line-height: 1.5rem;
     font-weight: 600;
     cursor: pointer;
+}
+
+.user__money {
+    width: 25px;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 10rem;
 }
 
 .link--current {
