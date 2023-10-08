@@ -11,6 +11,13 @@
                         @csrf
                         <input
                             class="form__input-field"
+                            id="name"
+                            type="text"
+                            name="name"
+                            placeholder="Nickname"
+                            required/>
+                        <input
+                            class="form__input-field"
                             id="email"
                             type="email"
                             name="email"
