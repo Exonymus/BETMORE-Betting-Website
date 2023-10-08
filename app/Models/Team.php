@@ -18,4 +18,9 @@ class Team extends Model
     {
         return $this->hasMany(Match::class, 'team1_id')->orWhere('team2_id', $this->id);
     }
+
+    public function bets()
+    {
+        return $this->hasMany(Bet::class);
+    }
 }

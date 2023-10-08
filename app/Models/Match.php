@@ -26,4 +26,9 @@ class Match extends Model
             'team2' => $this->team2,
         ];
     }
+
+    public function bets()
+    {
+        return $this->hasMany(Bet::class);
+    }
 }

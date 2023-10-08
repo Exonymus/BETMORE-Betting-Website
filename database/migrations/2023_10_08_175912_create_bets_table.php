@@ -16,6 +16,15 @@ class CreateBetsTable extends Migration
         Schema::create('bets', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('amount');
+            $table->float('coefficient');
+            $table->unsignedBigInteger('match_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('team_id');
+
+            $table->foreign('match_id')->references('id')->on('matchs');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 
