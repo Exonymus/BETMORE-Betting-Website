@@ -23,3 +23,8 @@ Route::get('/login', [\App\Http\Controllers\Auth\SessionController::class, 'crea
 Route::post('/login', [\App\Http\Controllers\Auth\SessionController::class, 'store'])->name('session.store');
 Route::get('/logout', [\App\Http\Controllers\Auth\SessionController::class, 'destroy'])->name('session.destroy');
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
