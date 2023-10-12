@@ -271,6 +271,14 @@ body {
     justify-content: space-between;
 }
 
+.terms-check {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2rem;
+    font-family: var(--font-raleway);
+    gap: 0.4rem;
+}
+
 .form__input-field {
     border: 0;
     border-bottom: 0.2rem solid var(--text-color);
@@ -359,17 +367,28 @@ body {
     object-fit: cover;
 }
 
-.chat-module {
+.page__footer {
     display: flex;
-    min-width: 22%;
-    max-width: 22%;
+    padding-top: 2.3rem;
     flex-direction: row;
-    align-items: center;
-    align-self: stretch;
-    border-radius: var(--br-3xs);
-    background-color: white;
-    border: 3px solid var(--color-black);
-    justify-content: center;
+}
+
+.footer__copy {
+    font-family: var(--font-raleway);
+    color: var(--text-color);
+    width: 50%;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.footer__payment {
+    width: 50%;
+}
+
+.footer__payment__logo {
+    height: 100%;
+    position: relative;
+    float:right;
 }
 
 .bets__carousel-module {
@@ -395,6 +414,18 @@ body {
     .navbar__collapse__content {
         align-items: center;
         justify-content: center;
+    }
+}
+
+@media screen and (max-height: 925px) {
+    .footer__copy {
+        font-size: 0.6rem;
+    }
+
+
+    .page__footer {
+        padding-top: 0;
+        padding-bottom: 1.5rem;
     }
 }
 

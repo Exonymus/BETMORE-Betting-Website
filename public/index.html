@@ -65,7 +65,7 @@
                 </nav>
                 <div class="user-info d-none h6">
                         <span class="user-info__coins">
-                            <img src="img/logos/coin.svg"  class="user__money" alt="">
+                            <img src="img/logos/coin.svg" class="user__money" alt="">
                             <span id="user-coins">1000</span>
                         </span>
                     <span class="user-info__gems">
@@ -87,14 +87,27 @@
             <section class="betting-carousel__bet-zone">
                 <header>
                     <div class="sport-buttons">
-                        <button id="cs-go-button">CS:GO</button>
-                        <button id="dota2-button">DOTA2</button>
-                        <button id="lol-button">LOL</button>
-                        <button id="valorant-button">Valorant</button>
+                        <!--Здесь переключая кнопки - переключаешь классы btn-primary на btn-outline-primary и btn-lg-->
+                        <button id="cs-go-button" type="button" class="btn btn-primary btn-lg btn-floating">
+                            <img src="img/logos/csgo.svg" alt="">
+                            <b>CS:GO</b>
+                        </button>
+                        <button id="dota2-button" type="button" class="btn btn-outline-primary btn-floating">
+                            <img src="img/logos/dota2.svg" alt="">
+                            <b>DOTA2</b>
+                        </button>
+                        <button id="lol-button" type="button" class="btn btn-outline-primary btn-floating">
+                            <img src="img/logos/lol.svg" alt="">
+                            <b>LOL</b>
+                        </button>
+                        <button id="valorant-button" type="button" class="btn btn-outline-primary btn-floating">
+                            <img src="img/logos/valorant.svg" alt="">
+                            <b>VALORANT</b>
+                        </button>
                     </div>
                 </header>
                 <main>
-                    <div class="carousel-container">
+                    <div id="carousels" class="carousel-container">
                         <!--                    Bets Categories-->
                         <div class="nav nav-tabs carousel-category" id="nav-tab" role="tablist">
                             <button class="nav-link active bet-category"
@@ -102,13 +115,15 @@
                                     data-bs-toggle="tab" data-bs-target="#live-bets"
                                     type="button" role="tab"
                                     aria-controls="live-bets"
-                                    aria-selected="true">Live Bets</button>
+                                    aria-selected="true">Live Bets
+                            </button>
                             <button class="nav-link bet-category"
                                     id="pre-bets__tab"
                                     data-bs-toggle="tab" data-bs-target="#pre-bets"
                                     type="button" role="tab"
                                     aria-controls="pre-bets"
-                                    aria-selected="false">Pre-Bets</button>
+                                    aria-selected="false">Pre-Bets
+                            </button>
                         </div>
                         <!--                    Loading Screen-->
                         <iframe
@@ -148,21 +163,28 @@
                         </div>
                     </div>
                 </main>
-
-                <footer>
-
-                </footer>
             </section>
 
             <!--        Chat-->
             <iframe
                     src="chat-module.html" class="chat-module"
-                    frameborder="0"
-                    width="400"
-                    height="542">
+                    frameborder="0">
             </iframe>
         </main>
+        <footer class="page__footer">
+            <div class="footer__copy">
+                2023-2023 © Copyright BETMORE.com
+                <br>
+                BETMORE ESPORT betting developed as student project in BSUIR, and operates in compliance with the laws of tax policy of the Republic of Belarus.
 
+            </div>
+            <div class="footer__payment">
+                <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
+                    <img class="footer__payment__logo" src="https://cdn.freekassa.ru/banners/big-white-2.png"
+                         title="Прием платежей на сайте для физических лиц и т.д." alt="">
+                </a>
+            </div>
+        </footer>
     </div>
 </div>
 

@@ -50,3 +50,28 @@
         transform: rotate(.5turn)
     }
 }
+
+@media (max-width: 768px) {
+    .loading-sign {
+        font-size: 1.5rem; /* Adjust font size for medium screens */
+        gap: 3rem; /* Adjust gap for medium screens */
+    }
+
+    .custom-loader {
+        width: 80px; /* Adjust loader size for medium screens */
+        height: 80px;
+    }
+}
+
+/* Adjust styles for smaller screens */
+@media (max-width: 576px) {
+    .loading-sign {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+        gap: 2rem; /* Adjust gap for smaller screens */
+    }
+
+    .custom-loader {
+        width: 60px; /* Adjust loader size for smaller screens */
+        height: 60px;
+    }
+}
