@@ -1,0 +1,52 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--light-background-color);
+}
+
+.loading-sign {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    align-items: center;
+    text-align: center;
+    color: #063d60;
+    font-family: var(--paragraph);
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+.custom-loader {
+    width: 100px;
+    height: 100px;
+    display: grid;
+}
+
+.custom-loader::before,
+.custom-loader::after {
+    content: "";
+    grid-area: 1/1;
+    --c: radial-gradient(farthest-side, var(--primary-color) 92%, #0000);
+    background: var(--c) 50% 0,
+    var(--c) 50% 100%,
+    var(--c) 100% 50%,
+    var(--c) 0 50%;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    animation: s2 1s infinite;
+}
+
+.custom-loader::before {
+    margin: 8px;
+    filter: hue-rotate(45deg);
+    background-size: 16px 16px;
+    animation-timing-function: linear
+}
+
+@keyframes s2 {
+    100% {
+        transform: rotate(.5turn)
+    }
+}

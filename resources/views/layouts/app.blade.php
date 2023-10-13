@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="css/index.css"/>
     <link rel="stylesheet" href="css/signin.css"/>
     <link rel="stylesheet" href="css/signup.css"/>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/bets__carousel-module.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -21,6 +27,9 @@
     <title>BETMORE</title>
 </head>
 <body>
+
+@include('modal')
+
 <div class="page-home-wrapper">
     <div class="page-home">
         <header class="page-home__header">
@@ -40,6 +49,9 @@
                             <li class="nav-link" id="page-home">
                                 <a href="{{ route('home.index') }}" id="nav-link-home" class="link link--current">Home</a>
                             </li>
+                            <li class="nav-link" id="page-home">
+                                <a href="{{ route('matches.load') }}" id="nav-link-home" class="link link--current">Load</a>
+                            </li>
                             <li class="nav-link d-none" id="page-profile">
                                 <a href="profile.html" class="link">Profile</a>
                             </li>
@@ -52,6 +64,9 @@
                             <li class="nav-link" id="page-aboutus">
                                 <a href="about.html" class="link">About Us</a>
                             </li>
+                            <li class="nav-link" id="page-aboutus">
+                                <a href="{{ route('withdraw_approval.index') }}" class="link">Approve</a>
+                            </li>
                             @guest
                                 <li class="nav-link" id="page-signIn">
                                     <a href="{{ route('session.create') }}" class="link">Sign-In</a>
@@ -63,7 +78,7 @@
                                 <li class="nav-link" id="page-signOut">
                                     <a href="{{ route('session.destroy') }}" class="link">Sign-Out</a>
                                 </li>
-                                <img src="{{ asset('storage/'.Auth::user()->image) }}" style="height: 50px;width:100px;">
+                                <img src="{{ asset('storage/'.Auth::user()->avatar) }}" style="height: 50px;width:100px;">
                             @endguest
                         </ul>
                     </div>

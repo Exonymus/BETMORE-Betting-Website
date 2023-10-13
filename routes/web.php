@@ -23,7 +23,8 @@ Route::get('/login', [\App\Http\Controllers\Auth\SessionController::class, 'crea
 Route::post('/login', [\App\Http\Controllers\Auth\SessionController::class, 'store'])->name('session.store');
 Route::get('/logout', [\App\Http\Controllers\Auth\SessionController::class, 'destroy'])->name('session.destroy');
 
-
+Route::get('/load-data', [\App\Http\Controllers\MatchesController::class, 'loadDataFromApi'])->name('matches.load');
+Route::get('/withdraw-approval', [\App\Http\Controllers\WithdrawApprovalController::class, 'index'])->name('withdraw_approval.index');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

@@ -64,17 +64,17 @@ class RegisterController extends Controller
      */
     protected function register(array $data)
     {
-        $data['image'] = "uploads/avatars/default.jpg";
+        $data['avatar'] = "users\default.png";
         if (request()->hasFile('image')) {
-            $imagePath = request('image')->store('uploads/avatars', 'public');
-            $data['image'] = $imagePath;
+            $imagePath = request('image')->store('users', 'public');
+            $data['avatar'] = $imagePath;
         }
 
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'image' => $data['image'],
+            'avatar' => $data['avatar'],
         ]);
     }
 

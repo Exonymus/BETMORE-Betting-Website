@@ -1,0 +1,47 @@
+.chat {
+    height: 100vh;
+    min-width: auto;
+}
+
+.chat-header {
+    text-align: center;
+    color: #063d60;
+    font-family: var(--paragraph);
+    font-weight: bolder;
+    font-size: 2rem;
+    border-style: solid;
+    margin-bottom: 1rem;
+    border-color: #7a7a7a;
+}
+
+.message-box {
+    max-height: 67.5vh;
+    overflow-y: auto;
+}
+
+.message-box::-webkit-scrollbar {
+    display: none; !important;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.username {
+    flex-basis: 30%;
+    max-width: 30%; /* Set a maximum width for the username container */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Display ellipsis (...) for overflowed text */
+}
+
+.user-message {
+    margin-left: 1rem;
+    flex-basis: 70%;
+    max-width: 70%; /* Set a maximum width for the message container */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Display ellipsis (...) for overflowed text */
+}

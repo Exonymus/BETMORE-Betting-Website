@@ -21,7 +21,8 @@ class User extends \TCG\Voyager\Models\User
         'email',
         'password',
         'image',
-        'name'
+        'name',
+        'avatar',
     ];
 
     /**
@@ -61,5 +62,15 @@ class User extends \TCG\Voyager\Models\User
     public function borrows()
     {
         return $this->hasMany(Loan::class, 'borrower_user_id');
+    }
+
+    public function donats()
+    {
+        return $this->hasMany(Donat::class);
+    }
+
+    public function withdrawRequests()
+    {
+        return $this->hasMany(WithdrawRequest::class);
     }
 }

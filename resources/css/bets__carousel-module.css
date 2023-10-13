@@ -1,0 +1,36 @@
+.carousel-control-next,
+.carousel-control-prev,
+.carousel-indicators {
+    position: static;
+    transition: opacity .15s ease-in-out;
+}
+
+.carousel-indicators {
+    align-items: center;
+    height: 10vh;
+    margin-bottom: 0;
+}
+
+.carousel-main {
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    width: 3%;
+}
+
+.module {
+    background-color: var(--light-background-color);
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    height: 90vh;
+    width: calc(100vw / 3.2 - 1rem);
+    border: 1px solid var(--color-black);
+    padding: 0.5rem;
+}
