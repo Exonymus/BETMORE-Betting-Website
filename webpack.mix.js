@@ -21,5 +21,8 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     .css('resources/css/index.css', 'public/css/index.css')
     .css('resources/css/signin.css', 'public/css/signin.css')
     .css('resources/css/signup.css', 'public/css/signup.css')
+    .css('resources/css/bets__carousel-module.css', 'public/css/bets__carousel-module.css')
+    .css('resources/css/loading__screen.css', 'public/css/loading__screen.css')
+    .css('resources/css/chat-module.css', 'public/css/chat-module.css')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();

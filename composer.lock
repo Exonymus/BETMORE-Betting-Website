@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ed6eec93aa8176bff4b64d316e0d550",
+    "content-hash": "383fa5d37bd0595fabd5822479d1f8dd",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -3412,58 +3412,6 @@
             "time": "2021-09-25T23:10:38+00:00"
         },
         {
-            "name": "sunra/php-simple-html-dom-parser",
-            "version": "v1.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sunra/php-simple-html-dom-parser.git",
-                "reference": "75b9b1cb64502d8f8c04dc11b5906b969af247c6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sunra/php-simple-html-dom-parser/zipball/75b9b1cb64502d8f8c04dc11b5906b969af247c6",
-                "reference": "75b9b1cb64502d8f8c04dc11b5906b969af247c6",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.3.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Sunra\\PhpSimple\\HtmlDomParser": "Src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sunra",
-                    "email": "sunra@yandex.ru",
-                    "homepage": "https://github.com/sunra"
-                },
-                {
-                    "name": "S.C. Chen",
-                    "homepage": "http://sourceforge.net/projects/simplehtmldom/"
-                }
-            ],
-            "description": "Composer adaptation of: A HTML DOM parser written in PHP5+ let you manipulate HTML in a very easy way! Require PHP 5+. Supports invalid HTML. Find tags on an HTML page with selectors just like jQuery. Extract contents from HTML in a single line.",
-            "homepage": "https://github.com/sunra/php-simple-html-dom-parser",
-            "keywords": [
-                "dom",
-                "html",
-                "parser"
-            ],
-            "support": {
-                "issues": "https://github.com/sunra/php-simple-html-dom-parser/issues",
-                "source": "https://github.com/sunra/php-simple-html-dom-parser/tree/master"
-            },
-            "time": "2016-11-22T22:57:47+00:00"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.3.0",
             "source": {
@@ -6095,66 +6043,6 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
-        },
-        {
-            "name": "webrepin/hltv-api",
-            "version": "1.0.31",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/webrepin/hltv-api.git",
-                "reference": "30e961d6d0b06a89a6f874827413c75f512dca79"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/webrepin/hltv-api/zipball/30e961d6d0b06a89a6f874827413c75f512dca79",
-                "reference": "30e961d6d0b06a89a6f874827413c75f512dca79",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "guzzlehttp/guzzle": "~6.0",
-                "php": ">=7.0.0",
-                "sunra/php-simple-html-dom-parser": "1.5.2"
-            },
-            "require-dev": {
-                "codeclimate/php-test-reporter": "dev-master",
-                "phpunit/phpunit": "~5.0"
-            },
-            "suggest": {
-                "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "HltvApi\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantin Repin",
-                    "email": "repin.and.co@gmail.com",
-                    "homepage": "https://github.com/webrepin"
-                }
-            ],
-            "description": "PHP Hltv API Client",
-            "homepage": "https://github.com/webrepin/hltv-api",
-            "keywords": [
-                "api",
-                "cs",
-                "csgo",
-                "csgoapi",
-                "hltv",
-                "hltv.org"
-            ],
-            "support": {
-                "issues": "https://github.com/webrepin/hltv-api/issues",
-                "source": "https://github.com/webrepin/hltv-api/tree/master"
-            },
-            "time": "2019-12-26T22:47:34+00:00"
         }
     ],
     "packages-dev": [
@@ -8460,6 +8348,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^7.3|^8.0",
+        "ext-curl": "*",
+        "ext-dom": "*",
         "ext-json": "*"
     },
     "platform-dev": [],
