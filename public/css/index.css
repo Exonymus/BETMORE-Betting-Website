@@ -12,6 +12,7 @@
     position: relative;
     background-color: var(--light-background-color);
     width: 100%;
+    height: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -25,51 +26,9 @@
     font-family: var(--paragraph);
 }
 
-.page-home {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3.71rem;
-}
-
-/*Page-Home__Header*/
-.page-home__header {
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    color: var(--text-color);
-}
-
-.page-home__header,
-.page-home__header__content {
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-}
-
-.page-home__header__content {
-    overflow: hidden;
-    flex-direction: row;
-    padding: 1rem 8.5rem;
-    justify-content: space-between;
-}
-
 /*Page-Home__Main*/
-.page-home__betting-carousel {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-self: stretch;
-    border-radius: var(--br-3xs);
-    background-color: #d9d9d9;
-    border: 3px solid var(--color-black);
-    padding: var(--padding-10xl) 2.94rem var(--padding-10xl) 2.94rem;
+.page-home__main {
     margin: 0 4rem 0 4rem;
-    justify-content: center;
-    gap: 1.88rem;
-    font-size: 1.56rem;
 }
 
 .carousel-container {
@@ -152,20 +111,6 @@
     border-radius: var(--br-3xs);
     border: 3px solid var(--color-black);
 }
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
-    color: var(--color-dimgray);
-    background-color: var(--color-whitesmoke-100);
-}
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: var(--primary-color);
-    border-bottom: 0;
-    background-color: var(--light-background-color);;
-}
-
-/*.betting-carousel__bet-zone {*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*}*/
 
 /*Page-Home__Footer*/
 .page-home__footer {
@@ -226,24 +171,8 @@
 
 /*Mobile version styles*/
 @media screen and (max-width: 1325px) {
-    .page-home__header__content {
-        flex-direction: column;
-        gap: 0.94rem;
-        align-items: center;
-        justify-content: center;
-    }
-
     .betting-carousel__bet-zone {
         width: 100%;
-    }
-
-    .page-home__header__content {
-        gap: 0.06rem;
-        padding: 0;
-    }
-
-    .navbar {
-        justify-content: space-around;
     }
 }
 
@@ -255,9 +184,6 @@
 }
 
 @media screen and (max-width: 925px) {
-    .page-home {
-        gap: 1.5rem
-    }
     .page-home__footer {
         flex-direction: column;
         gap: var(--gap-3xs);
@@ -265,7 +191,7 @@
         justify-content: center;
     }
 
-    .page-home__betting-carousel {
+    .page-home__main {
         flex-direction: column;
         margin: 0 0.5rem 0 0.5rem;
         padding: var(--padding-10xl) 1.2rem var(--padding-10xl) 1.2rem;

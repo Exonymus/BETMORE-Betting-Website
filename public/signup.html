@@ -11,13 +11,13 @@
     <link rel="icon" type="image/x-icon" href="img/title-icon.png">
     <link rel="stylesheet" href="css/global.css"/>
     <link rel="stylesheet" href="css/signup.css"/>
-    <title>Sign Up</title>
+    <title>Sign Up - BETMORE</title>
 </head>
 <body>
-<div class="page-signup-wrapper">
-    <div class="page-signup">
-        <header class="page-signup__header">
-            <nav class="page-signup__header__content navbar">
+<div class="page__wrapper">
+    <div class="page">
+        <header class="page__header">
+            <nav class="page__navbar navbar">
                 <span class="navbar__brand">
                     <img class="brand__name" alt="" src="img/logos/site-logo.svg"/>
                 </span>
@@ -57,16 +57,6 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="user-info d-none h6">
-                        <span class="user-info__coins">
-                            <img src="img/logos/coin.svg"  class="user__money" alt="">
-                            <span id="user-coins">1000</span>
-                        </span>
-                    <span class="user-info__gems">
-                            <img src="img/logos/nolos.svg" class="user__money" alt="">
-                            <span id="user-gems">1000</span>
-                         </span>
-                </div>
                 <div class="navbar__search h6">
                     <form class="form-inline navbar__search__content">
                         <input class="form-control mr-sm-2 search__input" type="search" placeholder="Search..."
@@ -76,7 +66,7 @@
                 </div>
             </nav>
         </header>
-        <main class="page-signup__main">
+        <main class="page__main page-signup__main">
             <section class="main__auth-data">
                 <header class="auth-data__header">
                     <b>SIGN UP</b>
@@ -108,7 +98,7 @@
                         <label class="paragraph form__input-file" for="avatar">Click to upload the avatar</label>
                         <label class="form-check-label terms-check align-items-center" for="acceptTerms">
                             <input type="checkbox" class="form-check-input" id="acceptTerms" name="acceptTerms" required>
-                            I accept the <a href="aboutus.html" target="_blank">Terms and Conditions</a>
+                            I accept the <a href="about.html" target="_blank">Terms and Conditions</a>
                         </label>
                         <button class="form__submit-btn" type="submit">
                             <b class="submit-btn__text">Sign Up</b>
@@ -124,20 +114,40 @@
             <img class="auth__logo logo" alt="" src="img/logos/signup-logo.svg" id="sign-up__img"/>
         </main>
         <footer class="page-signup__footer">
-            <div class="footer-content">
-                <img src="img/logos/default-user.webp" alt="" class="footer__logo">
-                <div class="users-statistics">
-                    <p class="users-count">10000</p>
-                    <h3>Users Registered</h3>
+            <div class="footer__user-statistics">
+                <div class="statistics__info">
+                    <img src="img/logos/default-user.svg" alt="" class="footer__logo">
+                    <div class="users-statistics">
+                        <p class="number-count" id="users-registered-count">10000</p>
+                        <h3>Users</h3>
+                    </div>
+                </div>
+                <div class="statistics__info">
+                    <img src="img/logos/bet.svg" alt="" class="footer__logo">
+                    <div class="users-statistics">
+                        <p class="number-count" id="bets-made-count">1000</p>
+                        <h3>Bets Made</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="page__footer">
+                <div class="footer__copy">
+                    2023-2023 © Copyright BETMORE.com
+                    <br>
+                    BETMORE ESPORT betting developed as student project in BSUIR, and operates in compliance with the laws of tax policy of the Republic of Belarus.
+
+                </div>
+                <div class="footer__payment">
+                    <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
+                        <img class="footer__payment__logo" src="https://cdn.freekassa.ru/banners/big-white-2.png"
+                             title="Прием платежей на сайте для физических лиц и т.д." alt="">
+                    </a>
                 </div>
             </div>
         </footer>
     </div>
 </div>
 
-<!--Scripts-->
-<script type="module" src="js/global.mjs"></script>
-<script type="module" src="js/auth.mjs"></script>
 
 <!--Libraries-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -145,5 +155,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+
+<!--Scripts-->
+<script type="module" src="js/counter.mjs"></script>
 </body>
 </html>

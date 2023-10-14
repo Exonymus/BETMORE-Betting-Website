@@ -1,5 +1,5 @@
-$('.users-count').each(function () {
-    $(this).prop('Counter',0).animate({
+$('.number-count').each(function () {
+    $(this).prop('Counter', 0).animate({
         Counter: $(this).text()
     }, {
 
@@ -10,6 +10,7 @@ $('.users-count').each(function () {
         }
     });
 });
+
 function addCommas(nStr) {
     nStr += '';
     var x = nStr.split('.');
