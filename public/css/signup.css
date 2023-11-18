@@ -19,6 +19,13 @@
     text-align: center;
 }
 
+a.link.terms-link {
+    font-family: var(--font-raleway);
+    font-size: 1.15rem;
+    margin-left: 0;
+    text-decoration: underline;
+}
+
 .number-count {
     font-size: 2rem;
     width: 5rem;
