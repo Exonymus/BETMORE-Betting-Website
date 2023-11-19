@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, width=device-width"/>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="icon" type="image/x-icon" href="img/title-icon.png">
+
+    <!-- Page-specific styles -->
+    <link rel="stylesheet" href="css/deposit.css">
+
+    <title>Deposit - BETMORE</title>
+</head>
+<body>
+<div class="page__wrapper">
+    <div class="page">
+        <header class="page__header">
+            <nav class="page__navbar navbar">
+                <span class="navbar__brand">
+                    <img class="brand__name" alt="" src="img/logos/site-logo.svg"/>
+                </span>
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                        <ul class="collapse__nav__content h6">
+                            <li class="nav-link" id="page-home">
+                                <a href="index.html" id="nav-link-home" class="link">Home</a>
+                            </li>
+                            <li class="nav-link" id="page-profile">
+                                <a href="profile.html" class="link">Profile</a>
+                            </li>
+                            <li class="nav-link" id="page-deposit">
+                                <a href="deposit.html" class="link link--current">Deposit</a>
+                            </li>
+                            <li class="nav-link" id="page-withdraw">
+                                <a href="withdraw.html" class="link">Withdraw</a>
+                            </li>
+                            <li class="nav-link" id="page-aboutus">
+                                <a href="about.html" class="link">About Us</a>
+                            </li>
+                            <li class="nav-link" id="page-signOut">
+                                <a href="index.html" class="link">Sign-Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="user-info h6">
+                        <span class="user-info__coins">
+                            <img src="img/logos/coin.svg" class="user__money" alt="">
+                            <span id="user-coins">1000</span>
+                        </span>
+                    <span class="user-info__gems">
+                            <img src="img/logos/nolos.svg" class="user__money" alt="">
+                            <span id="user-gems">1000</span>
+                         </span>
+                </div>
+                <div class="navbar__search h6">
+                    <form class="form-inline navbar__search__content">
+                        <input class="form-control mr-sm-2 search__input" type="search" placeholder="Search..."
+                               aria-label="Search">
+                        <button class="search__button"></button>
+                    </form>
+                </div>
+            </nav>
+        </header>
+
+        <main class="page__main page-deposit__main">
+            <!-- Deposit Form -->
+            <section class="deposit-form__wrapper">
+                <form class="deposit-form" id="depositForm">
+                    <h2 class="deposit__heading">ADD FUNDS</h2>
+                    <div class="form-group deposit-input">
+                        <label class="deposit-input__label" for="amountBYN">You Pay:</label>
+                        <input type="number"
+                               class="form-control deposit-input__number"
+                               id="amountBYN"
+                               min="5" max="100" step="1"
+                               value="5"
+                               required>
+                        <label class="deposit-detail deposit-sum">BYN</label>
+                    </div>
+                    <div class="form-group deposit-result">
+                        <label class="deposit-input__label" for="coinsBonus">You Get:</label>
+                        <input type="text"
+                               class="form-control deposit-input__number"
+                               id="coinsBonus"
+                               value="550"
+                               readonly>
+                        <img class="deposit-detail" src="img/logos/coin.svg" alt="Coins">
+                    </div>
+                    <button class="form__submit-btn" type="submit">
+                        <b class="submit-btn__text">Deposit</b>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Deposit History -->
+            <section class="deposit-history">
+                <div class="card">
+                    <h2 class="card-header history-card__header">Deposit History</h2>
+                    <div class="card-body history-card__content">
+                        <div>
+                            <ul id="historyList" class="list-group">
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="deposit-date">10.10.2023</div>
+                                    <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="page__footer">
+            <div class="footer__copy">
+                2023-2023 © Copyright BETMORE.com
+                <br>
+                BETMORE ESPORT betting developed as student project in BSUIR, and operates in compliance with the laws
+                of tax policy of the Republic of Belarus.
+
+            </div>
+            <div class="footer__payment">
+                <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
+                    <img class="footer__payment__logo" src="https://cdn.freekassa.ru/banners/big-white-2.png"
+                         title="Прием платежей на сайте для физических лиц и т.д." alt="">
+                </a>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+<!-- Additional scripts specific to the About Us page can be included here -->
+<script>
+    // Функция автоматического рассчета монет при изменении суммы пополнения
+    document.getElementById('amountBYN').addEventListener('input', function () {
+        const amountBYN = document.getElementById('amountBYN').value;
+        if (amountBYN < 5) {
+            document.getElementById('amountBYN').value = 5
+        }
+        if (amountBYN > 100) {
+            document.getElementById('amountBYN').value = 100
+        }
+        calculateCoins();
+    });
+
+    function calculateCoins() {
+        const amountBYN = document.getElementById('amountBYN').value;
+        const coinsBonus = parseInt(amountBYN) * 10 / 100; // 10% бонус
+        const totalCoins = (parseInt(amountBYN) + coinsBonus) * 100;
+        document.getElementById('coinsBonus').value = totalCoins.toFixed(0);
+    }
+
+</script>
+</body>
+</html>

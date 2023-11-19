@@ -1,0 +1,129 @@
+.page-deposit__main {
+    margin: 0 4rem 0 4rem;
+}
+
+.deposit-form__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.deposit__heading {
+    text-align: center;
+    font-size: 2.25rem;
+    color: var(--color-black);
+    font-family: var(--font-raleway);
+    font-weight: bolder;
+}
+
+.deposit__text, .history-content__list {
+    text-align: justify;
+    font-size: 1.15rem;
+}
+
+.deposit-input {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.deposit-result {
+    display: flex;
+    flex-direction: row;
+    margin-top: -1rem;
+}
+
+.deposit-input__label {
+    text-align: left;
+    width: 40%;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.deposit-input__number {
+    width: 35%;
+    margin: 1rem 0 2rem 0;
+}
+
+.deposit-detail {
+    text-align: center;
+    margin: 1.5rem 0 2.5rem 1rem;
+    height: 2rem;
+    width: 3rem;
+}
+
+.deposit-history {
+    height: 557px;
+    width: 50%;
+    overflow-y: auto;
+    align-self: stretch;
+    border-radius: var(--br-3xs);
+    border: 3px solid var(--color-black);
+    background-color: white;
+    font-size: 1rem;
+}
+
+.card {
+    height: 100%;
+    border-bottom: none; /* Remove border */
+    box-shadow: none; /* Remove box-shadow */
+}
+
+.history-card__header {
+    position: sticky;
+    font-size: 2.25rem;
+    color: var(--color-black);
+    font-family: var(--font-raleway);
+    font-weight: bolder;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(247, 247, 247);
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deposit-date {
+    color: #063d60;
+}
+
+.deposit-sum {
+    color: #488a00;
+    font-family: var(--font-raleway);
+    font-weight: bold;
+}
+
+@media screen and (max-width: 925px) {
+    .page-home__footer {
+        flex-direction: column;
+        gap: var(--gap-3xs);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .page-deposit__main {
+        flex-direction: column;
+        margin: 0 0.5rem 0 0.5rem;
+        padding: var(--padding-10xl) 1.2rem var(--padding-10xl) 1.2rem;
+        gap: 1.2rem;
+    }
+
+    .history-card__header {
+        font-size: 2rem;
+    }
+
+    .history-content__header {
+        font-size: 1.3rem;
+    }
+
+    .deposit-history {
+        width: 100%;
+    }
+
+    .deposit-history {
+        width: 100%;
+        min-height: 400px;
+    }
+}
