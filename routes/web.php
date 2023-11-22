@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('home.about');
 
 Route::get('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register.create');
 Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->name('register.store');
@@ -28,4 +29,9 @@ Route::get('/withdraw-approval', [\App\Http\Controllers\WithdrawApprovalControll
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    Route::get('menus/home', [
+        'uses' => '\TCG\Voyager\Http\Controllers\VoyagerMenuController@index',
+        'as' => 'voyager.menus.home',
+    ]);
 });

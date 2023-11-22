@@ -23,7 +23,7 @@
 }
 
 .message-box::-webkit-scrollbar {
-    display: none;
+    display: none; 
 }
 
 .message {
@@ -54,3 +54,4 @@
         max-height: 58vh;
     }
 }
+

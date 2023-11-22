@@ -37,7 +37,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.media'),
             'url'     => '',
-            'route'   => 'voyager.media.index',
+            'route'   => 'voyager.media.home',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
@@ -53,7 +53,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.users'),
             'url'     => '',
-            'route'   => 'voyager.users.index',
+            'route'   => 'voyager.users.home',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
@@ -69,7 +69,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.roles'),
             'url'     => '',
-            'route'   => 'voyager.roles.index',
+            'route'   => 'voyager.roles.home',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
@@ -100,7 +100,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.menu_builder'),
             'url'     => '',
-            'route'   => 'voyager.menus.index',
+            'route'   => 'voyager.menus.home',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
@@ -116,7 +116,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.database'),
             'url'     => '',
-            'route'   => 'voyager.database.index',
+            'route'   => 'voyager.database.home',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
@@ -132,7 +132,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.compass'),
             'url'     => '',
-            'route'   => 'voyager.compass.index',
+            'route'   => 'voyager.compass.home',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
@@ -148,7 +148,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.bread'),
             'url'     => '',
-            'route'   => 'voyager.bread.index',
+            'route'   => 'voyager.bread.home',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
@@ -164,7 +164,7 @@ class MenuItemsTableSeeder extends Seeder
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.settings'),
             'url'     => '',
-            'route'   => 'voyager.settings.index',
+            'route'   => 'voyager.settings.home',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([

@@ -1,0 +1,111 @@
+.page-about-us__main {
+    margin: 0 4rem 0 4rem;
+}
+
+.about-us {
+    width: 50%;
+}
+
+.about-us-logo__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.about-us-logo__container {
+    background-color: white;
+    width: 30%;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.about-us-logo {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.about-us__heading {
+    text-align: center;
+    font-size: 2.25rem;
+    color: var(--color-black);
+    font-family: var(--font-raleway);
+    font-weight: bolder;
+}
+
+.about-us__text, .terms-content__list {
+    text-align: justify;
+    font-size: 1.15rem;
+}
+
+.terms-and-conditions {
+    height: 557px;
+    width: 50%;
+    overflow-y: auto;
+    align-self: stretch;
+    border-radius: var(--br-3xs);
+    border: 3px solid var(--color-black);
+    background-color: white;
+}
+
+.card {
+    height: 100%;
+    border-bottom: none; /* Remove border */
+    box-shadow: none; /* Remove box-shadow */
+}
+
+.terms-card__header {
+    position: sticky;
+    font-size: 2.25rem;
+    color: var(--color-black);
+    font-family: var(--font-raleway);
+    font-weight: bolder;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(247, 247, 247);
+}
+
+.terms-card__content {
+    padding-bottom: 0;
+}
+
+.terms-content__header {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+
+@media screen and (max-width: 925px) {
+    .page-home__footer {
+        flex-direction: column;
+        gap: var(--gap-3xs);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .page-about-us__main {
+        flex-direction: column;
+        margin: 0 0.5rem 0 0.5rem;
+        padding: var(--padding-10xl) 1.2rem var(--padding-10xl) 1.2rem;
+        gap: 1.2rem;
+    }
+
+    .terms-card__header {
+        font-size: 2rem;
+    }
+
+    .terms-content__header {
+        font-size: 1.3rem;
+    }
+
+    .about-us {
+        width: 100%;
+    }
+
+    .terms-and-conditions {
+        width: 100%;
+        min-height: 400px;
+    }
+}
