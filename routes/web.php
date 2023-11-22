@@ -26,3 +26,8 @@ Route::get('/logout', [\App\Http\Controllers\Auth\SessionController::class, 'des
 
 Route::get('/load-data', [\App\Http\Controllers\MatchesController::class, 'loadDataFromApi'])->name('matches.load');
 Route::get('/withdraw-approval', [\App\Http\Controllers\WithdrawApprovalController::class, 'index'])->name('withdraw_approval.index');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

@@ -21,7 +21,6 @@
     <title>Home - BETMORE</title>
 </head>
 <body>
-@include('modal')
 <div class="page__wrapper">
     <div class="page">
         <header class="page__header">
@@ -38,43 +37,54 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                         <ul class="collapse__nav__content h6">
+                            @can('browse_admin')
+                                <li class="nav-link" id="page-home">
+                                    <a href="{{route('voyager.dashboard')}}" id="nav-link-home" class="link link--current">Admin</a>
+                                </li>
+                            @endcan
                             <li class="nav-link" id="page-home">
                                 <a href="{{route('home.index')}}" id="nav-link-home" class="link link--current">Home</a>
                             </li>
-                            <li class="nav-link" id="page-profile">
-                                <a href="{{route('home.index')}}" class="link">Profile</a>
-                            </li>
-                            <li class="nav-link" id="page-deposit">
-                                <a href="{{route('home.index')}}" class="link">Deposit</a>
-                            </li>
-                            <li class="nav-link" id="page-withdraw">
-                                <a href="{{route('home.index')}}" class="link">Withdraw</a>
-                            </li>
-                            <li class="nav-link" id="page-aboutus">
-                                <a href="{{route('home.about')}}" class="link">About Us</a>
-                            </li>
-                            <li class="nav-link" id="page-signIn">
-                                <a href="{{route('session.create')}}" class="link">Sign-In</a>
-                            </li>
-                            <li class="nav-link" id="page-signUp">
-                                <a href="{{route('register.create')}}" class="link">Sign-Up</a>
-                            </li>
-                            <li class="nav-link" id="page-signOut">
-                                <a href="{{route('session.destroy')}}" class="link">Sign-Out</a>
-                            </li>
+                            @guest
+                                <li class="nav-link" id="page-aboutus">
+                                    <a href="{{route('home.about')}}" class="link">About Us</a>
+                                </li>
+                                <li class="nav-link" id="page-signIn">
+                                    <a href="{{route('session.create')}}" class="link">Sign-In</a>
+                                </li>
+                                <li class="nav-link" id="page-signUp">
+                                    <a href="{{route('register.create')}}" class="link">Sign-Up</a>
+                                </li>
+                            @else
+                                <li class="nav-link" id="page-profile">
+                                    <a href="{{route('home.index')}}" class="link">Profile</a>
+                                </li>
+                                <li class="nav-link" id="page-deposit">
+                                    <a href="{{route('home.index')}}" class="link">Deposit</a>
+                                </li>
+                                <li class="nav-link" id="page-withdraw">
+                                    <a href="{{route('home.index')}}" class="link">Withdraw</a>
+                                </li>
+                                <li class="nav-link" id="page-signOut">
+                                    <a href="{{route('session.destroy')}}" class="link">Sign-Out</a>
+                                </li>
+                            @endguest
                         </ul>
                     </div>
                 </nav>
-                <div class="user-info d-none h6">
-                        <span class="user-info__coins">
-                            <img src="img/logos/coin.svg" class="user__money" alt="">
-                            <span id="user-coins">1000</span>
-                        </span>
-                    <span class="user-info__gems">
-                            <img src="img/logos/nolos.svg" class="user__money" alt="">
-                            <span id="user-gems">1000</span>
-                         </span>
-                </div>
+                @guest
+                @else
+                    <div class="user-info h6">
+                            <span class="user-info__coins">
+                                <img src="img/logos/coin.svg" class="user__money" alt="">
+                                <span id="user-coins">{{Auth::user()->coins}}</span>
+                            </span>
+                        <span class="user-info__gems">
+                                <img src="img/logos/nolos.svg" class="user__money" alt="">
+                                <span id="user-gems">{{Auth::user()->noloses}}</span>
+                             </span>
+                    </div>
+                @endguest
                 <div class="navbar__search h6">
                     <form class="form-inline navbar__search__content">
                         <input class="form-control mr-sm-2 search__input" type="search" placeholder="Search..."
