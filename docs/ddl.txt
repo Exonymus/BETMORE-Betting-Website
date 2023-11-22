@@ -1,0 +1,133 @@
+Table "bets" {
+  "id" bigint(20) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+  "amount" int(11) [not null]
+  "coefficient" double(8,2) [not null]
+  "match_id" bigint(20) [not null]
+  "user_id" bigint(20) [not null]
+  "team_id" bigint(20) [not null]
+}
+
+Table "donats" {
+  "id" bigint(20) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+  "user_id" bigint(20) [not null]
+  "amount" int(11) [not null]
+}
+
+Table "games" {
+  "id" bigint(20) [pk, not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+  "name" varchar(255) [not null]
+}
+
+Table "loans" {
+  "id" bigint(20) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+  "amount" int(11) [not null]
+  "lender_user_id" bigint(20) [not null]
+  "borrower_user_id" bigint(20) [not null]
+}
+
+Table "matchs" {
+  "id" bigint(20) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+  "team1_id" bigint(20) [not null]
+  "team2_id" bigint(20) [not null]
+  "date" date [not null]
+  "results" varchar(255) [default: NULL]
+  "winner_id" bigint(20) [default: NULL]
+}
+
+Table "messages" {
+  "id" bigint(20) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+  "message" varchar(255) [not null]
+  "user_id" bigint(20) [not null]
+}
+
+Table "permissions" {
+  "id" bigint(20) [not null]
+  "key" varchar(255) [not null]
+  "table_name" varchar(255) [default: NULL]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+}
+
+Table "roles" {
+  "id" bigint(20) [not null]
+  "name" varchar(255) [not null]
+  "display_name" varchar(255) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+}
+
+Table "teams" {
+  "id" bigint(20) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+  "name" varchar(255) [not null]
+  "logo" varchar(255) [not null]
+  "ranking" int(11) [not null]
+  "game_id" bigint(20) [not null]
+}
+
+Table "users" {
+  "id" bigint(20) [not null]
+  "role_id" bigint(20) [default: NULL]
+  "name" varchar(255) [not null]
+  "email" varchar(255) [not null]
+  "avatar" varchar(255) [default: "users/default.png"]
+  "level" int(11) [not null, default: "0"]
+  "coins" int(11) [not null, default: "0"]
+  "noloses" int(11) [not null, default: "0"]
+  "email_verified_at" timestamp [default: NULL]
+  "password" varchar(255) [not null]
+  "remember_token" varchar(100) [default: NULL]
+  "settings" text
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+}
+
+Table "withdraw_request" {
+  "id" bigint(20) [not null]
+  "created_at" timestamp [default: NULL]
+  "updated_at" timestamp [default: NULL]
+  "user_id" bigint(20) [not null]
+  "amount" int(11) [not null]
+  "status" varchar(255) [not null, default: "waiting"]
+}
+
+Ref:"users"."id" < "donats"."user_id"
+
+Ref:"users"."id" < "messages"."user_id"
+
+Ref:"games"."id" < "teams"."game_id"
+
+Ref:"roles"."id" < "users"."role_id"
+
+Ref:"users"."id" < "withdraw_request"."user_id"
+
+
+
+Ref: "users"."id" < "loans"."lender_user_id"
+
+Ref: "users"."id" < "loans"."borrower_user_id"
+
+Ref: "matchs"."winner_id" < "teams"."id"
+
+Ref: "matchs"."team1_id" < "teams"."id"
+
+Ref: "matchs"."team2_id" < "teams"."id"
+
+Ref: "bets"."match_id" < "matchs"."id"
+
+Ref: "bets"."user_id" < "users"."id"
+
+Ref: "bets"."team_id" < "teams"."id"

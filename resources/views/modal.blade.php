@@ -1,6 +1,6 @@
-{{--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">--}}
-{{--    Open Modal--}}
-{{--</button>--}}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open Modal
+</button>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
