@@ -128,7 +128,7 @@
                         <!--                    Loading Screen-->
                         <iframe
                                 id="loading-screen__ifr"
-                                src="loading__screen-module.html"
+                                src="loading-screen-module.html"
                                 class="bets__carousel-module">
                         </iframe>
                         <div class="tab-content" id="nav-tabContent">
@@ -139,13 +139,13 @@
                                 <!--                    Live Bets Carousel-->
                                 <iframe
                                         id="live-bets__ifr"
-                                        src="bets__carousel-module.html"
+                                        src="bets-carousel-module.html"
                                         class="bets__carousel-module d-none">
                                 </iframe>
                                 <!--                    No Live Bets Screen-->
                                 <iframe
                                         id="sorry-screen__ifr"
-                                        src="sorry__screen-module.html"
+                                        src="sorry-screen-module.html"
                                         class="bets__carousel-module d-none">
                                 </iframe>
                             </div>
@@ -156,10 +156,41 @@
                                 <!--                    Pre-Bets Carousel-->
                                 <iframe
                                         id="pre-bets__ifr"
-                                        src="bets__carousel-module.html"
+                                        src="bets-carousel-module.html"
                                         class="bets__carousel-module d-none">
                                 </iframe>
                             </div>
+                        </div>
+                    </div>
+                    <div class="bet-overlay" id="bet-overlay">
+                        <div class="bet-container" onclick="event.stopPropagation();">
+                            <span class="close-btn" id="close-bet-submit">&times;</span>
+                            <label for="bet-amount">Enter Bet Amount:</label>
+                            <input type="number" id="bet-amount" class="form-control"
+                                   placeholder="0"
+                                   min="1"
+                                   max="10000"
+                                   step="1"
+                                   oninput="calculatePossibleWin()">
+                            <br>
+                            <div class="form-check form-switch bet-insurance">
+                                <input class="form-check-input insurance-switch" type="checkbox" role="switch" id="insurance">
+                                <label class="form-check-label insurance-label" for="insurance">Insurance</label>
+                            </div>
+                            <br>
+                            <label for="possible-win">Possible Win:</label>
+                            <span id="possible-win">0</span>
+                            <br>
+                            <button onclick="placeBet()"
+                                    class="btn btn-primary btn-block"
+                                    id="bet-submit-btn">
+                                Place Bet
+                            </button>
+                        </div>
+<!--                        TODO: Thank you for the bet, mamont, message-->
+                        <div class="thank-you-container" id="thank-you-container">
+                            <h3>Thank You for Your Bet!</h3>
+                            <!-- You can customize this section with additional details or actions -->
                         </div>
                     </div>
                 </main>
@@ -175,7 +206,8 @@
             <div class="footer__copy">
                 2023-2023 © Copyright BETMORE.com
                 <br>
-                BETMORE ESPORT betting developed as student project in BSUIR, and operates in compliance with the laws of tax policy of the Republic of Belarus.
+                BETMORE ESPORT betting developed as student project in BSUIR, and operates in compliance with the laws
+                of tax policy of the Republic of Belarus.
 
             </div>
             <div class="footer__payment">
@@ -199,6 +231,7 @@
 
 <!--Scripts-->
 <script>
+    // TODO: Refactor and check scripts
     // Simulate loading delay (For Ignat to check loading screen)
     setTimeout(function () {
         // Remove the loading screen when content is ready
@@ -207,6 +240,100 @@
         // document.querySelector('#live-bets__ifr').classList.remove('d-none');
         document.querySelector('#pre-bets__ifr').classList.remove('d-none');
     }, 1500); // 2000 milliseconds (2 seconds) delay for demonstration purposes
+
+
+    // Function to handle messages from iframes
+    function handleMessage(event) {
+        // Check if the message is from the bet card iframe
+        if (event.data.action === 'openBetOverlay') {
+            // Open the bet overlay in the index.html
+            openBetOverlay(event.data.bet_id, event.data.bet_coef);
+        }
+    }
+
+    var actualCoef = 1.0;
+
+    function openBetOverlay(bet_id, bet_coef) {
+        if (bet_coef == null) {
+            alert("Coefficient lost")
+            return;
+        }
+
+        actualCoef = bet_coef
+
+        document.getElementById("bet-overlay").style.display = "flex";
+        setTimeout(() => {
+            document.getElementById("bet-overlay").style.opacity = 1;
+            document.querySelector(".bet-container").style.opacity = 1;
+            document.querySelector(".bet-container").style.transform = "translateY(0)";
+        }, 50);
+    }
+
+    function closeBetOverlay() {
+        document.getElementById("bet-overlay").style.opacity = 0;
+        document.querySelector(".bet-container").style.opacity = 0;
+        document.querySelector(".bet-container").style.transform = "translateY(-20px)";
+
+        betAmount.value = '';
+        possibleWinSpan.innerText = '0.00';
+        actualCoef = 1.0;
+
+        setTimeout(() => {
+            document.getElementById("bet-overlay").style.display = "none";
+        }, 500);
+    }
+
+    function placeBet() {
+        // Add your logic to handle the bet placement here
+        document.querySelector('.bet-container').style.display = 'none';
+        document.getElementById('thank-you-container').style.display = 'block';
+        // Close the bet overlay after placing the bet
+        setTimeout(() => {
+            closeBetOverlay();
+            document.querySelector('.bet-container').style.display = "flow";
+            document.getElementById('thank-you-container').style.display = 'none';
+        }, 3000);
+    }
+
+    const betAmount = document.getElementById('bet-amount');
+    const possibleWinSpan = document.getElementById('possible-win');
+
+    function calculatePossibleWin() {
+        // Get the bet amount and calculate the possible win
+        let betAmountVal = parseFloat(document.getElementById('bet-amount').value) || 0;
+
+        if (betAmountVal < 0) {
+            betAmount.value = 0;
+            betAmountVal = 0;
+        }
+        else if (betAmountVal > 10000) {
+            betAmount.value = 10000;
+        }
+        else if (betAmountVal === 0 && betAmount.value.length > 1)
+        {
+            betAmountVal = 0;
+            betAmount.value = 0;
+        }
+
+        const possibleWin = betAmountVal * actualCoef;
+
+        // Update the possible win span with animation
+        possibleWinSpan.innerText = possibleWin.toFixed(2);
+        possibleWinSpan.classList.add('value-changed');
+        setTimeout(() => {
+            possibleWinSpan.classList.remove('value-changed');
+        }, 500);
+    }
+
+    // Listen for messages from iframes
+    window.addEventListener('message', handleMessage);
+
+    // Attach click event listener to the "Place Bet" button
+    var closeBetButton = document.querySelector('.close-btn');
+    closeBetButton.addEventListener('click', closeBetOverlay);
+
+    var submitOverlay = document.querySelector('.bet-overlay');
+    submitOverlay.addEventListener('click', closeBetOverlay);
 </script>
 </body>
 </html>

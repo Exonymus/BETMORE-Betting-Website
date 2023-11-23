@@ -23,7 +23,7 @@
 }
 
 .module {
-    background-color: var(--light-background-color);
+    background-color: var(--color-bg-secondary);
 }
 
 .card {

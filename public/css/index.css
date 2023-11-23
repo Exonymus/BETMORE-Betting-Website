@@ -34,7 +34,7 @@
 .carousel-container {
     margin-top: 2rem;
     border-radius: var(--br-3xs);
-    background-color: var(--light-background-color);
+    background-color: var(--color-bg-secondary);
     border: 3px solid var(--color-black);
     padding: 0 2px 2px 2px;
 }
@@ -111,6 +111,109 @@
     border-radius: var(--br-3xs);
     border: 3px solid var(--color-black);
 }
+
+/*  TODO: lines 116 - 216 fix styles, make them normal */
+.bet-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.bet-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+
+/*anim*/
+.bet-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px; /* Adjust the max-width as needed */
+    margin: 0 auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.insurance-label {
+    width: fit-content;
+    padding-top: 3px;
+}
+
+.bet-insurance {
+    margin-left: 1.8rem;
+}
+
+.thank-you-container {
+    background-color: #28a745; /* Green color for thank you message */
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px; /* Adjust the max-width as needed */
+    text-align: center;
+    display: none; /* Initially hide the thank you container */
+}
+
+/* Adjust styles for better visibility of the label and input elements */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="number"], input[type="checkbox"] {
+    margin-bottom: 10px;
+}
+
+/* Add animation styles */
+#possible-win {
+    font: 800 40px var(--font-raleway);
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.value-changed {
+    animation: fadeAndScale 0.5s ease-in-out;
+}
+
+@keyframes fadeAndScale {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 
 /*Page-Home__Footer*/
 .page-home__footer {
