@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('home.about');
+Route::get('/partials/chat', [App\Http\Controllers\PartialsController::class, 'chat'])->name('partials.chat');
+Route::get('/partials/bets__carousel', [App\Http\Controllers\PartialsController::class, 'bets__carousel'])->name('partials.bets__carousel');
+Route::get('/partials/loading__screen', [App\Http\Controllers\PartialsController::class, 'loading__screen'])->name('partials.loading__screen');
+Route::get('/partials/sorry__screen', [App\Http\Controllers\PartialsController::class, 'sorry__screen'])->name('partials.sorry__screen');
 
 Route::get('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register.create');
 Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->name('register.store');
@@ -25,9 +29,15 @@ Route::post('/login', [\App\Http\Controllers\Auth\SessionController::class, 'sto
 Route::get('/logout', [\App\Http\Controllers\Auth\SessionController::class, 'destroy'])->name('session.destroy');
 
 Route::get('/load-data', [\App\Http\Controllers\MatchesController::class, 'loadDataFromApi'])->name('matches.load');
-Route::get('/withdraw-approval', [\App\Http\Controllers\WithdrawApprovalController::class, 'index'])->name('withdraw_approval.index');
+Route::get('/withdraw-approval', [\App\Http\Controllers\WithdrawController::class, 'approve'])->name('withdraw.approve');
+Route::get('/withdraw', [\App\Http\Controllers\WithdrawController::class, 'index'])->name('withdraw.index');
+Route::get('/deposit', [\App\Http\Controllers\DepositController::class, 'index'])->name('deposit.index');
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+});
+
+Route::fallback(function () {
+    return view('404');
 });

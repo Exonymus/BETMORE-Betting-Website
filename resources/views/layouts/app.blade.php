@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="{{asset('css/global.css')}}"/>
 
     @yield('links')
+    @yield('title')
 
-    <title>Home - BETMORE</title>
 </head>
 <body>
 <div class="page__wrapper">
@@ -60,10 +60,10 @@
                                     <a href="{{route('home.index')}}" class="link">Profile</a>
                                 </li>
                                 <li class="nav-link" id="page-deposit">
-                                    <a href="{{route('home.index')}}" class="link">Deposit</a>
+                                    <a href="{{route('deposit.index')}}" class="link">Deposit</a>
                                 </li>
                                 <li class="nav-link" id="page-withdraw">
-                                    <a href="{{route('home.index')}}" class="link">Withdraw</a>
+                                    <a href="{{route('withdraw.index')}}" class="link">Withdraw</a>
                                 </li>
                                 <li class="nav-link" id="page-signOut">
                                     <a href="{{route('session.destroy')}}" class="link">Sign-Out</a>
@@ -97,20 +97,26 @@
 
         @yield('content')
 
-        <footer class="page__footer">
-            <div class="footer__copy">
-                2023-2023 © Copyright BETMORE.com
-                <br>
-                BETMORE ESPORT betting developed as student project in BSUIR, and operates in compliance with the laws of tax policy of the Republic of Belarus.
+        @section('footer')
+            @if (trim($__env->yieldContent('footer')))
+                @yield('footer')
+            @else
+                <footer class="page__footer">
+                    <div class="footer__copy">
+                        2023-2023 © Copyright BETMORE.com
+                        <br>
+                        BETMORE ESPORT betting developed as student project in BSUIR, and operates in compliance with the laws of tax policy of the Republic of Belarus.
 
-            </div>
-            <div class="footer__payment">
-                <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
-                    <img class="footer__payment__logo" src="https://cdn.freekassa.ru/banners/big-white-2.png"
-                         title="Прием платежей на сайте для физических лиц и т.д." alt="">
-                </a>
-            </div>
-        </footer>
+                    </div>
+                    <div class="footer__payment">
+                        <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
+                            <img class="footer__payment__logo" src="https://cdn.freekassa.ru/banners/big-white-2.png"
+                                 title="Прием платежей на сайте для физических лиц и т.д." alt="">
+                        </a>
+                    </div>
+                </footer>
+            @endif
+        @show
     </div>
 </div>
 
@@ -125,15 +131,5 @@
 
 <!--Scripts-->
 @yield('scripts')
-<script>
-    // Simulate loading delay (For Ignat to check loading screen)
-    setTimeout(function () {
-        // Remove the loading screen when content is ready
-        document.querySelector('#loading-screen__ifr').classList.add('d-none');
-        document.querySelector('#sorry-screen__ifr').classList.remove('d-none');
-        // document.querySelector('#live-bets__ifr').classList.remove('d-none');
-        document.querySelector('#pre-bets__ifr').classList.remove('d-none');
-    }, 1500); // 2000 milliseconds (2 seconds) delay for demonstration purposes
-</script>
 </body>
 </html>

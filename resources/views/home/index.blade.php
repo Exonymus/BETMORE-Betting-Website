@@ -2,17 +2,29 @@
 
 @section('links')
     <link rel="stylesheet" href="{{asset('css/index.css')}}"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+@endsection
+
+@section('title')
+    <title>Home - BETMORE</title>
 @endsection
 
 @section('scripts')
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script>
+        // Simulate loading delay (For Ignat to check loading screen)
+        setTimeout(function () {
+            // Remove the loading screen when content is ready
+            document.querySelector('#loading-screen__ifr').classList.add('d-none');
+            document.querySelector('#sorry-screen__ifr').classList.remove('d-none');
+            // document.querySelector('#live-bets__ifr').classList.remove('d-none');
+            document.querySelector('#pre-bets__ifr').classList.remove('d-none');
+        }, 1500); // 2000 milliseconds (2 seconds) delay for demonstration purposes
+    </script>
 @endsection
 
 @section('content')
-    @include('modal')
     <main class="page__main page-home__main">
         <section class="betting-carousel__bet-zone">
             <header>
@@ -58,7 +70,7 @@
                     <!--                    Loading Screen-->
                     <iframe
                         id="loading-screen__ifr"
-                        src="loading__screen-module.html"
+                        src="{{ route('partials.loading__screen') }}"
                         class="bets__carousel-module">
                     </iframe>
                     <div class="tab-content" id="nav-tabContent">
@@ -69,13 +81,13 @@
                             <!--                    Live Bets Carousel-->
                             <iframe
                                 id="live-bets__ifr"
-                                src="bets__carousel-module.html"
+                                src="{{ route('partials.bets__carousel') }}"
                                 class="bets__carousel-module d-none">
                             </iframe>
                             <!--                    No Live Bets Screen-->
                             <iframe
                                 id="sorry-screen__ifr"
-                                src="sorry__screen-module.html"
+                                src="{{ route('partials.sorry__screen') }}"
                                 class="bets__carousel-module d-none">
                             </iframe>
                         </div>
@@ -86,7 +98,7 @@
                             <!--                    Pre-Bets Carousel-->
                             <iframe
                                 id="pre-bets__ifr"
-                                src="bets__carousel-module.html"
+                                src="{{ route('partials.bets__carousel') }}"
                                 class="bets__carousel-module d-none">
                             </iframe>
                         </div>
@@ -97,7 +109,7 @@
 
         <!--        Chat-->
         <iframe
-            src="chat-module.html" class="chat-module"
+            src="{{ route('partials.chat') }}" class="chat-module"
             frameborder="0">
         </iframe>
     </main>
