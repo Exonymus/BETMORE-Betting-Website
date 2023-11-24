@@ -5,6 +5,18 @@
     transition: opacity .15s ease-in-out;
 }
 
+.bets-page {
+    display: flex;
+    justify-content: space-between;
+    transition: transform 0.5s ease-out
+}
+
+.bets-page iframe {
+    width: 48%;
+    height: 360px;
+    transition: opacity 0.5s ease-in-out;
+}
+
 .carousel-indicators {
     align-items: center;
     height: 10vh;

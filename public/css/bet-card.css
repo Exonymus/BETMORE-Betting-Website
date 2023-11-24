@@ -1,4 +1,3 @@
-/* TODO: Refactor bet-card styles*/
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
 *,
@@ -29,6 +28,12 @@ body {
     background-color: var(--color-bg-secondary);
 }
 
+.container {
+    margin: 0;
+    padding: 12px;
+}
+
+/* Match styles */
 .match {
     background-color: var(--color-bg-primary);
     display: flex;
@@ -36,31 +41,6 @@ body {
     width: calc(100vw - 24px);
     border-radius: 10px;
     box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
-}
-
-.match-content {
-    display: flex;
-    position: relative;
-}
-
-.container {
-    margin: 0;
-    padding: 12px;
-}
-
-.match-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Center the content vertically */
-}
-
-.column {
-    padding: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: calc(100% / 3);
 }
 
 .match-header {
@@ -96,24 +76,15 @@ body {
     background-color: var(--color-bg-alert);
 }
 
-.sheduled {
+.scheduled {
     color: var(--primary-color);
     background-color: #d8f0fd;
 }
 
-.match-tournament {
+.match-handler {
     display: flex;
     align-items: center;
     font-weight: 600;
-}
-
-.btn-icon {
-    border: 0;
-    background-color: transparent;
-    color: var(--color-bet-text-icon);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .match-content {
@@ -129,6 +100,7 @@ body {
     width: calc(100% / 3);
 }
 
+/* Team styles */
 .team {
     display: flex;
     flex-direction: column;
@@ -156,6 +128,14 @@ body {
     margin-top: 24px;
     font-size: 20px;
     font-weight: 600;
+}
+
+/* Match details styles */
+.match-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .match-date, .match-type {
@@ -189,18 +169,6 @@ body {
     animation: scoreChangeAnim 0.5s ease-in-out;
 }
 
-@keyframes scoreChangeAnim {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
 .match-score-divider {
     font-size: 28px;
     font-weight: 700;
@@ -227,6 +195,7 @@ body {
     }
 }
 
+/* Bet coefficient styles */
 .bet-coef__selection {
     display: flex;
     margin-top: 8px;
@@ -245,12 +214,19 @@ body {
     padding: 4px 8px;
 }
 
+.bet-coef.selected {
+    animation: coefSelectedAnim 0.5s infinite alternate;
+    border: 2px dashed var(--primary-color);
+    color: var(--color-bet-text-primary);
+}
+
+/* Bet button styles */
 .bet-button {
     cursor: pointer;
     position: absolute;
     bottom: -16px;
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
+    margin-left: auto;
+    margin-right: auto;
     border: 0;
     background-color: #354545;
     border-radius: 6px;
@@ -262,26 +238,32 @@ body {
 }
 
 .bet-button[disabled] {
-    background-color: #d3d3d3; /* Light gray background color for disabled state */
-    color: #a0a0a0; /* Light gray text color for disabled state */
-    cursor: not-allowed; /* Change cursor to indicate the button is not clickable */
+    background-color: #d3d3d3;
+    color: #a0a0a0;
+    cursor: not-allowed;
 }
 
 .bet-button:enabled:active {
     background-color: #222d2d;
-    transform: scale(0.95); /* Scale down the button when pressed */
-    transition: transform 0.2s ease-in-out; /* Add a quick transition effect */
+    transform: scale(0.95);
+    transition: transform 0.2s ease-in-out;
 }
 
-/* Add animation class for coefficient selection */
-.bet-coef.selected {
-    animation: pulse 0.5s infinite alternate;
-    border: 2px dashed var(--primary-color);
-    color: var(--color-bet-text-primary);
-}
-
-@keyframes pulse {
+/*Animations*/
+@keyframes coefSelectedAnim {
     to {
         transform: scale(1.1);
+    }
+}
+
+@keyframes scoreChangeAnim {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
     }
 }

@@ -1,79 +1,118 @@
+// Event listener for messages from the parent frame
+window.addEventListener('message', handleMessage);
+
+// Event listener for the 'Place a Bet' button
+const betButton = document.querySelector('.bet-button');
+betButton.addEventListener('click', openBetOverlay);
+
+// Event listeners for coefficient selection
+const betOptions = document.querySelectorAll('.bet-coef');
+betOptions.forEach(function (option) {
+    option.addEventListener('click', handleCoefficientSelection);
+});
+
 // Function to open the bet overlay
 function openBetOverlay() {
-    // TODO: Change answer
-    if (document.querySelector('.bet-coef.selected') == null)
-    {
-        alert('Select coefficient to bet u idiot')
+    const selectedCoefficient = document.querySelector('.bet-coef.selected');
+
+    if (!selectedCoefficient) {
+        alert('Select a coefficient to place a bet.');
         return;
     }
 
-    // Get float coef
-    let selectedCoef = parseFloat(document.querySelector('.bet-coef.selected').innerText);
+    const selectedCoefValue = parseFloat(selectedCoefficient.innerText);
 
     // Send a message to the parent frame (carousel.html)
     window.parent.postMessage({
         action: 'openBetOverlay',
         bet_id: 'testid',
-        bet_coef: selectedCoef
+        bet_coef: selectedCoefValue
     }, '*');
 }
 
+// Function to handle messages from the parent frame
 function handleMessage(event) {
-    // Check if the message is from the parent frame (carousel.html)
     if (event.source === window.parent) {
-        // Check the action and perform the corresponding task
         if (event.data.action === 'unselectCoefficients') {
-            // Unselect the coefficient
             unselectCoefficients();
             switchPlaceBetButton(false);
+        }
+        if (event.data.action === 'setBetInfo') {
+            setBetInfo(event.data.betInfo);
         }
     }
 }
 
-function  unselectCoefficients() {
+// Function to unselect coefficients
+function unselectCoefficients() {
     betOptions.forEach(function (opt) {
         opt.classList.remove('selected');
     });
 }
 
+// Function to switch the 'Place a Bet' button state
 function switchPlaceBetButton(on) {
     const betSubmitBtn = document.querySelector('.bet-button');
-    if (betSubmitBtn && on) {
-        betSubmitBtn.removeAttribute('disabled');
-    } else {
-        betSubmitBtn.setAttribute('disabled', 'true');
+
+    if (betSubmitBtn) {
+        on ? betSubmitBtn.removeAttribute('disabled') :
+            betSubmitBtn.setAttribute('disabled', 'true');
     }
 }
 
-// Listen for messages from the parent frame
-window.addEventListener('message', handleMessage);
-const betButton = document.querySelector('.bet-button');
-betButton.addEventListener('click', openBetOverlay);
+// Set up data from the bet-info
+function setBetInfo(betInfoStr) {
+    const betInfo = JSON.parse(betInfoStr);
 
-const betOptions = document.querySelectorAll('.bet-coef');
-betOptions.forEach(function (option) {
-    option.addEventListener('click', function () {
-        // Remove the 'selected' class from all options
-        betOptions.forEach(function (opt) {
-            opt.classList.remove('selected');
-        });
+    // Update the match-header content
+    // Status
+    document.getElementById('match-status').innerHTML = betInfo.header.match_status;
+    document.getElementById('match-status').classList.add(
+        betInfo.header.match_status === 'Live' ? 'live' : 'scheduled');
 
-        // Add the 'selected' class to the clicked option
-        option.classList.add('selected');
-        switchPlaceBetButton(true);
+    // Handler
+    document.getElementById('match-handler').innerHTML = betInfo.header.match_handler;
 
-        // Send coefSelected message
-        window.parent.postMessage({
-            action: 'coefSelected',
-        }, '*');
+
+    // Update the main match content
+    // Team1
+    document.getElementById('team1-logo').src = betInfo.team1.logo;
+    document.getElementById('team1-name').innerHTML = betInfo.team1.name;
+    document.getElementById('team1-coef').innerHTML = betInfo.team1.coef;
+    document.getElementById('team1-score').innerHTML = betInfo.team1.score;
+
+    // Team2
+    document.getElementById('team2-logo').src = betInfo.team2.logo;
+    document.getElementById('team2-name').innerHTML = betInfo.team2.name;
+    document.getElementById('team2-coef').innerHTML = betInfo.team2.coef;
+    document.getElementById('team2-score').innerHTML = betInfo.team2.score;
+
+    // Match Info
+    document.getElementById('match-date').innerHTML = betInfo.details.match_date;
+    document.getElementById('match-time').innerHTML = betInfo.details.match_time;
+    document.getElementById('match-type').innerHTML = `Match Type: <strong>${betInfo.details.match_type}</strong>`;
+}
+
+// Function to handle coefficient selection
+function handleCoefficientSelection() {
+    betOptions.forEach(function (opt) {
+        opt.classList.remove('selected');
     });
-});
 
+    this.classList.add('selected');
+    switchPlaceBetButton(true);
+
+    // Send coefSelected message
+    window.parent.postMessage({
+        action: 'coefSelected',
+    }, '*');
+}
+
+// Function to update scores and apply animations
 function updateScores(newTeam1Score, newTeam2Score) {
     const team1Score = document.getElementById('team1-score');
     const team2Score = document.getElementById('team2-score');
 
-    // Check for score change and apply animation
     if (team1Score.innerText !== newTeam1Score) {
         team1Score.classList.add('score-change');
     }
@@ -81,11 +120,9 @@ function updateScores(newTeam1Score, newTeam2Score) {
         team2Score.classList.add('score-change');
     }
 
-    // Update scores
     team1Score.innerText = newTeam1Score;
     team2Score.innerText = newTeam2Score;
 
-    // Apply leading change animation
     if (newTeam1Score > newTeam2Score) {
         team1Score.classList.add('leading-score');
         team2Score.classList.remove('leading-score');
@@ -97,26 +134,27 @@ function updateScores(newTeam1Score, newTeam2Score) {
         team2Score.classList.remove('leading-score');
     }
 
-    // Remove the score change class after the animation
     setTimeout(() => {
         team1Score.classList.remove('score-change');
         team2Score.classList.remove('score-change');
     }, 500);
 }
 
-// Simulate score change
-// setTimeout(() => {
-//     updateScores('1', '0'); // Call the function to update scores and apply animation
-//     setTimeout(() => {
-//         updateScores('2', '0'); // Call the function to update scores and apply animation
-//         setTimeout(() => {
-//             updateScores('2', '1'); // Call the function to update scores and apply animation
-//             setTimeout(() => {
-//                 updateScores('2', '2'); // Call the function to update scores and apply animation
-//                 setTimeout(() => {
-//                     updateScores('2', '3'); // Call the function to update scores and apply animation
-//                 }, 3000);
-//             }, 3000);
-//         }, 3000);
-//     }, 3000);
-// }, 3000);
+// Simulate score change (commented out for actual usage)
+/*
+setTimeout(() => {
+    updateScores('1', '0');
+    setTimeout(() => {
+        updateScores('2', '0');
+        setTimeout(() => {
+            updateScores('2', '1');
+            setTimeout(() => {
+                updateScores('2', '2');
+                setTimeout(() => {
+                    updateScores('2', '3');
+                }, 3000);
+            }, 3000);
+        }, 3000);
+    }, 3000);
+}, 3000);
+*/
