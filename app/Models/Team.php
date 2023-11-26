@@ -11,10 +11,10 @@ class Team extends Model
 
     public function game()
     {
-        return $this->hasOne(Game::class);
+        return $this->belongsTo(Game::class);
     }
 
-    public function matchs()
+    public function matches()
     {
         return $this->hasMany(Match::class, 'team1_id')->orWhere('team2_id', $this->id);
     }

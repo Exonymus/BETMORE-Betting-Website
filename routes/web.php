@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('home.about');
+
 Route::get('/partials/chat', [App\Http\Controllers\PartialsController::class, 'chat'])->name('partials.chat');
 Route::get('/partials/bets__carousel', [App\Http\Controllers\PartialsController::class, 'bets__carousel'])->name('partials.bets__carousel');
 Route::get('/partials/loading__screen', [App\Http\Controllers\PartialsController::class, 'loading__screen'])->name('partials.loading__screen');

@@ -22,7 +22,7 @@ class CreateBetsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('team_id');
 
-            $table->foreign('match_id')->references('id')->on('matchs');
+            $table->foreign('match_id')->references('id')->on('matches');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('team_id')->references('id')->on('teams');
         });
