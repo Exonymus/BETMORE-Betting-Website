@@ -38,25 +38,20 @@
     background-color: var(--color-bg-secondary);
 }
 
-.card {
-    display: flex;
-    justify-content: space-between;
-    height: 90vh;
-    width: calc(100vw / 3.2 - 1rem);
-    border: 1px solid var(--color-black);
-    padding: 0.5rem;
-}
-
 /* Adjust card width for medium-sized screens */
 @media (max-width: 768px) {
-    .card {
-        width: calc(100vw / 2.2 - 1rem);
+    .bets-page {
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
     }
-}
-
-/* Adjust card width for smaller screens */
-@media (max-width: 576px) {
-    .card {
-        width: calc(100vw - 2rem);
+    .bets-page iframe {
+        width: 100%;
+        height: 220px;
+    }
+    .carousel-control-next,
+    .carousel-control-prev {
+        width: 6%;
     }
 }

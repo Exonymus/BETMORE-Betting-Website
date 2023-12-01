@@ -13,7 +13,8 @@ function handleMessage(event) {
         unselectAllCoefficients();
     }
     if (event.data.action === 'getBets') {
-        loadBets(event.data.type);
+        document.querySelector('.carousel-inner').innerHTML = '';
+        loadBets(event.data.type, event.data.game);
     }
 }
 
@@ -21,7 +22,6 @@ function handleMessage(event) {
 function openBetOverlay(event) {
     window.parent.postMessage({
         action: event.data.action,
-        bet_id: event.data.bet_id,
         bet_coef: event.data.bet_coef
     }, '*');
 }
@@ -39,6 +39,7 @@ function unselectAllCoefficients(sourceIframe = null) {
 const betInfoExample = {
     header: {
         match_status: 'Live',
+        game: 'cs2',
         match_handler: 'Cyberport Match Handler',
     },
     team1: {
@@ -61,13 +62,13 @@ const betInfoExample = {
 };
 
 // Function to load bets and answer to index page
-function loadBets(type) {
-    if (type === 'live') {
+function loadBets(type, game) {
+    if (type === 'live' && betInfoExample.header.game === game) {
         // Add live bets here
         for (let i = 0; i < 12; i++) {
             addBet(betInfoExample);
         }
-    } else if (type === 'pre') {
+    } else if (type === 'pre' && betInfoExample.header.game === game) {
         betInfoExample.header.match_status = 'Scheduled';
         // Add pre bets here
         for (let i = 0; i < 36; i++) {
@@ -80,7 +81,7 @@ function loadBets(type) {
     let betsAmount = document.querySelector('.carousel-inner').children.length * 2;
 
     window.parent.postMessage({
-        action: 'betsLoaded',
+        action: 'carouselLoaded',
         type: type,
         count: betsAmount
     }, '*');

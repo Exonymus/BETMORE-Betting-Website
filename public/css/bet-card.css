@@ -267,3 +267,129 @@ body {
         transform: scale(1);
     }
 }
+
+@media only screen and (max-width: 500px) {
+    .container {
+        padding: 8px;
+    }
+
+    .match {
+        width: 100%;
+    }
+
+    .column {
+        padding: 16px;
+        width: 100%;
+    }
+
+    .team-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .team-name {
+        margin-top: 16px;
+        font-size: 18px;
+    }
+
+    .match-date,
+    .match-type {
+        font-size: 12px;
+    }
+
+    .match-score-number {
+        font-size: 36px;
+        width: 30px;
+    }
+
+    .match-score-divider {
+        font-size: 20px;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+
+    .match-time-lapsed {
+        font-size: 0.8rem;
+    }
+
+    .bet-coef {
+        margin-left: 2px;
+        margin-right: 2px;
+        font-size: 12px;
+        padding: 2px 4px;
+    }
+
+    .bet-button {
+        padding: 8px 24px;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+    .container {
+        padding: 4px;
+    }
+
+    .match {
+        width: 100%;
+    }
+
+    .match-status {
+        padding: 0;
+    }
+
+    .column {
+        padding: 8px;
+        width: 100%;
+    }
+
+    .team-logo {
+        width: 40px;
+        height: 40px;
+
+        & img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .team-name {
+        margin-top: 1.5rem;
+        font-size: 12px;
+    }
+
+    .match-date,
+    .match-type {
+        font-size: 8px;
+    }
+
+    .match-header {
+        height: 25px;
+    }
+
+    .match-score-number {
+        font-size: 20px;
+        width: 16px;
+    }
+
+    .match-score-divider {
+        font-size: 12px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+
+    .bet-coef {
+        font-size: 10px;
+    }
+
+    .match-handler {
+       font-size: 10px;
+    }
+
+    .bet-button {
+        padding: 4px 12px;
+    }
+}
+
+

@@ -1,174 +1,258 @@
-// TODO: Refactor and check scripts
+var sharedEnv = sharedEnv || {};
 
-function displayAnswerScreen(answer) {
-    switch (answer) {
-        case 'sorry':
-            liveStatus = 'Loaded-0';
-            break;
-        case 'live-loaded':
-            liveStatus = 'Loaded';
-            break;
-        case 'pre-loaded':
-            preStatus = 'Loaded';
-            break;
-    }
-    if (liveStatus === 'Loaded' && preStatus === 'Loaded') {
-        document.querySelector('#loading-screen__ifr').classList.add('d-none');
-        document.querySelector('#live-bets__ifr').classList.remove('d-none');
-        document.querySelector('#pre-bets__ifr').classList.remove('d-none');
-    }
-    else if (liveStatus === 'Loaded-0' && preStatus === 'Loaded') {
-        document.querySelector('#loading-screen__ifr').classList.add('d-none');
-        document.querySelector('#sorry-screen__ifr').classList.remove('d-none');
-        document.querySelector('#pre-bets__ifr').classList.remove('d-none');
+// Set default carousel statuses
+sharedEnv.carousels = {
+    selectedGame: 'cs2',
+    live: {
+        status: 'Unloaded',
+        amount: 0,
+        load: () => {
+            hideAll();
+            showElements(['#loading-screen__ifr']);
+            document.querySelector('#loading-screen__ifr').classList.remove('d-none');
+            document.getElementById('live-bets__ifr').contentWindow.postMessage({
+                action: 'getBets',
+                type: 'live',
+                game: sharedEnv.carousels.selectedGame
+            }, '*');
+
+            // Change carousel status
+            sharedEnv.carousels.live.status = 'Loading';
+        }
+    },
+    pre: {
+        status: 'Unloaded',
+        amount: 0,
+        load: () => {
+            hideAll();
+            showElements(['#loading-screen__ifr']);
+            document.getElementById('pre-bets__ifr').contentWindow.postMessage({
+                action: 'getBets',
+                type: 'pre',
+                game: sharedEnv.carousels.selectedGame
+            }, '*');
+
+            // Change carousel status
+            sharedEnv.carousels.pre.status = 'Loading';
+        }
     }
 }
 
+// Hide all screens
 function hideAll() {
-    document.querySelector('#loading-screen__ifr').classList.add('d-none');
-    document.querySelector('#sorry-screen__ifr').classList.add('d-none');
-    document.querySelector('#live-bets__ifr').classList.add('d-none');
-    document.querySelector('#pre-bets__ifr').classList.add('d-none');
+    const screens = ['#loading-screen__ifr', '#sorry-screen__ifr', '#live-bets__ifr', '#pre-bets__ifr'];
+    screens.forEach(screen => {
+        document.querySelector(screen).classList.add('d-none');
+    });
 }
 
-// Function to handle messages from iframes
-function handleMessage(event) {
-    // Check if the message is from the bet card iframe
-    if (event.data.action === 'openBetOverlay') {
-        // Open the bet overlay in the index.html
-        openBetOverlay(event.data.bet_id, event.data.bet_coef);
+// Set default bet coefficient
+sharedEnv.bet = {
+    coef: NaN,
+    place: () => {
+        // Hide the bet f-winow
+        document.getElementById('bet-container').style.display = 'none';
+
+        // Close the bet overlay after placing the bet
+        sharedEnv.overlay.close();
+
+        // Restore future visibility of bet f-window
+        document.getElementById('bet-container').style.display = "flow";
+
+        // Thanks toast
+        sharedEnv.bet.result();
+    },
+    recalculate: () => {
+        // Get the bet amount and calculate the possible win
+        let betAmountVal = parseFloat(document.getElementById('bet-amount').value) || 0;
+
+        if (betAmountVal < 0) {
+            betAmount.value = 0;
+            betAmountVal = 0;
+        } else if (betAmountVal > 10000) {
+            betAmount.value = 10000;
+        } else if (betAmountVal === 0 && betAmount.value.length > 1) {
+            betAmountVal = 0;
+            betAmount.value = 0;
+        }
+
+        const possibleWin = betAmountVal * sharedEnv.bet.coef;
+
+        // Update the possible win span with animation
+        possibleWinSpan.innerText = possibleWin.toFixed(2);
+        possibleWinSpan.classList.add('value-changed');
+        setTimeout(() => {
+            possibleWinSpan.classList.remove('value-changed');
+        }, 500);
+
+    },
+    result: () => {
+        let toast = document.getElementById("ty-toast__container")
+        toast.className = "show";
+        setTimeout(() => {
+            toast.className = toast.className.replace("show", "");
+        }, 5000);
     }
-    if (event.data.action === 'betsLoaded') {
+}
+
+// Utility functions for controlling elements present on ui
+function showElements(screenList) {
+    screenList.forEach(screen => {
+        document.querySelector(screen).classList.remove('d-none');
+    });
+}
+
+function hideElements(screenList) {
+    screenList.forEach(screen => {
+        document.querySelector(screen).classList.add('d-none');
+    });
+}
+
+// Loading-carousels controller
+function displayFeaturedScreens() {
+    if (sharedEnv.carousels.live.status === 'Loaded'
+        && sharedEnv.carousels.pre.status === 'Loaded') {
+        hideElements(['#loading-screen__ifr']);
+        showElements(['#live-bets__ifr', '#pre-bets__ifr']);
+    } else if (sharedEnv.carousels.live.status === 'Loaded-0'
+        && sharedEnv.carousels.pre.status === 'Loaded') {
+        hideElements(['#loading-screen__ifr']);
+        showElements(['#sorry-screen__ifr', '#pre-bets__ifr']);
+    } else if (sharedEnv.carousels.live.status === 'Loaded-0'
+        && sharedEnv.carousels.pre.status === 'Loaded-0') {
+        hideElements(['#loading-screen__ifr']);
+        showElements(['#sorry-screen__ifr', '#pre-bets__ifr']);
+    }
+}
+
+// Make bet-overlay utility
+sharedEnv.overlay = {
+    open: (bet_coef) => {
+        // Save selected coef
+        sharedEnv.bet.coef = bet_coef
+
+        // Shadow outer screen
+        document.getElementById("bet-overlay").style.display = "flex";
+        setTimeout(() => {
+            document.getElementById("bet-overlay").style.opacity = '1';
+            document.querySelector(".bet-container").style.opacity = '1';
+            document.querySelector(".bet-container").style.transform = "translateY(0)";
+        }, 50);
+    },
+    close: () => {
+        document.getElementById("bet-overlay").style.opacity = '0';
+        document.querySelector(".bet-container").style.opacity = '0';
+        document.querySelector(".bet-container").style.transform = "translateY(-20px)";
+
+        betAmount.value = '';
+        possibleWinSpan.innerText = '0.00';
+        sharedEnv.bet.coef = 1.0;
+
+        document.getElementById('live-bets__ifr').contentWindow
+            .postMessage({action: 'closeBetOverlay'}, '*');
+        document.getElementById('pre-bets__ifr').contentWindow
+            .postMessage({action: 'closeBetOverlay'}, '*');
+
+        setTimeout(() => {
+            document.getElementById("bet-overlay").style.display = "none";
+        }, 500);
+    }
+}
+
+//  Manage category buttons
+const betGames = document.querySelectorAll(".bet-game");
+for (let i = 0; i < betGames.length; i++) {
+    betGames[i].addEventListener("click", function () {
+        for (let i = 0; i < betGames.length; i++) {
+            betGames[i].classList.remove("active-game");
+        }
+        this.classList.add("active-game");
+        sharedEnv.carousels.selectedGame
+            = document.querySelector(".active-game").children[0].id.split('-')[0];
+
+        sharedEnv.carousels.live.load();
+        sharedEnv.carousels.pre.load();
+    });
+}
+
+// Iframes' message handler
+function handleMessage(event) {
+    // Case 1: Bets laoded => display featured screens
+    if (event.data.action === 'carouselLoaded') {
         switch (event.data.type) {
             case 'live':
+                // Save carousel data
+                sharedEnv.carousels.live.amount = event.data.count;
+
+                // Display featured screens
                 if (event.data.count !== 0) {
-                    displayAnswerScreen('live-loaded');
+                    sharedEnv.carousels.live.status = 'Loaded';
+                    displayFeaturedScreens();
                 } else {
-                    displayAnswerScreen('sorry');
+                    sharedEnv.carousels.live.status = 'Loaded-0';
+                    displayFeaturedScreens();
                 }
                 break;
             case 'pre':
+                // Save carousel data
+                sharedEnv.carousels.pre.amount = event.data.count;
+
+                // Display featured screens
                 if (event.data.count !== 0) {
-                    displayAnswerScreen('pre-loaded');
+                    sharedEnv.carousels.pre.status = 'Loaded';
+                    displayFeaturedScreens();
                 } else {
-                    displayAnswerScreen('sorry');
+                    sharedEnv.carousels.pre.status = 'Loaded-0';
+                    displayFeaturedScreens();
                 }
         }
     }
+
+    // Case 2: User selected bet, the coefficient => overlay opened
+    if (event.data.action === 'openBetOverlay') {
+        sharedEnv.overlay.open(event.data.bet_coef);
+    }
+
+    // Case 3: Refresh live bets requested => new bets loaded
     if (event.data.action === 'reloadBets') {
-        document.querySelector('#sorry-screen__ifr').classList.add('d-none');
-        document.querySelector('#loading-screen__ifr').classList.remove('d-none');
-        document.querySelector('#live-bets__ifr').classList.add('d-none');
-        document.querySelector('#pre-bets__ifr').classList.add('d-none');
+        sharedEnv.carousels.live.load();
         document.getElementById('live-bets__ifr').contentWindow.postMessage({
             action: 'getBets',
             type: 'live'
         }, '*');
-        liveStatus = 'Loading';
+        sharedEnv.carousels.live.status = 'Loading';
     }
 }
 
-var actualCoef = 1.0;
+// Apply listener
+window.addEventListener('message', handleMessage);
 
-var liveStatus = 'None';
-var preStatus = 'None';
+// Load default bets on page load
+window.addEventListener('load', () => {
+    sharedEnv.carousels.live.load();
+    sharedEnv.carousels.pre.load();
+});
 
-function openBetOverlay(bet_id, bet_coef) {
-    if (bet_coef == null) {
-        alert("Coefficient lost")
-        return;
-    }
 
-    actualCoef = bet_coef
-
-    document.getElementById("bet-overlay").style.display = "flex";
-    setTimeout(() => {
-        document.getElementById("bet-overlay").style.opacity = 1;
-        document.querySelector(".bet-container").style.opacity = 1;
-        document.querySelector(".bet-container").style.transform = "translateY(0)";
-    }, 50);
-}
-
-function closeBetOverlay() {
-    document.getElementById("bet-overlay").style.opacity = 0;
-    document.querySelector(".bet-container").style.opacity = 0;
-    document.querySelector(".bet-container").style.transform = "translateY(-20px)";
-
-    betAmount.value = '';
-    possibleWinSpan.innerText = '0.00';
-    actualCoef = 1.0;
-
-    document.getElementById('live-bets__ifr').contentWindow
-        .postMessage({action: 'closeBetOverlay'}, '*');
-    document.getElementById('pre-bets__ifr').contentWindow
-        .postMessage({action: 'closeBetOverlay'}, '*');
-
-    setTimeout(() => {
-        document.getElementById("bet-overlay").style.display = "none";
-    }, 500);
-}
-
-function placeBet() {
-    // Add your logic to handle the bet placement here
-    document.querySelector('.bet-container').style.display = 'none';
-    document.getElementById('thank-you-container').style.display = 'block';
-    // Close the bet overlay after placing the bet
-    setTimeout(() => {
-        closeBetOverlay();
-        document.querySelector('.bet-container').style.display = "flow";
-        document.getElementById('thank-you-container').style.display = 'none';
-    }, 3000);
-}
-
+// Links to bet submission fields
 const betAmount = document.getElementById('bet-amount');
 const possibleWinSpan = document.getElementById('possible-win');
 
-function calculatePossibleWin() {
-    // Get the bet amount and calculate the possible win
-    let betAmountVal = parseFloat(document.getElementById('bet-amount').value) || 0;
 
-    if (betAmountVal < 0) {
-        betAmount.value = 0;
-        betAmountVal = 0;
-    } else if (betAmountVal > 10000) {
-        betAmount.value = 10000;
-    } else if (betAmountVal === 0 && betAmount.value.length > 1) {
-        betAmountVal = 0;
-        betAmount.value = 0;
-    }
+// Change possible win on bet input
+const betInput = document.getElementById('bet-amount');
+betInput.addEventListener('input', sharedEnv.bet.recalculate);
 
-    const possibleWin = betAmountVal * actualCoef;
+// Submit bet on button
+const submitBetButton = document.getElementById('bet-submit-btn');
+submitBetButton.addEventListener('click', sharedEnv.bet.place);
 
-    // Update the possible win span with animation
-    possibleWinSpan.innerText = possibleWin.toFixed(2);
-    possibleWinSpan.classList.add('value-changed');
-    setTimeout(() => {
-        possibleWinSpan.classList.remove('value-changed');
-    }, 500);
-}
+// Close overlay on cross
+const closeBetButton = document.querySelector('.close-btn');
+closeBetButton.addEventListener('click', sharedEnv.overlay.close);
 
-// Listen for messages from iframes
-window.addEventListener('message', handleMessage);
+// Close overlay on outer click
+const closeOuterOverlay = document.querySelector('.bet-overlay');
+closeOuterOverlay.addEventListener('click', sharedEnv.overlay.close);
 
-// Attach click event listener to the "Place Bet" button
-var closeBetButton = document.querySelector('.close-btn');
-closeBetButton.addEventListener('click', closeBetOverlay);
-window.addEventListener('load', function () {
-    document.getElementById('live-bets__ifr').contentWindow.postMessage({
-        action: 'getBets',
-        type: 'live'
-    }, '*');
-    liveStatus = 'Loading';
 
-    document.getElementById('pre-bets__ifr').contentWindow.postMessage({
-        action: 'getBets',
-        type: 'pre'
-    }, '*');
-    preStatus = 'Loading';
-});
-
-document.getElementById('bet-amount').addEventListener('input', calculatePossibleWin);
-document.getElementById('bet-submit-btn').addEventListener('click', placeBet);
-
-var submitOverlay = document.querySelector('.bet-overlay');
-submitOverlay.addEventListener('click', closeBetOverlay);
