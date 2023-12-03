@@ -71,6 +71,7 @@ sharedEnv.bet = {
             betAmountVal = 0;
         } else if (betAmountVal > 10000) {
             betAmount.value = 10000;
+            betAmountVal = 10000;
         } else if (betAmountVal === 0 && betAmount.value.length > 1) {
             betAmountVal = 0;
             betAmount.value = 0;
@@ -147,6 +148,7 @@ sharedEnv.overlay = {
         betAmount.value = '';
         possibleWinSpan.innerText = '0.00';
         sharedEnv.bet.coef = 1.0;
+        document.getElementById('insurance').checked = false;
 
         document.getElementById('live-bets__ifr').contentWindow
             .postMessage({action: 'closeBetOverlay'}, '*');
@@ -210,6 +212,14 @@ function handleMessage(event) {
 
     // Case 2: User selected bet, the coefficient => overlay opened
     if (event.data.action === 'openBetOverlay') {
+        switch (document.getElementById('live-bets').classList.contains('active')) {
+            case true:
+                document.getElementById('insurance').setAttribute('disabled', '');
+                break;
+            case false:
+                document.getElementById('insurance').removeAttribute('disabled');
+                break;
+        }
         sharedEnv.overlay.open(event.data.bet_coef);
     }
 
