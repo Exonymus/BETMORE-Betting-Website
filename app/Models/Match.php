@@ -33,11 +33,11 @@ class Match extends Model
         return $this->hasMany(Bet::class);
     }
 
-    private function loadDetails()
+    public function loadDetails()
     {
         $ch = curl_init();
 
-        $url = "https://www.strafe.com/" . $this->url;
+        $url = "https://www.strafe.com" . $this->scrap_url;
         $BASE_URL = "https://app.scrapingbee.com/api/v1/?";
         $API_KEY = "ZM68CWN4A5RK0ARD85LUJL0XWCUSQ8OLL9JZ4AL7X8G1ZBV3REIDWGV2QVOR3R2ZI7587R1DCCXCW2LE";
 
