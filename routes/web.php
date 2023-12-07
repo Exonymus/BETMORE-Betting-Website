@@ -18,9 +18,10 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('home.about');
 
 Route::get('/partials/chat', [App\Http\Controllers\PartialsController::class, 'chat'])->name('partials.chat');
-Route::get('/partials/bets__carousel', [App\Http\Controllers\PartialsController::class, 'bets__carousel'])->name('partials.bets__carousel');
-Route::get('/partials/loading__screen', [App\Http\Controllers\PartialsController::class, 'loading__screen'])->name('partials.loading__screen');
-Route::get('/partials/sorry__screen', [App\Http\Controllers\PartialsController::class, 'sorry__screen'])->name('partials.sorry__screen');
+Route::get('/partials/bets-carousel', [App\Http\Controllers\PartialsController::class, 'bets__carousel'])->name('partials.bets-carousel');
+Route::get('/partials/loading-screen', [App\Http\Controllers\PartialsController::class, 'loading__screen'])->name('partials.loading-screen');
+Route::get('/partials/sorry-screen', [App\Http\Controllers\PartialsController::class, 'sorry__screen'])->name('partials.sorry-screen');
+Route::get('/partials/bet-card', [App\Http\Controllers\PartialsController::class, 'bet__card'])->name('partials.bet-card');
 
 Route::get('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register.create');
 Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->name('register.store');

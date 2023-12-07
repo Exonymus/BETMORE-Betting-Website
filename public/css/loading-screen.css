@@ -1,9 +1,12 @@
+body {
+    background-color: var(--color-bg-secondary);
+}
 .loading-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--light-background-color);
+    background-color: var(--color-bg-secondary);
 }
 
 .loading-sign {
@@ -68,10 +71,5 @@
     .loading-sign {
         font-size: 1.2rem; /* Adjust font size for smaller screens */
         gap: 2rem; /* Adjust gap for smaller screens */
-    }
-
-    .custom-loader {
-        width: 60px; /* Adjust loader size for smaller screens */
-        height: 60px;
     }
 }

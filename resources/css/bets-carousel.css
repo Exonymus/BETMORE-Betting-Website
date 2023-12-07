@@ -1,0 +1,57 @@
+.carousel-control-next,
+.carousel-control-prev,
+.carousel-indicators {
+    position: static;
+    transition: opacity .15s ease-in-out;
+}
+
+.bets-page {
+    display: flex;
+    justify-content: space-between;
+    transition: transform 0.5s ease-out
+}
+
+.bets-page iframe {
+    width: 48%;
+    height: 360px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-indicators {
+    align-items: center;
+    height: 10vh;
+    margin-bottom: 0;
+}
+
+.carousel-main {
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    width: 3%;
+}
+
+.module {
+    background-color: var(--color-bg-secondary);
+}
+
+/* Adjust card width for medium-sized screens */
+@media (max-width: 768px) {
+    .bets-page {
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .bets-page iframe {
+        width: 100%;
+        height: 220px;
+    }
+    .carousel-control-next,
+    .carousel-control-prev {
+        width: 6%;
+    }
+}

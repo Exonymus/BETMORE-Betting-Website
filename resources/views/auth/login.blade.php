@@ -9,7 +9,7 @@
 @endsection
 
 @section('scripts')
-    <script type="module" src="{{asset('js/counter.mjs.js')}}"></script>
+    <script type="module" src="{{asset('js/counter.js')}}"></script>
 @endsection
 
 @section('content')

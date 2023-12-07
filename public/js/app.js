@@ -1006,6 +1006,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 /***/ }),
 
+/***/ "./resources/css/index-animations.css":
+/*!********************************************!*\
+  !*** ./resources/css/index-animations.css ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL2luZGV4LWFuaW1hdGlvbnMuY3NzIiwibWFwcGluZ3MiOiI7QUFBQSIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3Jlc291cmNlcy9jc3MvaW5kZXgtYW5pbWF0aW9ucy5jc3M/Yzc1MiJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/css/index-animations.css\n");
+
+/***/ }),
+
 /***/ "./resources/css/signin.css":
 /*!**********************************!*\
   !*** ./resources/css/signin.css ***!
@@ -1013,7 +1024,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL3NpZ25pbi5jc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2Nzcy9zaWduaW4uY3NzP2JhMGEiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/css/signin.css\n");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL3NpZ25pbi5jc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2Nzcy9zaWduaW4uY3NzP2JjYmMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/css/signin.css\n");
 
 /***/ }),
 
@@ -1024,29 +1035,40 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL3NpZ251cC5jc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2Nzcy9zaWdudXAuY3NzPzJlYzAiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/css/signup.css\n");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL3NpZ251cC5jc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2Nzcy9zaWdudXAuY3NzPzJkNjEiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/css/signup.css\n");
 
 /***/ }),
 
-/***/ "./resources/css/bets__carousel-module.css":
-/*!*************************************************!*\
-  !*** ./resources/css/bets__carousel-module.css ***!
-  \*************************************************/
+/***/ "./resources/css/bets-carousel.css":
+/*!*****************************************!*\
+  !*** ./resources/css/bets-carousel.css ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL2JldHNfX2Nhcm91c2VsLW1vZHVsZS5jc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2Nzcy9iZXRzX19jYXJvdXNlbC1tb2R1bGUuY3NzPzQyNjUiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/css/bets__carousel-module.css\n");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL2JldHMtY2Fyb3VzZWwuY3NzIiwibWFwcGluZ3MiOiI7QUFBQSIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3Jlc291cmNlcy9jc3MvYmV0cy1jYXJvdXNlbC5jc3M/MjMwZiJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/css/bets-carousel.css\n");
 
 /***/ }),
 
-/***/ "./resources/css/loading__screen.css":
-/*!*******************************************!*\
-  !*** ./resources/css/loading__screen.css ***!
-  \*******************************************/
+/***/ "./resources/css/bet-card.css":
+/*!************************************!*\
+  !*** ./resources/css/bet-card.css ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL2xvYWRpbmdfX3NjcmVlbi5jc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2Nzcy9sb2FkaW5nX19zY3JlZW4uY3NzPzIwNTQiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/css/loading__screen.css\n");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL2JldC1jYXJkLmNzcyIsIm1hcHBpbmdzIjoiO0FBQUEiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvY3NzL2JldC1jYXJkLmNzcz82YWUzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGV4dHJhY3RlZCBieSBtaW5pLWNzcy1leHRyYWN0LXBsdWdpblxuZXhwb3J0IHt9OyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/css/bet-card.css\n");
+
+/***/ }),
+
+/***/ "./resources/css/loading-screen.css":
+/*!******************************************!*\
+  !*** ./resources/css/loading-screen.css ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL2xvYWRpbmctc2NyZWVuLmNzcyIsIm1hcHBpbmdzIjoiO0FBQUEiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvY3NzL2xvYWRpbmctc2NyZWVuLmNzcz8zZTY1Il0sInNvdXJjZXNDb250ZW50IjpbIi8vIGV4dHJhY3RlZCBieSBtaW5pLWNzcy1leHRyYWN0LXBsdWdpblxuZXhwb3J0IHt9OyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/css/loading-screen.css\n");
 
 /***/ }),
 
@@ -1057,7 +1079,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL2NoYXQtbW9kdWxlLmNzcyIsIm1hcHBpbmdzIjoiO0FBQUEiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvY3NzL2NoYXQtbW9kdWxlLmNzcz83MTJjIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGV4dHJhY3RlZCBieSBtaW5pLWNzcy1leHRyYWN0LXBsdWdpblxuZXhwb3J0IHt9OyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/css/chat-module.css\n");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL2NoYXQtbW9kdWxlLmNzcyIsIm1hcHBpbmdzIjoiO0FBQUEiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvY3NzL2NoYXQtbW9kdWxlLmNzcz82NzkyIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGV4dHJhY3RlZCBieSBtaW5pLWNzcy1leHRyYWN0LXBsdWdpblxuZXhwb3J0IHt9OyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/css/chat-module.css\n");
 
 /***/ }),
 
@@ -1094,14 +1116,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 /***/ }),
 
-/***/ "./resources/css/sorry__screen.css":
-/*!*****************************************!*\
-  !*** ./resources/css/sorry__screen.css ***!
-  \*****************************************/
+/***/ "./resources/css/sorry-screen.css":
+/*!****************************************!*\
+  !*** ./resources/css/sorry-screen.css ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL3NvcnJ5X19zY3JlZW4uY3NzIiwibWFwcGluZ3MiOiI7QUFBQSIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3Jlc291cmNlcy9jc3Mvc29ycnlfX3NjcmVlbi5jc3M/YjA3OCJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/css/sorry__screen.css\n");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL3NvcnJ5LXNjcmVlbi5jc3MiLCJtYXBwaW5ncyI6IjtBQUFBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2Nzcy9zb3JyeS1zY3JlZW4uY3NzPzdhMjMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/css/sorry-screen.css\n");
 
 /***/ }),
 
@@ -1261,15 +1283,17 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
 /******/ 			"css/app": 0,
+/******/ 			"css/bet-card": 0,
 /******/ 			"css/deposit": 0,
-/******/ 			"css/sorry__screen": 0,
+/******/ 			"css/sorry-screen": 0,
 /******/ 			"css/withdraw": 0,
 /******/ 			"css/global": 0,
 /******/ 			"css/chat-module": 0,
-/******/ 			"css/loading__screen": 0,
-/******/ 			"css/bets__carousel-module": 0,
+/******/ 			"css/loading-screen": 0,
+/******/ 			"css/bets-carousel": 0,
 /******/ 			"css/signup": 0,
 /******/ 			"css/signin": 0,
+/******/ 			"css/index-animations": 0,
 /******/ 			"css/index": 0,
 /******/ 			"css/about": 0
 /******/ 		};
@@ -1321,19 +1345,21 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/global.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/withdraw.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/sorry__screen.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/deposit.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/about.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/index.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/signin.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/signup.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/bets__carousel-module.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/loading__screen.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/deposit","css/sorry__screen","css/withdraw","css/global","css/chat-module","css/loading__screen","css/bets__carousel-module","css/signup","css/signin","css/index","css/about"], () => (__webpack_require__("./resources/css/chat-module.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/global.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/withdraw.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/sorry-screen.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/deposit.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/about.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/index.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/index-animations.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/signin.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/signup.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/bets-carousel.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/bet-card.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/loading-screen.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/bet-card","css/deposit","css/sorry-screen","css/withdraw","css/global","css/chat-module","css/loading-screen","css/bets-carousel","css/signup","css/signin","css/index-animations","css/index","css/about"], () => (__webpack_require__("./resources/css/chat-module.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

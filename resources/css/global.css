@@ -20,6 +20,13 @@ body {
     --text-color: #252b42;
     --primary-color: #23a6f0;
     --color-dimgray: #7a7a7a;
+    --color-bet-text-primary: #1c2a38;
+    --color--bet-text-secondary: #8A8F98;
+    --color-bet-text-alert: #d72641;
+    --color-bet-text-icon: #dbdade;
+    --color-bg-primary: #fff;
+    --color-bg-secondary: #f3f5f9;
+    --color-bg-alert: #fdeaec;
 
     /* Gaps */
     --gap-3xs: 0.63rem;
@@ -278,6 +285,12 @@ body {
     border-radius: 4px;
 }
 
+.form__submit-btn:active {
+    background-color: #222d2d;
+    transform: scale(0.95); /* Scale down the button when pressed */
+    transition: transform 0.2s ease-in-out; /* Add a quick transition effect */
+}
+
 .submit-btn__text {
     font-size: 0.96rem;
     text-transform: uppercase;
@@ -391,7 +404,7 @@ body {
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     color: var(--primary-color);
     border-bottom: 0;
-    background-color: var(--light-background-color);;
+    background-color: var(--color-bg-secondary);
 }
 
 .page__main {
