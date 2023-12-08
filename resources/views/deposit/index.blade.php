@@ -33,13 +33,15 @@
     <main class="page__main page-deposit__main">
         <!-- Deposit Form -->
         <section class="deposit-form__wrapper">
-            <form class="deposit-form" id="depositForm">
+            <form class="deposit-form" id="depositForm" action="{{ route('deposit.deposit') }}" method="post">
+                @csrf
                 <h2 class="deposit__heading">ADD FUNDS</h2>
                 <div class="form-group deposit-input">
                     <label class="deposit-input__label" for="amountBYN">You Pay:</label>
                     <input type="number"
                            class="form-control deposit-input__number"
                            id="amountBYN"
+                           name="amountBYN"
                            min="5" max="100" step="1"
                            value="5"
                            required>
@@ -50,6 +52,7 @@
                     <input type="text"
                            class="form-control deposit-input__number"
                            id="coinsBonus"
+                           name="coinsBonus"
                            value="550"
                            readonly>
                     <img class="deposit-detail" src="img/logos/coin.svg" alt="Coins">

@@ -3,13 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Match;
+use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PartialsController extends Controller
 {
     public function chat()
     {
-        return view('partials.chat');
+        $messages = Message::latest()->get();
+        return view('partials.chat', compact('messages'));
+    }
+
+    public function chat_store(Request $request)
+    {
+        $request->validate([
+            'message' => 'required',
+        ]);
+
+        Message::create([
+            'user_id' => Auth::user()->id,
+            'message' => $request->input('message'),
+        ]);
+
+        return response()->json(['status' => 'success']);
     }
     public function bets__carousel()
     {

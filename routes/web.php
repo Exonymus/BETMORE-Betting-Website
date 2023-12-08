@@ -18,6 +18,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('home.about');
 
 Route::get('/partials/chat', [App\Http\Controllers\PartialsController::class, 'chat'])->name('partials.chat');
+Route::post('/partials/chat', [App\Http\Controllers\PartialsController::class, 'chat_store'])->name('partials.chat.store');
+
 Route::get('/partials/bets-carousel', [App\Http\Controllers\PartialsController::class, 'bets__carousel'])->name('partials.bets-carousel');
 Route::get('/partials/loading-screen', [App\Http\Controllers\PartialsController::class, 'loading__screen'])->name('partials.loading-screen');
 Route::get('/partials/sorry-screen', [App\Http\Controllers\PartialsController::class, 'sorry__screen'])->name('partials.sorry-screen');
@@ -33,7 +35,10 @@ Route::get('/logout', [\App\Http\Controllers\Auth\SessionController::class, 'des
 Route::get('/load-data', [\App\Http\Controllers\MatchesController::class, 'loadDataFromApi'])->name('matches.load');
 Route::get('/withdraw-approval', [\App\Http\Controllers\WithdrawController::class, 'approve'])->name('withdraw.approve');
 Route::get('/withdraw', [\App\Http\Controllers\WithdrawController::class, 'index'])->name('withdraw.index');
+Route::post('/withdraw', [\App\Http\Controllers\WithdrawController::class, 'request'])->name('withdraw.request');
+
 Route::get('/deposit', [\App\Http\Controllers\DepositController::class, 'index'])->name('deposit.index');
+Route::post('/deposit', [\App\Http\Controllers\DepositController::class, 'deposit'])->name('deposit.deposit');
 
 
 Route::group(['prefix' => 'admin'], function () {

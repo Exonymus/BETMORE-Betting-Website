@@ -33,13 +33,15 @@
     <main class="page__main page-withdraw__main">
         <!-- withdraw Form -->
         <section class="withdraw-form__wrapper">
-            <form class="withdraw-form" id="withdrawForm">
+            <form class="withdraw-form" id="withdrawForm" action="{{ route('withdraw.request') }}" method="post">
+                @csrf
                 <h2 class="withdraw__heading">GET FUNDS</h2>
                 <div class="form-group withdraw-input">
                     <label class="withdraw-input__label" for="coinsWithdraw">You Pay:</label>
                     <input type="number"
                            class="form-control withdraw-input__number"
                            id="coinsWithdraw"
+                           name="coinsWithdraw"
                            min="500" max="20000" step="100"
                            value="500"
                            required>
@@ -50,6 +52,7 @@
                     <input type="text"
                            class="form-control withdraw-input__number"
                            id="amountBYN"
+                           name="amountBYN"
                            value="4.50"
                            readonly>
                     <label class="withdraw-detail withdraw-sum">BYN</label>

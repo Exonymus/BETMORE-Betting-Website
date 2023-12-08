@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"/>
@@ -19,23 +20,16 @@
             Chat
         </div>
         <div class="message-box">
-            <div class="message">
-                <div class="username">
-                    <strong>Username-example:</strong>
+            @foreach($messages->reverse() as $message)
+                <div class="message">
+                    <div class="username">
+                        <strong>{{ $message->user->name }}:</strong>
+                    </div>
+                    <div class="user-message">
+                        {{ $message->message }}
+                    </div>
                 </div>
-                <div class="user-message">
-                    User's long message goes here. This message is designed to be very long to demonstrate
-                    text cropping.
-                </div>
-            </div>
-            <div class="message received">
-                <div class="username">
-                    <strong>Support:</strong>
-                </div>
-                <div class="user-message">
-                    Hello! How can I help you?
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     <div class="card-footer chat-send">
@@ -61,7 +55,7 @@
             const messageElement = `
                 <div class="message sent">
                     <div class="username">
-                        <strong>Your Username:</strong>
+                        <strong>{{Auth::user() ? Auth::user()->name : 'guest'}}:</strong>
                     </div>
                     <div class="user-message">
                         ${message}
@@ -72,6 +66,22 @@
 
             // Scroll to the bottom of the message box
             $('.message-box').scrollTop($('.message-box')[0].scrollHeight);
+
+            // Send the message to the server
+            $.ajax({
+                url: '/partials/chat',
+                type: 'POST',
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    message: message
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
         }
 
         // Event listener for the send button

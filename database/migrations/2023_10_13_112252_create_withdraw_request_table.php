@@ -13,7 +13,7 @@ class CreateWithdrawRequestTable extends Migration
      */
     public function up()
     {
-        Schema::create('withdraw_request', function (Blueprint $table) {
+        Schema::create('withdraw_requests', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
