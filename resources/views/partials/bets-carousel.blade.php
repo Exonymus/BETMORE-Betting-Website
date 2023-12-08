@@ -118,19 +118,31 @@
         const dateObject = new Date(date + ' ' + time);
 
         // Format the date using Intl.DateTimeFormat
-        const formattedDate = new Intl.DateTimeFormat('en', {
+        const formattedDate = new Intl.DateTimeFormat('ru', {
             day: '2-digit',
             month: '2-digit',
         }).format(dateObject);
 
         // Format the time using Intl.DateTimeFormat
-        const formattedTime = new Intl.DateTimeFormat('en', {
+        const formattedTime = new Intl.DateTimeFormat('ru', {
             hour: '2-digit',
             minute: '2-digit',
         }).format(dateObject);
 
         // Combine formatted date and time
         return `${formattedDate} at ${formattedTime}`;
+    }
+
+    function getFormat(full_name) {
+        if (full_name === 'Best of 1'){
+            return 'BO1';
+        } else if (full_name === 'Best of 3') {
+            return 'BO3';
+        } else if (full_name === 'Best of 5') {
+            return 'BO5';
+        }else if (full_name === 'Best of 7') {
+            return 'BO7';
+        } else return full_name;
     }
 
     const matches =
@@ -140,7 +152,7 @@
             header: {
                 match_status: '{{$match->live == 1 ? 'Live' : 'Scheduled'}}',
                 game: '{{$match->team1->game->name}}',
-                match_handler: '{{$match->tournament}}',
+                match_handler: '{{substr(trim($match->tournament), 0, 40)}}',
             },
             team1: {
                 name: '{{$match->team1->name}}',
@@ -157,7 +169,7 @@
             details: {
                 match_date: getData('{{$match->date}}', '{{$match->time}}'),
                 match_time: '0 : 0',
-                match_type: '{{$match->format}}',
+                match_type: getFormat('{{$match->format}}'),
             },
         },
         @endforeach
