@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Match;
 use Illuminate\Http\Request;
 
 class PartialsController extends Controller
@@ -12,7 +13,8 @@ class PartialsController extends Controller
     }
     public function bets__carousel()
     {
-        return view('partials.bets-carousel');
+        $matches = Match::all();
+        return view('partials.bets-carousel', compact('matches'));
     }
     public function loading__screen()
     {
