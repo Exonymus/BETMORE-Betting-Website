@@ -70,50 +70,12 @@
                 <div class="card-body history-card__content">
                     <div>
                         <ul id="historyList" class="list-group">
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="deposit-date">10.10.2023</div>
-                                <div class="deposit-sum">⬇100 BYN (+110 coins)</div>
-                            </li>
+                            @foreach($deposits as $deposit)
+                                <li class="list-group-item">
+                                    <div class="deposit-date">{{$deposit->created_at}}</div>
+                                    <div class="deposit-sum">⬇{{round($deposit->amount / 110, 2)}} BYN (+{{$deposit->amount}} coins)</div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

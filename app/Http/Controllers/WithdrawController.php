@@ -34,6 +34,7 @@ class WithdrawController extends Controller
 
     public function index()
     {
-        return view('withdraw.index');
+        $withdrawRequests = Auth::user()->withdrawRequests;
+        return view('withdraw.index', compact('withdrawRequests'));
     }
 }

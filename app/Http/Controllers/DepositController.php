@@ -10,7 +10,8 @@ class DepositController extends Controller
 {
     public function index()
     {
-        return view('deposit.index');
+        $deposits = Auth::user()->deposits;
+        return view('deposit.index', compact('deposits'));
     }
 
     public function deposit(Request $request)

@@ -70,50 +70,12 @@
                 <div class="card-body history-card__content">
                     <div>
                         <ul id="historyList" class="list-group">
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 BYN)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 BYN)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 BYN)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 BYN)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 coins)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 BYN)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 BYN)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 BYN)</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="withdraw-date">10.10.2023</div>
-                                <div class="withdraw-sum">⬆1000 coins (100 BYN)</div>
-                            </li>
+                            @foreach($withdrawRequests as $withdrawRequest)
+                                <li class="list-group-item">
+                                    <div class="withdraw-date">{{$withdrawRequest->created_at}}</div>
+                                    <div class="withdraw-sum {{$withdrawRequest->status}}">⬆{{$withdrawRequest->amount}} coins ({{round($withdrawRequest->amount / 110, 2)}} BYN)</div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

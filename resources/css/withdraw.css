@@ -90,9 +90,17 @@
 }
 
 .withdraw-sum {
-    color: var(--primary-color);
     font-family: var(--font-raleway);
     font-weight: bold;
+}
+.waiting {
+    color: #bfcf38;
+}
+.approved {
+    color: #62c724;
+}
+.declined {
+    color: #bd1346;
 }
 
 @media screen and (max-width: 925px) {
