@@ -33,9 +33,13 @@ Route::post('/login', [\App\Http\Controllers\Auth\SessionController::class, 'sto
 Route::get('/logout', [\App\Http\Controllers\Auth\SessionController::class, 'destroy'])->name('session.destroy');
 
 Route::get('/load-data', [\App\Http\Controllers\MatchesController::class, 'loadDataFromApi'])->name('matches.load');
-Route::get('/withdraw-approval', [\App\Http\Controllers\WithdrawController::class, 'approve'])->name('withdraw.approve');
+Route::get('/withdraw/approve', [\App\Http\Controllers\WithdrawController::class, 'approve'])->name('withdraw.approve');
 Route::get('/withdraw', [\App\Http\Controllers\WithdrawController::class, 'index'])->name('withdraw.index');
 Route::post('/withdraw', [\App\Http\Controllers\WithdrawController::class, 'request'])->name('withdraw.request');
+
+Route::post('/withdraw/approve/{id}', [\App\Http\Controllers\WithdrawController::class, 'approve_id'])->name('withdraw.approve.id');
+Route::post('/withdraw/decline/{id}', [\App\Http\Controllers\WithdrawController::class, 'decline_id'])->name('withdraw.decline.id');
+
 
 Route::get('/deposit', [\App\Http\Controllers\DepositController::class, 'index'])->name('deposit.index');
 Route::post('/deposit', [\App\Http\Controllers\DepositController::class, 'deposit'])->name('deposit.deposit');

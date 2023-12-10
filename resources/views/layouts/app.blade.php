@@ -44,6 +44,9 @@
                                 <li class="nav-link" id="page-home">
                                     <a href="{{route('matches.load')}}" id="nav-link-home" class="link link--current">Load</a>
                                 </li>
+                                <li class="nav-link" id="page-home">
+                                    <a href="{{route('withdraw.approve')}}" id="nav-link-home" class="link link--current">Approve</a>
+                                </li>
                             @endcan
                             <li class="nav-link" id="page-home">
                                 <a href="{{route('home.index')}}" id="nav-link-home" class="link link--current">Home</a>

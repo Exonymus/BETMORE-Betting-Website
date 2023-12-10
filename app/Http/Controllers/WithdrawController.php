@@ -10,7 +10,8 @@ class WithdrawController extends Controller
 {
     public function approve()
     {
-        return view('withdraw.approves');
+        $withdrawRequests = WithdrawRequest::all()->where('status', 'waiting');
+        return view('withdraw.approve', compact('withdrawRequests'));
     }
     public function request(Request $request)
     {
@@ -36,5 +37,23 @@ class WithdrawController extends Controller
     {
         $withdrawRequests = Auth::user()->withdrawRequests;
         return view('withdraw.index', compact('withdrawRequests'));
+    }
+
+    public function decline_id(Request $request, $id)
+    {
+        $withdrawRequest = WithdrawRequest::all()->where('id', $id)->first();
+        $withdrawRequest->status = 'declined';
+        $withdrawRequest->user->coins += $withdrawRequest->amount;
+        $withdrawRequest->user->save();
+        $withdrawRequest->save();
+        return redirect()->back();
+    }
+
+    public function approve_id(Request $request, $id)
+    {
+        $withdrawRequest = WithdrawRequest::all()->where('id', $id)->first();
+        $withdrawRequest->status = 'approved';
+        $withdrawRequest->save();
+        return redirect()->back();
     }
 }
