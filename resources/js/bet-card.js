@@ -25,7 +25,9 @@ function openBetOverlay() {
     // Send a message to the parent frame (carousel.html)
     window.parent.postMessage({
         action: 'openBetOverlay',
-        bet_coef: selectedCoefValue
+        bet_coef: selectedCoefValue,
+        match_id: 1,
+        team_id: selectedCoefficient.id
     }, '*');
 }
 

@@ -22,7 +22,9 @@ function handleMessage(event) {
 function openBetOverlay(event) {
     window.parent.postMessage({
         action: event.data.action,
-        bet_coef: event.data.bet_coef
+        bet_coef: event.data.bet_coef,
+        match_id: event.match_id,
+        team_id: event.team_id
     }, '*');
 }
 

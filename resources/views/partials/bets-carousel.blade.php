@@ -152,7 +152,7 @@
             header: {
                 match_status: '{{$match->live == 1 ? 'Live' : 'Scheduled'}}',
                 game: '{{$match->team1->game->name}}',
-                match_handler: '{{substr(trim($match->tournament), 0, 40)}}',
+                match_handler: '{{substr(trim($match->tournament), 0, 30)}}',
             },
             team1: {
                 name: '{{$match->team1->name}}',

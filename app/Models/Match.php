@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Match extends Model
 {
@@ -39,7 +40,7 @@ class Match extends Model
 
         $url = "https://www.strafe.com" . $this->scrap_url;
         $BASE_URL = "https://app.scrapingbee.com/api/v1/?";
-        $API_KEY = "ZM68CWN4A5RK0ARD85LUJL0XWCUSQ8OLL9JZ4AL7X8G1ZBV3REIDWGV2QVOR3R2ZI7587R1DCCXCW2LE";
+        $API_KEY = "YY43W25L2YJCHJQQDWIN5IVMY4HRGD6ZV6DYFF3JWOO2SSNNEQ4ZNJSYIC6PQKHY3480GWIRDPW6VS43";
 
         $parameters = array(
             'api_key' => $API_KEY,
@@ -51,12 +52,14 @@ class Match extends Model
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
+        Log::info('curl_exec($ch);');
         $response = curl_exec($ch);
 
         file_put_contents('C:\OSPanel\domains\BETMORE-Betting-Website\app\Http\Controllers\file_match.txt', $response);
 
         $response = file_get_contents('C:\OSPanel\domains\BETMORE-Betting-Website\app\Http\Controllers\file_match.txt');
 
+        Log::info('@$dom->loadHTML($response);');
         $dom = new \DOMDocument();
         @$dom->loadHTML($response);
 
@@ -86,6 +89,7 @@ class Match extends Model
             $points[] = $xpath->query('//div[@class="text-2xl sm:text-3xl my-auto"]/div[@class="font-semibold"]')[1]->textContent;
         }
 
+        Log::info('this change');
         $this->format = $sixthChildText;
         $this->team1_cef = $coefficients[0];
         $this->team2_cef = $coefficients[1];

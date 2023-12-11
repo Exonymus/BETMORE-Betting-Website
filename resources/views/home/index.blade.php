@@ -13,6 +13,15 @@
     <script type="module" src="{{asset('js/index.js')}}"></script>
 @endsection
 
+@section('toast')
+    <div id="ty-toast__container">
+        <div id="ty-toast__logo-wrapper">
+            <img class="ty-toast__logo" src="img/logos/coin.svg" alt="Coin">
+        </div>
+        <div id="ty-toast__text">Good Luck!</div>
+    </div>
+@endsection
+
 @section('content')
     <main class="page__main page-home__main">
         <section class="betting-carousel__bet-zone">
@@ -121,6 +130,32 @@
                                 class="bets__carousel-module d-none">
                             </iframe>
                         </div>
+                    </div>
+                </div>
+                <div class="bet-overlay" id="bet-overlay">
+                    <div class="bet-container" id="bet-container" onclick="event.stopPropagation();">
+                        <span class="close-btn" id="close-bet-submit">&times;</span>
+                        <label for="bet-amount">Enter Bet Amount:</label>
+                        <input id="bet-amount"
+                               type="number"
+                               class="form-control"
+                               placeholder="0"
+                               min="1"
+                               max="10000"
+                               step="1">
+                        <br>
+                        <div class="form-check form-switch bet-insurance">
+                            <input class="form-check-input insurance-switch" type="checkbox" role="switch" id="insurance">
+                            <label class="form-check-label insurance-label" for="insurance">Insurance</label>
+                        </div>
+                        <br>
+                        <label for="possible-win">Possible Win:</label>
+                        <span id="possible-win">0</span>
+                        <br>
+                        <button id="bet-submit-btn"
+                                class="btn btn-primary btn-block">
+                            Place Bet
+                        </button>
                     </div>
                 </div>
             </main>
