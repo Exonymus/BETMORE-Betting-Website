@@ -72,10 +72,7 @@
 
     // Function to open the bet overlay in the parent iframe (index.html)
     function openBetOverlay(event) {
-        window.parent.postMessage({
-            action: event.data.action,
-            bet_coef: event.data.bet_coef
-        }, '*');
+        window.parent.postMessage(event.data, '*');
     }
 
     // Function to unselect coefficients in iframes
@@ -152,7 +149,7 @@
             header: {
                 match_status: '{{$match->live == 1 ? 'Live' : 'Scheduled'}}',
                 game: '{{$match->team1->game->name}}',
-                match_handler: '{{substr(trim($match->tournament), 0, 30)}}',
+                match_handler: '{{ truncateString($match->tournament, 35) }}',
             },
             team1: {
                 name: '{{$match->team1->name}}',
@@ -170,6 +167,7 @@
                 match_date: getData('{{$match->date}}', '{{$match->time}}'),
                 match_time: '0 : 0',
                 match_type: getFormat('{{$match->format}}'),
+                match_id: '{{$match->id}}',
             },
         },
         @endforeach

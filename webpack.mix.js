@@ -13,9 +13,6 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js/app.js')
     .js('resources/js/bootstrap.js', 'public/js/bootstrap.js')
-    .js('resources/js/bet-card.js', 'public/js/bet-card.js')
-    .js('resources/js/bets-carousel.js', 'public/js/bets-carousel.js')
-    .js('resources/js/index.js', 'public/js/index.js')
     .js('resources/js/sorry-screen.js', 'public/js/sorry-screen.js')
     .js('resources/js/counter.js', 'public/js/counter.js')
     .copyDirectory('resources/img', 'public/img')

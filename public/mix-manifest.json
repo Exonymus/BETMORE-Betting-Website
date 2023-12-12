@@ -1,9 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/bootstrap.js": "/js/bootstrap.js",
-    "/js/bet-card.js": "/js/bet-card.js",
-    "/js/bets-carousel.js": "/js/bets-carousel.js",
-    "/js/index.js": "/js/index.js",
     "/js/sorry-screen.js": "/js/sorry-screen.js",
     "/js/counter.js": "/js/counter.js",
     "/css/app.css": "/css/app.css",
