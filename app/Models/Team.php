@@ -16,7 +16,7 @@ class Team extends Model
 
     public function matches()
     {
-        return $this->hasMany(Match::class, 'team1_id')->orWhere('team2_id', $this->id);
+        return $this->hasMany(GameMatch::class, 'team1_id')->orWhere('team2_id', $this->id);
     }
 
     public function bets()

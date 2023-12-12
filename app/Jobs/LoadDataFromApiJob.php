@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Game;
-use App\Models\Match;
+use App\Models\GameMatch;
 use App\Models\Team;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -151,7 +151,7 @@ class LoadDataFromApiJob implements ShouldQueue
                 }
 
                 Log::info(' Try checking ' . $calendarMatchItem->getAttribute('href'));
-                $match = Match::where('team1_id', $team1->id)
+                $match = GameMatch::where('team1_id', $team1->id)
                     ->where('team2_id', $team2->id)
                     ->where('date', $this->convertDateFormat($teamsData[6]))
                     ->first();
@@ -159,7 +159,7 @@ class LoadDataFromApiJob implements ShouldQueue
                 if (!$match)
                 {
                     Log::info(' Creating match  ' . $calendarMatchItem->getAttribute('href'));
-                    $match = new Match();
+                    $match = new GameMatch();
                     $match->team1_id = $team1->id;
                     $match->team2_id = $team2->id;
                     $match->tournament = $teamsData[2];

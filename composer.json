@@ -10,12 +10,13 @@
         "ext-dom": "*",
         "ext-json": "*",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^6.0",
+        "guzzlehttp/guzzle": "^7.0",
         "illuminate/redis": "*",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "maksa988/laravel-freekassa": "^4.0",
         "tcg/voyager": "^1.7"
     },
     "require-dev": {

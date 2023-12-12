@@ -44,6 +44,10 @@ Route::post('/withdraw/decline/{id}', [\App\Http\Controllers\WithdrawController:
 Route::get('/deposit', [\App\Http\Controllers\DepositController::class, 'index'])->name('deposit.index');
 Route::post('/deposit', [\App\Http\Controllers\DepositController::class, 'deposit'])->name('deposit.deposit');
 
+Route::post('/freekassa/notification', [\App\Http\Controllers\FreeKassaController::class, 'deposit'])->name('deposit.deposit');
+Route::post('/freekassa/success', [\App\Http\Controllers\FreeKassaController::class, 'deposit'])->name('deposit.deposit');
+Route::post('/freekassa/fail', [\App\Http\Controllers\FreeKassaController::class, 'deposit'])->name('deposit.deposit');
+
 Route::post('/bet', [\App\Http\Controllers\BetsController::class, 'bet'])->name('bet');
 
 

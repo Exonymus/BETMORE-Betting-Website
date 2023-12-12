@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bet;
-use App\Models\Match;
+use App\Models\GameMatch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -13,7 +13,7 @@ class BetsController extends Controller
     public function bet(Request $request)
     {
         $amount = (double)$request->input('amount');
-        $match = Match::find($request->input('match_id'));
+        $match = GameMatch::find($request->input('match_id'));
         $teamId = $match->{$request->input('team_id')}->id;
         $coefficient = $match->{$request->input('team_id').'_cef'};
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Match;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +29,7 @@ class PartialsController extends Controller
     }
     public function bets__carousel()
     {
-        $matches = Match::all();
+        $matches = \App\Models\GameMatch::all();
         return view('partials.bets-carousel', compact('matches'));
     }
     public function loading__screen()
