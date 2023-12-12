@@ -17,6 +17,7 @@ class CreateGamesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
+            $table->string('scrap_name');
         });
     }
 

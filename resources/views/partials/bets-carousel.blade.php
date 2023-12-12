@@ -133,7 +133,9 @@
     function getFormat(full_name) {
         if (full_name === 'Best of 1'){
             return 'BO1';
-        } else if (full_name === 'Best of 3') {
+        } else if (full_name === 'Best of 2') {
+            return 'BO2';
+        }else if (full_name === 'Best of 3') {
             return 'BO3';
         } else if (full_name === 'Best of 5') {
             return 'BO5';
@@ -174,13 +176,15 @@
     ];
 
     function loadBets(type, game) {
-        if (type === 'live' && betInfoExample.header.game === game) {
+        if (type === 'live') {
             matches.forEach(match => {
-                addBet(match);
+                if (match.header.match_status === 'Live' && match.header.game === game)
+                    addBet(match);
             });
-        } else if (type === 'pre' && betInfoExample.header.game === game) {
+        } else if (type === 'pre') {
             matches.forEach(match => {
-                addBet(match);
+                if (match.header.match_status === 'Scheduled' && match.header.game === game)
+                    addBet(match);
             });
         }
 

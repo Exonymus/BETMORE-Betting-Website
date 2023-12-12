@@ -8,7 +8,10 @@ class MatchesController extends Controller
 {
     public function loadDataFromApi()
     {
-        LoadDataFromApiJob::dispatch();
+        LoadDataFromApiJob::dispatch('cs2');
+        LoadDataFromApiJob::dispatch('vlrnt');
+        LoadDataFromApiJob::dispatch('dota2');
+        LoadDataFromApiJob::dispatch('lol');
         return redirect()->back();
     }
 }
