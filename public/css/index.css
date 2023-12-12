@@ -31,6 +31,17 @@
     margin: 0 4rem 0 4rem;
 }
 
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
+    color: var(--color-dimgray);
+    background-color: var(--color-whitesmoke-100);
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom: 0;
+    background-color: var(--color-bg-secondary);
+}
+
 /*Page-Home__eSports*/
 .sport-buttons * {
     margin: 0;
