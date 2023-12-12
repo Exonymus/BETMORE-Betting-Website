@@ -31,6 +31,17 @@
     margin: 0 4rem 0 4rem;
 }
 
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
+    color: var(--color-dimgray);
+    background-color: var(--color-whitesmoke-100);
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom: 0;
+    background-color: var(--color-bg-secondary);
+}
+
 /*Page-Home__eSports*/
 .sport-buttons * {
     margin: 0;
@@ -68,35 +79,35 @@
     border-top: 1px solid #353535;
     box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.5);
     transition: all .5s;
-    &:nth-of-type(1) {
-        border-top-left-radius: 40px;
-        border-bottom-left-radius: 40px;
-    }
-    &:last-of-type {
-        border-top-right-radius: 40px;
-        border-bottom-right-radius: 40px;
-    }
-    &:hover {
-        cursor: pointer;
-    }
-    & svg {
-        display: inline-block;
-        fill: rgb(128, 128, 128);
-        text-decoration: none;
-        font-size: 40px;
-        transition: all .5s;
-    }
+&:nth-of-type(1) {
+     border-top-left-radius: 40px;
+     border-bottom-left-radius: 40px;
+ }
+&:last-of-type {
+     border-top-right-radius: 40px;
+     border-bottom-right-radius: 40px;
+ }
+&:hover {
+     cursor: pointer;
+ }
+& svg {
+      display: inline-block;
+      fill: rgb(128, 128, 128);
+      text-decoration: none;
+      font-size: 40px;
+      transition: all .5s;
+  }
 }
 
 .active-game {
     background: #151515;
     box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, 0.8);
 
-    & svg {
-        width: 60%;
-        fill: #23A6F0FF;
-        filter: drop-shadow(0 0 15px #063d60);
-    }
+& svg {
+      width: 60%;
+      fill: #23A6F0FF;
+      filter: drop-shadow(0 0 15px #063d60);
+  }
 }
 
 /*Bets Carousels*/
@@ -340,37 +351,38 @@ input[type="number"], input[type="checkbox"] {
         margin: 1px;
         height: 3rem;
         width: 25%;
-        & svg {
-            width: 30px;
-        }
-    }
-
-    .page-home__footer {
-        flex-direction: column;
-        gap: var(--gap-3xs);
-        align-items: center;
-        justify-content: center;
-    }
-
-    .page-home__main {
-        flex-direction: column;
-        margin: 0 0.5rem 0 0.5rem;
-        padding: var(--padding-10xl) 1.2rem var(--padding-10xl) 1.2rem;
-        gap: 1.2rem;
-    }
-
-    #carousels iframe {
-        max-width: 100%;
-        height: 487px;
-        padding: 0;
-    }
-
-    .bet-category {
-        font-size: 1.5rem;
-    }
-
-    .chat-module {
-        width: 100%;
-        min-height: 400px;
-    }
+& svg {
+      width: 30px;
+  }
 }
+
+.page-home__footer {
+    flex-direction: column;
+    gap: var(--gap-3xs);
+    align-items: center;
+    justify-content: center;
+}
+
+.page-home__main {
+    flex-direction: column;
+    margin: 0 0.5rem 0 0.5rem;
+    padding: var(--padding-10xl) 1.2rem var(--padding-10xl) 1.2rem;
+    gap: 1.2rem;
+}
+
+#carousels iframe {
+    max-width: 100%;
+    height: 487px;
+    padding: 0;
+}
+
+.bet-category {
+    font-size: 1.5rem;
+}
+
+.chat-module {
+    width: 100%;
+    min-height: 400px;
+}
+}
+

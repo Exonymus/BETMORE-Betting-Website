@@ -28,9 +28,11 @@ Route::get('/partials/bet-card', [App\Http\Controllers\PartialsController::class
 Route::get('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register.create');
 Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->name('register.store');
 
-Route::get('/login', [\App\Http\Controllers\Auth\SessionController::class, 'create'])->name('session.create');
+Route::get('/login', [\App\Http\Controllers\Auth\SessionController::class, 'create'])->name('login');
 Route::post('/login', [\App\Http\Controllers\Auth\SessionController::class, 'store'])->name('session.store');
 Route::get('/logout', [\App\Http\Controllers\Auth\SessionController::class, 'destroy'])->name('session.destroy');
+
+Route::get('/profile/{id}', [App\Http\Controllers\HomeController::class, 'profile'])->name('home.profile');
 
 Route::get('/load-data', [\App\Http\Controllers\MatchesController::class, 'loadDataFromApi'])->name('matches.load');
 Route::get('/withdraw/approve', [\App\Http\Controllers\WithdrawController::class, 'approve'])->name('withdraw.approve');
@@ -44,9 +46,9 @@ Route::post('/withdraw/decline/{id}', [\App\Http\Controllers\WithdrawController:
 Route::get('/deposit', [\App\Http\Controllers\DepositController::class, 'index'])->name('deposit.index');
 Route::post('/deposit', [\App\Http\Controllers\DepositController::class, 'deposit'])->name('deposit.deposit');
 
-Route::post('/freekassa/notification', [\App\Http\Controllers\FreeKassaController::class, 'deposit'])->name('deposit.deposit');
-Route::post('/freekassa/success', [\App\Http\Controllers\FreeKassaController::class, 'deposit'])->name('deposit.deposit');
-Route::post('/freekassa/fail', [\App\Http\Controllers\FreeKassaController::class, 'deposit'])->name('deposit.deposit');
+Route::post('/freekassa/notification', [\App\Http\Controllers\FreeKassaController::class, 'deposit'])->name('freekassa.notification');
+Route::post('/freekassa/success', [\App\Http\Controllers\FreeKassaController::class, 'deposit'])->name('freekassa.success');
+Route::post('/freekassa/fail', [\App\Http\Controllers\FreeKassaController::class, 'deposit'])->name('freekassa.fail');
 
 Route::post('/bet', [\App\Http\Controllers\BetsController::class, 'bet'])->name('bet');
 

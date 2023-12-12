@@ -55,7 +55,7 @@
     <footer class="page-signin__footer">
         <div class="footer__user-statistics">
             <div class="statistics__info">
-                <img src="img/logos/default-user.svg" alt="" class="footer__logo">
+                <img src="{{asset("img/logos/users.svg")}}" alt="" class="footer__logo">
                 <div class="users-statistics">
                     <p class="number-count" id="users-registered-count">10000</p>
                     <h3>Users</h3>

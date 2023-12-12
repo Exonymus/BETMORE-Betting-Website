@@ -16,6 +16,9 @@ class PartialsController extends Controller
 
     public function chat_store(Request $request)
     {
+        if (!Auth::user())
+            return response()->json(['status' => 'error']);
+
         $request->validate([
             'message' => 'required',
         ]);

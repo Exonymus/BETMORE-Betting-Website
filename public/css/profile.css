@@ -1,0 +1,288 @@
+.page-profile__main {
+    margin: 0 4rem 0 4rem;
+}
+
+#profile-card {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--br-3xs);
+    border: 0;
+}
+
+#avatar-img {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#avatar-container {
+    height: 140px;
+    background-color: rgb(233, 236, 239);
+}
+
+#avatar-container-wrapper {
+    width: 140px;
+}
+
+#profile-header {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#tab-ref {
+    cursor: pointer;
+}
+
+#join-date {
+    font-size: 1rem;
+}
+
+.bet-history-card {
+    height: 100%;
+    width: 50%;
+    border-bottom: none;
+    box-shadow: none;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bet-date {
+    color: #063d60;
+}
+
+.bet-sum__win {
+    color: #488a00;
+    font-family: var(--font-raleway);
+    font-weight: bold;
+}
+
+.bet-sum__return {
+    color: var(--primary-color);
+    font-family: var(--font-raleway);
+    font-weight: bold;
+}
+
+.bet-sum__lose {
+    color: #a20303;
+    font-family: var(--font-raleway);
+    font-weight: bold;
+}
+
+
+.level-section h3{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.percentage{
+    float: right;
+    position: relative;
+    top: -40px;
+    font-weight: bold;
+}
+
+#d-tab {
+    display: flex;
+    flex-direction: row;
+}
+
+.username {
+    margin-top: 20px;
+}
+
+.level-section {
+    margin-top: 80px;
+    width: 400px;
+}
+
+.level-name {
+    float: left;
+    position: relative;
+    top: -40px;
+    font-weight: bold;
+}
+
+.user-setts, .pass-setts, .debts-setts {
+    width: 48%;
+}
+
+.tab-ref {
+    cursor: pointer;
+}
+
+.debt-buttons {
+    margin-top: 2rem;
+}
+
+.user-credit-info {
+    margin-top: 2rem;
+}
+
+.cover{
+    width: 100%;
+    height: 10px;
+    background-color: #262626;
+    border:1px solid #0fffb4;
+    border-radius: 2px;
+}
+.cover .progressbar{
+    height: 6px;
+    background-color:#0fffb4;
+    margin-left: 2px;
+    margin-top: 2px;
+    border-radius: 2px;
+    width: 90%;
+    transition: width 1s linear;
+}
+
+.profile {
+    height: 557px;
+    width: 50%;
+    align-self: stretch;
+    border-radius: var(--br-3xs);
+    border: 3px solid var(--primary-color);
+    background-color: white;
+}
+
+.settings-category {
+    width: 100%;
+    text-align: center;
+    font-size: 1.6rem;
+    font-family: var(--font-raleway);
+}
+
+.settings-subcategory {
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    font-family: var(--paragraph);
+}
+
+.bet-history {
+    height: 557px;
+    width: 50%;
+    overflow-y: auto;
+    align-self: stretch;
+    border-radius: var(--br-3xs);
+    border: 3px solid var(--color-black);
+    background-color: white;
+    font-size: 1rem;
+}
+
+.debt-history {
+    height: 208px;
+    overflow-y: auto;
+    align-self: stretch;
+    border-radius: var(--br-3xs);
+    border: 3px solid var(--color-black);
+    background-color: white;
+    font-size: 1rem;
+}
+
+#debt-history {
+    height: 100%;
+    border-bottom: none; /* Remove border */
+    box-shadow: none; /* Remove box-shadow */
+    border: 0;
+}
+
+#bet-history {
+    height: 100%;
+    border-bottom: none; /* Remove border */
+    box-shadow: none; /* Remove box-shadow */
+    border: 0;
+}
+
+.form__submit-btn {
+    width: 200px;
+    height: 40px;
+}
+
+.history-card__header {
+    position: sticky;
+    font-size: 2.25rem;
+    color: var(--color-black);
+    font-family: var(--font-raleway);
+    font-weight: bolder;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(247, 247, 247);
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
+    color: var(--color-dimgray);
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: var(--primary-color);
+}
+
+.debt-button {
+    width: 48%;
+}
+
+@media screen and (max-width: 925px) {
+    .level-section {
+        width: 300px;
+    }
+
+    #profile-settings__tab, #debts-settings__tab {
+        font-size: 1rem;
+    }
+
+    .page-home__footer {
+        flex-direction: column;
+        gap: var(--gap-3xs);
+        align-items: center;
+        justify-content: center;
+    }
+
+    #d-tab {
+        flex-direction: column;
+    }
+
+    .debts-setts {
+        width: 100%;
+    }
+
+    .debt-history {
+        width: 100%;
+    }
+
+    .page-profile__main {
+        flex-direction: column;
+        margin: 0 0.5rem 0 0.5rem;
+        padding: var(--padding-10xl) 1.2rem var(--padding-10xl) 1.2rem;
+        gap: 1.2rem;
+    }
+
+    .history-card__header {
+        font-size: 2rem;
+    }
+
+    .history-content__header {
+        font-size: 1.3rem;
+    }
+
+    .settings-category {
+        font-size: 1rem;
+    }
+
+    .settings-subcategory {
+        font-size: 13px;
+    }
+
+    .profile {
+        height: -moz-fit-content;
+        height: fit-content;
+        width: 100%;
+    }
+
+    .bet-history {
+        width: 100%;
+        min-height: 400px;
+    }
+}
+

@@ -10,12 +10,20 @@ use Illuminate\Support\Facades\Log;
 
 class BetsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function bet(Request $request)
     {
         $amount = (double)$request->input('amount');
         $match = GameMatch::find($request->input('match_id'));
         $teamId = $match->{$request->input('team_id')}->id;
         $coefficient = $match->{$request->input('team_id').'_cef'};
+
+        if (!Auth::user() || Auth::user()->role->name == 'Operator')
+            return response()->json(['message' => 'Error, who are you?']);
 
         if (Auth::user()->coins < $amount)
             return response()->json(['message' => 'Error, not enough coins']);

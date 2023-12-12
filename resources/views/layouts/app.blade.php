@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-    <link rel="icon" type="image/x-icon" href="img/title-icon.png">
+    <link rel="icon" type="image/x-icon" href="{{asset("img/title-icon.png")}}">
 
     <!--Styles-->
     <link rel="stylesheet" href="{{asset('css/global.css')}}"/>
@@ -27,7 +27,7 @@
         <header class="page__header">
             <nav class="page__navbar navbar">
                 <span class="navbar__brand">
-                    <img class="brand__name" alt="" src="img/logos/site-logo.svg"/>
+                    <img class="brand__name" alt="" src="{{asset("img/logos/site-logo.svg")}}"/>
                 </span>
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,44 +38,53 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                         <ul class="collapse__nav__content h6">
-                            @can('browse_admin')
+                            <li class="nav-link" id="page-home">
+                                <a href="{{route('home.index')}}" id="nav-link-home" class="link @if(request()->is('/')) link--current @endif">Home</a>
+                            </li>
+                            @can('browse_bread')
                                 <li class="nav-link" id="page-home">
-                                    <a href="{{route('voyager.dashboard')}}" id="nav-link-home" class="link link--current">Admin</a>
+                                    <a href="{{route('voyager.dashboard')}}" id="nav-link-home" class="link">Admin</a>
                                 </li>
                                 <li class="nav-link" id="page-home">
-                                    <a href="{{route('matches.load')}}" id="nav-link-home" class="link link--current">Load</a>
-                                </li>
-                                <li class="nav-link" id="page-home">
-                                    <a href="{{route('withdraw.approve')}}" id="nav-link-home" class="link link--current">Approve</a>
+                                    <a href="{{route('matches.load')}}" id="nav-link-home" class="link">Load</a>
                                 </li>
                             @endcan
-                            <li class="nav-link" id="page-home">
-                                <a href="{{route('home.index')}}" id="nav-link-home" class="link link--current">Home</a>
-                            </li>
-                            @guest
-                                <li class="nav-link" id="page-aboutus">
-                                    <a href="{{route('home.about')}}" class="link">About Us</a>
+                            @can('browse_admin')
+                                <li class="nav-link" id="page-home">
+                                    <a href="{{route('withdraw.approve')}}" id="nav-link-home" class="link">Approve</a>
                                 </li>
-                                <li class="nav-link" id="page-signIn">
-                                    <a href="{{route('session.create')}}" class="link">Sign-In</a>
-                                </li>
-                                <li class="nav-link" id="page-signUp">
-                                    <a href="{{route('register.create')}}" class="link">Sign-Up</a>
-                                </li>
-                            @else
                                 <li class="nav-link" id="page-profile">
-                                    <a href="{{route('home.index')}}" class="link">Profile</a>
-                                </li>
-                                <li class="nav-link" id="page-deposit">
-                                    <a href="{{route('deposit.index')}}" class="link">Deposit</a>
-                                </li>
-                                <li class="nav-link" id="page-withdraw">
-                                    <a href="{{route('withdraw.index')}}" class="link">Withdraw</a>
+                                    <a href="{{ route('home.profile', ['id' => Auth::user()->id]) }}" class="link @if(request()->is('profile/'.Auth::user()->id)) link--current @endif">Profile</a>
                                 </li>
                                 <li class="nav-link" id="page-signOut">
                                     <a href="{{route('session.destroy')}}" class="link">Sign-Out</a>
                                 </li>
-                            @endguest
+                            @else
+                                @guest
+                                    <li class="nav-link" id="page-aboutus">
+                                        <a href="{{route('home.about')}}" class="link @if(request()->is('about')) link--current @endif">About Us</a>
+                                    </li>
+                                    <li class="nav-link" id="page-signIn">
+                                        <a href="{{route('login')}}" class="link @if(request()->is('login')) link--current @endif">Sign-In</a>
+                                    </li>
+                                    <li class="nav-link" id="page-signUp">
+                                        <a href="{{route('register.create')}}" class="link @if(request()->is('register')) link--current @endif">Sign-Up</a>
+                                    </li>
+                                @else
+                                    <li class="nav-link" id="page-profile">
+                                        <a href="{{ route('home.profile', ['id' => Auth::user()->id]) }}" class="link @if(request()->is('profile/'.Auth::user()->id)) link--current @endif">Profile</a>
+                                    </li>
+                                    <li class="nav-link" id="page-deposit">
+                                        <a href="{{route('deposit.index')}}" class="link @if(request()->is('deposit')) link--current @endif">Deposit</a>
+                                    </li>
+                                    <li class="nav-link" id="page-withdraw">
+                                        <a href="{{route('withdraw.index')}}" class="link @if(request()->is('withdraw')) link--current @endif">Withdraw</a>
+                                    </li>
+                                    <li class="nav-link" id="page-signOut">
+                                        <a href="{{route('session.destroy')}}" class="link">Sign-Out</a>
+                                    </li>
+                                @endguest
+                            @endcan
                         </ul>
                     </div>
                 </nav>
@@ -83,11 +92,11 @@
                 @else
                     <div class="user-info h6">
                             <span class="user-info__coins">
-                                <img src="img/logos/coin.svg" class="user__money" alt="">
+                                <img src="{{asset("img/logos/coin.svg")}}" class="user__money" alt="">
                                 <span id="user-coins">{{Auth::user()->coins}}</span>
                             </span>
                         <span class="user-info__gems">
-                                <img src="img/logos/nolos.svg" class="user__money" alt="">
+                                <img src="{{asset("img/logos/nolos.svg")}}" class="user__money" alt="">
                                 <span id="user-gems">{{Auth::user()->noloses}}</span>
                              </span>
                     </div>

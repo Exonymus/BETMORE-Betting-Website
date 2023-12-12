@@ -3,6 +3,7 @@
     "/js/bootstrap.js": "/js/bootstrap.js",
     "/js/sorry-screen.js": "/js/sorry-screen.js",
     "/js/counter.js": "/js/counter.js",
+    "/js/profile.js": "/js/profile.js",
     "/css/app.css": "/css/app.css",
     "/css/bet-card.css": "/css/bet-card.css",
     "/css/deposit.css": "/css/deposit.css",
@@ -15,6 +16,7 @@
     "/css/signup.css": "/css/signup.css",
     "/css/signin.css": "/css/signin.css",
     "/css/index-animations.css": "/css/index-animations.css",
+    "/css/profile.css": "/css/profile.css",
     "/css/index.css": "/css/index.css",
     "/css/about.css": "/css/about.css",
     "/img/buttons/button-add-playlist.svg": "/img/buttons/button-add-playlist.svg",
@@ -33,6 +35,7 @@
     "/img/logos/coin.svg": "/img/logos/coin.svg",
     "/img/logos/cs2.svg": "/img/logos/cs2.svg",
     "/img/logos/csgo.svg": "/img/logos/csgo.svg",
+    "/img/logos/default-avatar.jpeg": "/img/logos/default-avatar.jpeg",
     "/img/logos/default-user.svg": "/img/logos/default-user.svg",
     "/img/logos/default-user.webp": "/img/logos/default-user.webp",
     "/img/logos/dota2.svg": "/img/logos/dota2.svg",
@@ -41,6 +44,7 @@
     "/img/logos/signin-logo.svg": "/img/logos/signin-logo.svg",
     "/img/logos/signup-logo.svg": "/img/logos/signup-logo.svg",
     "/img/logos/site-logo.svg": "/img/logos/site-logo.svg",
+    "/img/logos/users.svg": "/img/logos/users.svg",
     "/img/logos/valorant.svg": "/img/logos/valorant.svg",
     "/img/title-icon.png": "/img/title-icon.png"
 }

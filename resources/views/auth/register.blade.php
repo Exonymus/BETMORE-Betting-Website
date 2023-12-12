@@ -76,7 +76,7 @@
     <footer class="page-signup__footer">
         <div class="footer__user-statistics">
             <div class="statistics__info">
-                <img src="img/logos/default-user.svg" alt="" class="footer__logo">
+                <img src="img/logos/default.svg" alt="" class="footer__logo">
                 <div class="users-statistics">
                     <p class="number-count" id="users-registered-count">10000</p>
                     <h3>Users</h3>
