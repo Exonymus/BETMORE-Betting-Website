@@ -34,6 +34,8 @@ Route::get('/logout', [\App\Http\Controllers\Auth\SessionController::class, 'des
 
 Route::post('/profile/update-avatar', [App\Http\Controllers\HomeController::class, 'update_avatar'])->name('home.profile.update-avatar');
 Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'update'])->name('home.profile.update');
+Route::post('/profile/debt', [App\Http\Controllers\HomeController::class, 'debt'])->name('home.profile.debt');
+Route::post('/profile/debt/pay', [App\Http\Controllers\HomeController::class, 'debt_pay'])->name('home.profile.debt.pay');
 Route::get('/profile/{id}', [App\Http\Controllers\HomeController::class, 'profile'])->name('home.profile');
 
 Route::get('/load-data', [\App\Http\Controllers\MatchesController::class, 'loadDataFromApi'])->name('matches.load');

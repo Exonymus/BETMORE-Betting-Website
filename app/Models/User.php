@@ -54,14 +54,9 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Message::class);
     }
 
-    public function lendings()
+    public function loans()
     {
-        return $this->hasMany(Loan::class, 'lender_user_id');
-    }
-
-    public function borrows()
-    {
-        return $this->hasMany(Loan::class, 'borrower_user_id');
+        return $this->hasMany(Loan::class);
     }
 
     public function deposits()

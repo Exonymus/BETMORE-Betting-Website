@@ -9,13 +9,8 @@ class Loan extends Model
 {
     use HasFactory;
 
-    public function lender()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'lender_user_id');
-    }
-
-    public function borrower()
-    {
-        return $this->belongsTo(User::class, 'borrower_user_id');
+        return $this->belongsTo(User::class);
     }
 }

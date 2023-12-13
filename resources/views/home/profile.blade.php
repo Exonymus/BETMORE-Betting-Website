@@ -180,16 +180,16 @@
                                             <div class="user-credit-info">
                                                 <p class="settings-subcategory">
                                                     <i>Current debt:</i>
-                                                    <span id="current-debt"></span>
+                                                    <span id="current-debt">{{ $user->loans()->where('action', 'take')->sum('amount') - $user->loans()->where('action', 'return')->sum('amount') }}</span>
                                                 </p>
                                                 <p class="settings-subcategory">
                                                     <i>Days to pay:</i>
-                                                    <span id="days-to-pay">5</span>
+                                                    <span id="days-to-pay">infinite</span>
                                                 </p>
                                                 <p class="settings-subcategory">
                                                     <i>Available amount:</i>
-                                                    <span id="available-amount"></span>
-                                                </p>
+                                                    <span id="available-amount">infinite</span>
+                                                </p>s
                                             </div>
                                             <div class="row justify-content-around debt-buttons">
                                                 <button class="btn btn-primary debt-button"
@@ -211,35 +211,12 @@
                                                 <div class="card-body history-card__content">
                                                     <div>
                                                         <ul class="list-group">
-                                                            <li class="list-group-item">
-                                                                <div class="bet-date">10.10.2023</div>
-                                                                <div class="bet-sum__lose">1000 coins taken</div>
-                                                            </li>
-                                                            <li class="list-group-item">
-                                                                <div class="dbet-date">10.10.2023</div>
-                                                                <div class="bet-sum__return">1000 coins returned</div>
-                                                            </li>
-                                                            <li class="list-group-item">
-                                                                <div class="dbet-date">10.10.2023</div>
-                                                                <div class="bet-sum__return">500 coins returned</div>
-                                                            </li>
-                                                            <li class="list-group-item">
-                                                                <div class="bet-date">10.10.2023</div>
-                                                                <div class="bet-sum__lose">1000 coins taken</div>
-                                                            </li>
-                                                            <li class="list-group-item">
-                                                                <div class="dbet-date">10.10.2023</div>
-                                                                <div class="bet-sum__return">1000 coins returned</div>
-                                                            </li>
-                                                            <li class="list-group-item">
-                                                                <div class="bet-date">10.10.2023</div>
-                                                                <div class="bet-sum__lose">1000 coins taken</div>
-                                                            </li>
-                                                            <li class="list-group-item">
-                                                                <div class="dbet-date">10.10.2023</div>
-                                                                <div class="bet-sum__return">1000 coins returned</div>
-                                                            </li>
-
+                                                            @foreach($user->loans as $loan)
+                                                                <li class="list-group-item">
+                                                                    <div class="bet-date">{{substr($loan->created_at, 0, 10)}}</div>
+                                                                    <div class="{{$loan->action == 'take' ? 'bet-sum__lose' : 'bet-sum__return' }}">{{$loan->amount}} coins {{$loan->action == 'take' ? 'taken' : 'returned' }}</div>
+                                                                </li>
+                                                            @endforeach
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -359,10 +336,59 @@
             var amountToTake = prompt("Enter the amount to take in credit:");
             amountToTake = parseInt(amountToTake);
 
-            if (amountToTake > 0 && amountToTake <= availableAmount) {
+            if (amountToTake > 0 && amountToTake <= {{(int)($user->exp / 5000) * 1000}}) {
+
+                const debtData = new FormData();
+                debtData.append('amount', amountToTake);
+                debtData.append('_token', '{{ csrf_token() }}');
+
                 // Process taking credit (you may need to implement this logic)
-                currentDebt += amountToTake;
-                updateDebtDisplay();
+                $.ajax({
+                    url: '{{ route("home.profile.debt") }}',
+                    method: 'POST',
+                    data: debtData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        console.log(response);
+                        location.reload();
+                        document.querySelector('#debts-settings__tab').click();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            } else {
+                alert("Invalid credit amount!");
+            }
+        });
+
+        $("#pay-debt-btn").click(function () {
+            var amountToTake = prompt("Enter the amount to return in credit:");
+            amountToTake = parseInt(amountToTake);
+
+            if (amountToTake > 0) {
+
+                const debtData = new FormData();
+                debtData.append('amount', amountToTake);
+                debtData.append('_token', '{{ csrf_token() }}');
+
+                // Process taking credit (you may need to implement this logic)
+                $.ajax({
+                    url: '{{ route("home.profile.debt.pay") }}',
+                    method: 'POST',
+                    data: debtData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        console.log(response);
+                        location.reload();
+                        document.querySelector('#debts-settings__tab').click();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
             } else {
                 alert("Invalid credit amount!");
             }

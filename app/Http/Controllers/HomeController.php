@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Loan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,46 @@ class HomeController extends Controller
             return view('home.profile', compact('user'));
         else
             return view('404');
+    }
+
+    public function debt(Request $request)
+    {
+        $amountToTake = $request->input('amount');
+        $user = auth()->user();
+
+        $request->validate([
+            'amount' => 'required|numeric|min:1|max:' . ((int)($user->exp / 5000) * 1000),
+        ]);
+
+        $user->coins += $amountToTake;
+        $user->save();
+
+        $loan = new Loan();
+        $loan->amount = $amountToTake;
+        $loan->user_id = $user->id;
+        $loan->save();
+
+        return response()->json(['success' => true, 'message' => 'Credit taken successfully']);
+    }
+
+    public function debt_pay(Request $request)
+    {
+        $amountToPay= $request->input('amount');
+        $user = auth()->user();
+
+        if ($user->coins < $amountToPay)
+            return response()->json(['error' => true, 'message' => 'Not enough coins']);
+
+        $user->coins -= $amountToPay;
+        $user->save();
+
+        $loan = new Loan();
+        $loan->amount = $amountToPay;
+        $loan->user_id = $user->id;
+        $loan->action = 'return';
+        $loan->save();
+
+        return response()->json(['success' => true, 'message' => 'Credit taken successfully']);
     }
 
     public function update(Request $request)
