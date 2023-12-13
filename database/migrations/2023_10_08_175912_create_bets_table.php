@@ -17,6 +17,7 @@ class CreateBetsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('amount');
+            $table->integer('insured');
             $table->float('coefficient');
             $table->unsignedBigInteger('match_id');
             $table->unsignedBigInteger('user_id');

@@ -4,10 +4,6 @@
     <link rel="stylesheet" href="{{asset('css/profile.css')}}"/>
 @endsection
 
-@section('scripts')
-    <script type="module" src="{{asset('js/profile.js')}}"></script>
-@endsection
-
 @section('title')
     <title>{{$user->name}} - BETMORE</title>
 @endsection
@@ -25,7 +21,7 @@
                                     <div class="d-flex justify-content-center align-items-center rounded"
                                          id="avatar-container">
                                         <img id="avatar-img"
-                                             src="{{asset("img/logos/default-avatar.jpeg")}}"
+                                             src="{{asset('storage/' . $user->avatar)}}"
                                              alt="avatar"
                                              class="rounded">
                                     </div>
@@ -43,18 +39,18 @@
                             <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                 <div class="text-center text-sm-left mb-2 mb-sm-0" id="profile-header">
                                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap username">
-                                        Exonymus</h4>
+                                        {{$user->name}}</h4>
                                     <div class="level-section">
-                                        <h3 class="mb-0 level-name">Level: <b id="user-level">5</b>
+                                        <h3 class="mb-0 level-name">Level: <b id="user-level">0</b>
                                         </h3>
-                                        <span class="percentage">90%</span>
+                                        <span class="percentage">0%</span>
                                         <div class="cover">
-                                            <div class="progressbar"></div>
+                                            <div class="progressbar" style="width: 0;"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-center text-sm-right">
-                                    <div class="text-muted" id="join-date"><small>Joined 09.01.2023</small>
+                                    <div class="text-muted" id="join-date"><small>Joined {{substr($user->created_at, 0, 10)}}</small>
                                     </div>
                                 </div>
                             </div>
@@ -74,13 +70,27 @@
                                    data-bs-toggle="tab" data-bs-target="#debts-settings"
                                    aria-controls="debts-settings">Debts</a>
                             </li>
+                            <li>
+                                @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
+                                @if(session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                            </li>
                         </ul>
                         <div class="tab-content pt-3" id="profile-tabs_content">
                             <div class="tab-pane fade show active"
                                  id="profile-settings"
                                  role="tabpanel"
                                  aria-labelledby="profile-settings__tab">
-                                <form class="form row justify-content-around">
+                                <form action="{{ route('home.profile.update') }}" method="post" enctype="multipart/form-data" class="form row justify-content-around">
+                                    @csrf
                                     <div class="column user-setts">
                                         <div class="mb-2 settings-category"><b>User Settings</b></div>
                                         <div class="col">
@@ -92,8 +102,8 @@
                                                         <input id="inp_username"
                                                                class="form-control"
                                                                type="text" name="username"
-                                                               placeholder="Exonymus"
-                                                               value="Exonymus"
+                                                               placeholder="{{$user->name}}"
+                                                               value="{{$user->name}}"
                                                                minlength="5"
                                                                required>
                                                     </div>
@@ -106,10 +116,11 @@
                                                     <label class="settings-subcategory"
                                                            for="inp_email">Email</label>
                                                     <input id="inp_email"
+                                                           name="inp_email"
                                                            class="form-control"
                                                            type="text"
-                                                           placeholder="user@example.com"
-                                                           value="user@example.com" required>
+                                                           placeholder="{{$user->email}}"
+                                                           value="{{$user->email}}" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,6 +134,7 @@
                                                         <label class="settings-subcategory"
                                                                for="inp_pass--cur">Current Password</label>
                                                         <input id="inp_pass--cur"
+                                                               name="inp_pass--cur"
                                                                class="form-control"
                                                                type="password"
                                                                placeholder="••••••••"
@@ -137,6 +149,7 @@
                                                         <label class="settings-subcategory"
                                                                for="inp_pass--new">New Password</label>
                                                         <input id="inp_pass--new"
+                                                               name="inp_pass--new"
                                                                class="form-control"
                                                                type="password"
                                                                placeholder="••••••••"
@@ -248,6 +261,30 @@
                 <div class="card-body history-card__content">
                     <div>
                         <ul id="historyList" class="list-group">
+                            @foreach($user->bets as $bet)
+                                <li class="list-group-item">
+                                    <div class="bet-date">{{$bet->created_at}}</div>
+                                    @if (!$bet->match->results)
+                                        @if ($bet->insured == 0)
+                                            <div class="">{{$bet->amount}} coins (x{{$bet->coefficient}})</div>
+                                        @else
+                                            <div class="">{{$bet->amount}} coins (x{{$bet->coefficient}}) | {{$bet->amount}} nolos</div>
+                                        @endif
+                                    @elseif ($bet->match->results == $bet->team->name)
+                                        @if ($bet->insured == 0)
+                                            <div class="bet-sum__win">+{{$bet->amount}} coins (x{{$bet->coefficient}}) | +{{$bet->amount / 10}} nolos</div>
+                                        @else
+                                            <div class="bet-sum__win">+{{$bet->amount}} coins (x{{$bet->coefficient}})</div>
+                                        @endif
+                                    @else
+                                        @if ($bet->insured == 0)
+                                            <div class="bet-sum__lose">-{{$bet->amount}} coins (x{{$bet->coefficient}})</div>
+                                        @else
+                                            <div class="bet-sum__return">{{$bet->amount}} coins (x{{$bet->coefficient}}) | -{{$bet->amount}} nolos</div>
+                                        @endif
+                                    @endif
+                                </li>
+                            @endforeach
                             <li class="list-group-item">
                                 <div class="bet-date">10.10.2023</div>
                                 <div class="bet-sum__win">+1000 coins (x2.5) | +100 nolos</div>
@@ -298,4 +335,68 @@
             </div>
         </section>
     </main>
+@endsection
+
+@section('scripts')
+    <script>
+        document.getElementById('upload-avatar-btn').addEventListener("click", function () {
+            document.getElementById('upload-avatar-inp').click();
+        });
+        document.getElementById('upload-avatar-inp').onchange = function () {
+            document.getElementById('avatar-img').src =
+                URL.createObjectURL(document.getElementById('upload-avatar-inp').files[0]);
+        };
+
+        function setLevel(xp) {
+            let level = (xp / 5000).toFixed(0);
+            let exp = (xp % 5000) / 5000;
+            document.getElementById('user-level').innerText = level.toString();
+            document.querySelector('.percentage').innerHTML = `${exp * 100}%`;
+            document.querySelector('.cover .progressbar').style.width = `${exp * 100}%`;
+        }
+
+        $("#take-credit-btn").click(function () {
+            var amountToTake = prompt("Enter the amount to take in credit:");
+            amountToTake = parseInt(amountToTake);
+
+            if (amountToTake > 0 && amountToTake <= availableAmount) {
+                // Process taking credit (you may need to implement this logic)
+                currentDebt += amountToTake;
+                updateDebtDisplay();
+            } else {
+                alert("Invalid credit amount!");
+            }
+        });
+
+        document.getElementById('upload-avatar-inp').addEventListener('change', function () {
+            const fileInput = this;
+
+            // Check if a file is selected
+            if (fileInput.files.length > 0) {
+                const formData = new FormData();
+                formData.append('avatar', fileInput.files[0]);
+                formData.append('_token', '{{ csrf_token() }}');
+
+                // Use AJAX to send the file to the controller
+                $.ajax({
+                    url: '{{ route("home.profile.update-avatar") }}',
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        // Update the avatar image on success
+                        $('#avatar-img').attr('src', response.avatarUrl);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+
+        setTimeout(() => {
+            setLevel({{$user->exp}});
+        }, 1000);
+    </script>
 @endsection

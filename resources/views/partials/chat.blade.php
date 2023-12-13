@@ -49,8 +49,11 @@
     $(document).ready(function () {
         // Function to send a message and scroll to the bottom
         function sendMessage() {
-            if ({{!Auth::user()}})
-                return;
+
+            @if (!Auth::user())
+            return;
+            @endif
+
             const message = $('#message-input').val();
             if (message.trim() === '') return;
 

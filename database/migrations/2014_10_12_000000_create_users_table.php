@@ -18,8 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('name')->unique();
             $table->string('email')->unique();
             $table->integer('level')->default(0);
+            $table->double('exp')->default(0);
             $table->double('coins')->default(0);
-            $table->integer('noloses')->default(0);
+            $table->double('noloses')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -32,6 +32,8 @@ Route::get('/login', [\App\Http\Controllers\Auth\SessionController::class, 'crea
 Route::post('/login', [\App\Http\Controllers\Auth\SessionController::class, 'store'])->name('session.store');
 Route::get('/logout', [\App\Http\Controllers\Auth\SessionController::class, 'destroy'])->name('session.destroy');
 
+Route::post('/profile/update-avatar', [App\Http\Controllers\HomeController::class, 'update_avatar'])->name('home.profile.update-avatar');
+Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'update'])->name('home.profile.update');
 Route::get('/profile/{id}', [App\Http\Controllers\HomeController::class, 'profile'])->name('home.profile');
 
 Route::get('/load-data', [\App\Http\Controllers\MatchesController::class, 'loadDataFromApi'])->name('matches.load');
