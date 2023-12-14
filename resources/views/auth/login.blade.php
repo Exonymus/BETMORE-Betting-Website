@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="statistics__info">
-                <img src="img/logos/bet.svg" alt="" class="footer__logo">
+                <img src="{{asset("img/logos/bet.svg")}}" alt="" class="footer__logo">
                 <div class="users-statistics">
                     <p class="number-count" id="bets-made-count">1000</p>
                     <h3>Bets Made</h3>

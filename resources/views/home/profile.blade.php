@@ -56,6 +56,47 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Statistics Block -->
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Statistics</h5>
+                                            <!-- Add your statistics content here -->
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="statistic">
+                                                        <h6>Wins</h6>
+                                                        <p>
+                                                            {{$totalWins = $user->bets->filter(function ($bet) {
+                                                                return $bet->match->results and $bet->match->results == $bet->team->name;
+                                                            })->count()}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="statistic">
+                                                        <h6>Loses</h6>
+                                                        <p>
+                                                            {{$totalWins = $user->bets->filter(function ($bet) {
+                                                                return $bet->match->results and $bet->match->results != $bet->team->name;
+                                                            })->count()}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="statistic">
+                                                        <h6>Mid coefficient</h6>
+                                                        <p>
+                                                            {{round($user->bets->sum('coefficient') / $user->bets->count(), 2)}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

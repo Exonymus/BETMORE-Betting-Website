@@ -91,14 +91,14 @@
     <footer class="page-signup__footer">
         <div class="footer__user-statistics">
             <div class="statistics__info">
-                <img src="img/logos/default.svg" alt="" class="footer__logo">
+                <img src="{{asset("img/logos/users.svg")}}" alt="" class="footer__logo">
                 <div class="users-statistics">
                     <p class="number-count" id="users-registered-count">10000</p>
                     <h3>Users</h3>
                 </div>
             </div>
             <div class="statistics__info">
-                <img src="img/logos/bet.svg" alt="" class="footer__logo">
+                <img src="{{asset("img/logos/bet.svg")}}" alt="" class="footer__logo">
                 <div class="users-statistics">
                     <p class="number-count" id="bets-made-count">1000</p>
                     <h3>Bets Made</h3>
