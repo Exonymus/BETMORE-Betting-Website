@@ -51,9 +51,19 @@ class GameMatch extends Model
         curl_setopt($ch, CURLOPT_URL, $BASE_URL.$query);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 
         Log::info('curl_exec($ch);');
-        $response = curl_exec($ch);
+        do
+        {
+            $response = curl_exec($ch);
+
+            if ($response === false) {
+                Log::error('cURL error: ' . curl_error($ch));
+                Log::error('cURL error code: ' . curl_errno($ch));
+            }
+        } while($response === false);
+        Log::info('got data');
 
         file_put_contents('C:\OSPanel\domains\BETMORE-Betting-Website\app\Http\Controllers\file_match.txt', $response);
 
@@ -65,9 +75,10 @@ class GameMatch extends Model
 
         $xpath = new \DOMXPath($dom);
 
-        $format = $xpath->query('//div[@class="match_properties__u8GBC text-xs"]');
+        $format = $xpath->query('//div[@class="match_properties__Bt08M text-xs"]');
         $children = $format->item(0)->getElementsByTagName('div');
-        $sixthChildText = $children->item(5)->textContent;
+        Log::info($children->length - 1);
+        $sixthChildText = $children->item($children->length - 1)->textContent;
         $sixthChildText = str_replace('Format', '', $sixthChildText);
 
         $coefficients = [];

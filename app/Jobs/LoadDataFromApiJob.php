@@ -69,29 +69,47 @@ class LoadDataFromApiJob implements ShouldQueue
         curl_setopt($ch, CURLOPT_URL, $BASE_URL.$query);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 
-        $response = curl_exec($ch);
+        Log::info('Try get all matches');
+        do
+        {
+            $response = curl_exec($ch);
+
+            if ($response === false) {
+                Log::error('cURL error: ' . curl_error($ch));
+                Log::error('cURL error code: ' . curl_errno($ch));
+            }
+        } while($response === false);
         Log::info('Get all matches');
+
+        Log::info('Put file');
 
         file_put_contents('C:\OSPanel\domains\BETMORE-Betting-Website\app\Http\Controllers\file.txt', $response);
 
         $response = file_get_contents('C:\OSPanel\domains\BETMORE-Betting-Website\app\Http\Controllers\file.txt');
+
+        Log::info('Get file');
 
         $dom = new \DOMDocument();
         @$dom->loadHTML($response);
 
         $xpath = new \DOMXPath($dom);
 
-        $upcomingMatches = $xpath->query('//div[contains(@class, "calendar_section__g_8cP")]');
+        Log::info('Get xpath');
+
+        $upcomingMatches = $xpath->query('//div[contains(@class, "calendar_section__wwKUT")]');
+
+        Log::info('upcoming matches found');
 
         $matchesData = [];
         foreach ($upcomingMatches as $matchElement)
         {
-            $calendarMatchItems = $xpath->query('.//a[contains(@class, "calendar_match__0kcvd")]', $matchElement);
+            $calendarMatchItems = $xpath->query('.//a[contains(@class, "calendar_match__OVPtl")]', $matchElement);
             $matchData = [];
 
 
-            $sectionMatchesDate = $xpath->query('.//h2[contains(@class, "calendar_sectionHeader__a2fDX")]', $matchElement);
+            $sectionMatchesDate = $xpath->query('.//h2[contains(@class, "calendar_sectionHeader__um_sQ")]', $matchElement);
             $matchDate = Null;
 
             foreach ($sectionMatchesDate as $date)
@@ -101,7 +119,7 @@ class LoadDataFromApiJob implements ShouldQueue
 
             foreach ($calendarMatchItems as $calendarMatchItem)
             {
-                $names = $xpath->query('.//span[contains(@class, "truncatedText_container__rqNN9")]', $calendarMatchItem);
+                $names = $xpath->query('.//span[contains(@class, "truncatedText_container__fD0SA")]', $calendarMatchItem);
                 $teamsData = [];
 
                 foreach ($names as $name)
@@ -119,7 +137,7 @@ class LoadDataFromApiJob implements ShouldQueue
                         break;
                 }
 
-                $times = $xpath->query('.//div[contains(@class, "calendar_time__EZpaW")]', $calendarMatchItem);
+                $times = $xpath->query('.//div[contains(@class, "calendar_time__uldA4")]', $calendarMatchItem);
                 foreach ($times as $time)
                 {
                     $teamsData[] = $time->textContent;

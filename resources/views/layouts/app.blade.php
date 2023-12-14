@@ -48,6 +48,9 @@
                                 <li class="nav-link" id="page-home">
                                     <a href="{{route('matches.load')}}" id="nav-link-home" class="link">Load</a>
                                 </li>
+                                <li class="nav-link" id="page-home">
+                                    <a href="{{route('matches.schedule')}}" id="nav-link-home" class="link">Schedule</a>
+                                </li>
                             @endcan
                             @can('browse_admin')
                                 <li class="nav-link" id="page-home">

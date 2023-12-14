@@ -39,6 +39,8 @@ Route::post('/profile/debt/pay/{id}', [App\Http\Controllers\HomeController::clas
 Route::get('/profile/{id}', [App\Http\Controllers\HomeController::class, 'profile'])->name('home.profile');
 
 Route::get('/load-data', [\App\Http\Controllers\MatchesController::class, 'loadDataFromApi'])->name('matches.load');
+Route::get('/run_schedule', [\App\Http\Controllers\MatchesController::class, 'run_schedule'])->name('matches.schedule');
+
 Route::get('/withdraw/approve', [\App\Http\Controllers\WithdrawController::class, 'approve'])->name('withdraw.approve');
 Route::get('/withdraw', [\App\Http\Controllers\WithdrawController::class, 'index'])->name('withdraw.index');
 Route::post('/withdraw', [\App\Http\Controllers\WithdrawController::class, 'request'])->name('withdraw.request');
