@@ -45,7 +45,7 @@
                                             @foreach($withdrawRequests as $withdrawRequest)
                                             <tr role="row" class="odd">
                                                 <td>
-                                                    <div>{{$withdrawRequest->user->name}}</div>
+                                                    <a href="{{route('home.profile', ['id' => $withdrawRequest->user->id])}}">{{$withdrawRequest->user->name}}</a>
                                                 </td>
                                                 <td>
                                                     <div>{{$withdrawRequest->user->email}}</div>

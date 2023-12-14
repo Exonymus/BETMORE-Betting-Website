@@ -2,7 +2,7 @@
 
 @section('links')
     <link rel="stylesheet" href="{{asset('css/index.css')}}"/>
-    <link rel="stylesheet" href="{{asset('css/index-animations.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/toast.css')}}"/>
 @endsection
 
 @section('title')
@@ -16,7 +16,7 @@
 @section('toast')
     <div id="ty-toast__container">
         <div id="ty-toast__logo-wrapper">
-            <img class="ty-toast__logo" src="img/logos/coin.svg" alt="Coin">
+            <img class="ty-toast__logo" src="{{asset("img/logos/coin.svg")}}" alt="Coin">
         </div>
         <div id="ty-toast__text">Good Luck!</div>
     </div>
@@ -245,9 +245,9 @@
                 if (betAmountVal < 0) {
                     betAmount.value = 0;
                     betAmountVal = 0;
-                } else if (betAmountVal > {{Auth::user() ? Auth::user()->coins : 0}}) {
-                    betAmount.value = {{Auth::user() ? Auth::user()->coins : 0}};
-                    betAmountVal = {{Auth::user() ? Auth::user()->coins : 0}};
+                } else if (betAmountVal > {{Auth::user() ? min(Auth::user()->coins, 10000) : 10000}}) {
+                    betAmount.value = {{Auth::user() ? min(Auth::user()->coins, 10000) : 10000}};
+                    betAmountVal = {{Auth::user() ? min(Auth::user()->coins, 10000) : 10000}};
                 } else if (betAmountVal === 0 && betAmount.value.length > 1) {
                     betAmountVal = 0;
                     betAmount.value = 0;
@@ -265,6 +265,10 @@
 
             },
             result: () => {
+
+                @if (!Auth::user())
+                    window.location = "{{route('login')}}";
+                @endif
 
                 var betData = {
                     match_id: sharedEnv.bet.match_id,

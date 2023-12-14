@@ -23,7 +23,17 @@
             @foreach($messages->reverse() as $message)
                 <div class="message">
                     <div class="username">
-                        <strong>{{ $message->user->name }}:</strong>
+                        <strong>
+                            @if (Auth::user())
+                                <a target="_blank" href="{{route('home.profile', ['id' => $message->user->id])}}">
+                                    {{ $message->user->name }}:
+                                </a>
+                            @else
+                                <a target="_parent" href="{{route('login')}}">
+                                    {{ $message->user->name }}:
+                                </a>
+                            @endif
+                        </strong>
                     </div>
                     <div class="user-message">
                         {{ $message->message }}

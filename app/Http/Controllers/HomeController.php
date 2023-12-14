@@ -32,18 +32,20 @@ class HomeController extends Controller
 
     public function profile($id)
     {
-        $user = User::find($id)->first();
-        if (Auth::user() and
-            (Auth::user()->id == $id or Auth::user()->role->name != 'user'))
+        $user = User::where('id', $id)->first();
+        if (Auth::user() && $user)
             return view('home.profile', compact('user'));
         else
             return view('404');
     }
 
-    public function debt(Request $request)
+    public function debt(Request $request, $id)
     {
+        if (Auth::user() and Auth::user()->role->name == 'user' and Auth::user()->id != $id)
+            return response()->json(['error' => 'Who are you?'], 404);
+
         $amountToTake = $request->input('amount');
-        $user = auth()->user();
+        $user = User::where('id', $id)->first();
 
         $request->validate([
             'amount' => 'required|numeric|min:1|max:' . ((int)($user->exp / 5000) * 1000),
@@ -60,10 +62,13 @@ class HomeController extends Controller
         return response()->json(['success' => true, 'message' => 'Credit taken successfully']);
     }
 
-    public function debt_pay(Request $request)
+    public function debt_pay(Request $request, $id)
     {
+        if (Auth::user() and Auth::user()->role->name == 'user' and Auth::user()->id != $id)
+            return response()->json(['error' => 'Who are you?'], 404);
+
         $amountToPay= $request->input('amount');
-        $user = auth()->user();
+        $user = User::where('id', $id)->first();
 
         if ($user->coins < $amountToPay)
             return response()->json(['error' => true, 'message' => 'Not enough coins']);
@@ -80,8 +85,11 @@ class HomeController extends Controller
         return response()->json(['success' => true, 'message' => 'Credit taken successfully']);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        if (Auth::user() and Auth::user()->role->name == 'user' and Auth::user()->id != $id)
+            return response()->json(['error' => 'Who are you?'], 404);
+
         $request->validate([
             'username' => 'required|min:5',
             'inp_email' => 'required|email',
@@ -90,12 +98,12 @@ class HomeController extends Controller
         ]);
 
         // Check if the current password is correct
-        if (!Hash::check($request->input('inp_pass--cur'), auth()->user()->password)) {
+        if (!Hash::check($request->input('inp_pass--cur'), Auth::user()->password)) {
             return redirect()->back()->with('error', 'Current password is incorrect.');
         }
 
         // Update user details
-        $user = auth()->user();
+        $user = User::where('id', $id)->first();
         $user->name = $request->input('username');
         $user->email = $request->input('inp_email');
 
@@ -109,8 +117,11 @@ class HomeController extends Controller
         return redirect()->back()->with('success', 'Profile updated successfully.');
     }
 
-    public function update_avatar(Request $request)
+    public function update_avatar(Request $request, $id)
     {
+        if (Auth::user() and Auth::user()->role->name == 'user' and Auth::user()->id != $id)
+            return response()->json(['error' => 'Who are you?'], 404);
+
         $request->validate([
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the validation rules as needed
         ]);
@@ -119,7 +130,7 @@ class HomeController extends Controller
             $avatarPath = $request->file('avatar')->store('avatars', 'public');
 
             // Update the user's avatar path in the database
-            auth()->user()->update(['avatar' => $avatarPath]);
+            User::where('id', $id)->first()->update(['avatar' => $avatarPath]);
 
             return response()->json(['avatarUrl' => asset('storage/' . $avatarPath)]);
         }

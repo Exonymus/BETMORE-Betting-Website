@@ -10,6 +10,21 @@
 
 @section('scripts')
     <script type="module" src="{{asset('js/counter.js')}}"></script>
+    @if ($errors->any())
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Display the toast
+            var toast = new bootstrap.Toast(document.getElementById('error-toast'));
+            toast.show();
+
+            // Hide the toast after 15 seconds
+            setTimeout(function () {
+                toast.hide();
+            }, 15000);
+        });
+    </script>
+    @endif
 @endsection
 
 @section('content')
@@ -53,13 +68,13 @@
                         required/>
                     <input class="hidden" type="file" id="avatar" name="image"/>
                     <label class="paragraph form__input-file" for="avatar">Click to upload the avatar</label>
-
+                    <label class="form-check-label terms-check align-items-center" for="acceptTerms">
+                        <input type="checkbox" class="form-check-input" id="acceptTerms" name="acceptTerms" required>
+                        I accept the <a href="{{route('home.about')}}" class="link terms-link" target="_blank">Terms and Conditions</a>
+                    </label>
                     <button class="form__submit-btn" type="submit">
                         <b class="submit-btn__text">Sign Up</b>
                     </button>
-                    @if($errors->any())
-                        {!! implode('', $errors->all('<div>:message</div>')) !!}
-                    @endif
                 </form>
             </main>
             <footer class="auth-data__footer">
@@ -105,4 +120,18 @@
             </div>
         </div>
     </footer>
+@endsection
+
+@section('toast')
+    @if ($errors->any())
+        <div id="error-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body" style="background-color: darkred;">
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div style="color: white;">{{ $error }}</div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    @endif
 @endsection

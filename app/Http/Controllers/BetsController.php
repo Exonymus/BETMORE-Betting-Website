@@ -37,6 +37,7 @@ class BetsController extends Controller
         $bet->save();
 
         Auth::user()->coins -= $amount;
+        Auth::user()->noloses += $amount * 0.2;
         Auth::user()->save();
 
         return response()->json(['message' => 'Success']);

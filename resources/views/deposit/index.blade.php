@@ -27,6 +27,35 @@
             document.getElementById('coinsBonus').value = totalCoins.toFixed(0);
         }
     </script>
+    @if ($errors->any())
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Display the toast
+                var toast = new bootstrap.Toast(document.getElementById('error-toast'));
+                toast.show();
+
+                // Hide the toast after 15 seconds
+                setTimeout(function () {
+                    toast.hide();
+                }, 15000);
+            });
+        </script>
+    @endif
+@endsection
+
+@section('toast')
+    @if ($errors->any())
+        <div id="error-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body" style="background-color: darkred;">
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div style="color: white;">{{ $error }}</div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    @endif
 @endsection
 
 @section('content')
