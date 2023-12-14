@@ -269,12 +269,14 @@
                 @if (!Auth::user())
                     window.location = "{{route('login')}}";
                 @endif
-
+                var insuranceCheckbox = document.getElementById('insurance');
                 var betData = {
                     match_id: sharedEnv.bet.match_id,
                     team_id: sharedEnv.bet.team_id,
-                    amount: sharedEnv.bet.amount
+                    amount: sharedEnv.bet.amount,
+                    insured: insuranceCheckbox.checked ? 1 : 0
                 };
+
                 betData['_token'] = $('meta[name="csrf-token"]').attr('content');
 
                 $.ajax({
@@ -285,18 +287,31 @@
                         console.log(response);
                         var coins = document.querySelector('#user-coins');
                         coins.innerText -= betData.amount;
+                        console.log(insuranceCheckbox.checked);
+                        if (insuranceCheckbox.checked)
+                        {
+                            var noloses = document.querySelector('#user-gems');
+                            noloses.innerText = parseFloat(noloses.innerText) - betData.amount;
+                        }
+                        else
+                        {
+                            var noloses = document.querySelector('#user-gems');
+                            noloses.innerText = parseFloat(noloses.innerText) + betData.amount*0.2;
+                        }
+
+                        let toast = document.getElementById("ty-toast__container")
+                        toast.className = "show";
+                        setTimeout(() => {
+                            toast.className = toast.className.replace("show", "");
+                        }, 5000);
+                        document.getElementById('insurance').checked = false;
                     },
-                    error: function(error) {
-                        console.error(error);
+                    error: function(response) {
+                        console.error(response);
+                        document.getElementById('insurance').checked = false;
+                        alert(response.responseJSON.error);
                     }
                 });
-
-                console.log('result');
-                let toast = document.getElementById("ty-toast__container")
-                toast.className = "show";
-                setTimeout(() => {
-                    toast.className = toast.className.replace("show", "");
-                }, 5000);
             }
         }
 
@@ -354,7 +369,6 @@
                 betAmount.value = '';
                 possibleWinSpan.innerText = '0.00';
                 sharedEnv.bet.coef = 1.0;
-                document.getElementById('insurance').checked = false;
 
                 document.getElementById('live-bets__ifr').contentWindow
                     .postMessage({action: 'closeBetOverlay'}, '*');

@@ -332,7 +332,7 @@
                     <div class="card-body history-card__content">
                         <div>
                             <ul id="historyList" class="list-group">
-                                @foreach($user->bets as $bet)
+                                @foreach($user->bets->reverse() as $bet)
                                     <li class="list-group-item">
                                         <div class="bet-date">{{$bet->created_at}}</div>
                                         @if (!$bet->match->results)
@@ -356,50 +356,6 @@
                                         @endif
                                     </li>
                                 @endforeach
-                                <li class="list-group-item">
-                                    <div class="bet-date">10.10.2023</div>
-                                    <div class="bet-sum__win">+1000 coins (x2.5) | +100 nolos</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="dbet-date">10.10.2023</div>
-                                    <div class="bet-sum__return">500 coins (x1.5) | -500 nolos</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="bet-date">10.10.2023</div>
-                                    <div class="bet-sum__lose">-500 coins (x1.8)</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="bet-date">10.10.2023</div>
-                                    <div class="bet-sum__win">+1000 coins (x2.5) | +100 nolos</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="dbet-date">10.10.2023</div>
-                                    <div class="bet-sum__return">500 coins (x1.5) | -500 nolos</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="bet-date">10.10.2023</div>
-                                    <div class="bet-sum__lose">-500 coins (x1.8)</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="bet-date">10.10.2023</div>
-                                    <div class="bet-sum__win">+1000 coins (x2.5) | +100 nolos</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="dbet-date">10.10.2023</div>
-                                    <div class="bet-sum__return">500 coins (x1.5) | -500 nolos</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="bet-date">10.10.2023</div>
-                                    <div class="bet-sum__lose">-500 coins (x1.8)</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="dbet-date">10.10.2023</div>
-                                    <div class="bet-sum__return">500 coins (x1.5) | -500 nolos</div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="bet-date">10.10.2023</div>
-                                    <div class="bet-sum__lose">-500 coins (x1.8)</div>
-                                </li>
                             </ul>
                         </div>
                     </div>

@@ -18,15 +18,21 @@ class BetsController extends Controller
     public function bet(Request $request)
     {
         $amount = (double)$request->input('amount');
+        $insured = (int)$request->input('insured');
         $match = GameMatch::find($request->input('match_id'));
         $teamId = $match->{$request->input('team_id')}->id;
         $coefficient = $match->{$request->input('team_id').'_cef'};
 
+        Log::info($insured);
+
         if (!Auth::user() || Auth::user()->role->name == 'Operator')
-            return response()->json(['message' => 'Error, who are you?']);
+            return response()->json(['error' => 'Error, who are you?'], 500);
 
         if (Auth::user()->coins < $amount)
-            return response()->json(['message' => 'Error, not enough coins']);
+            return response()->json(['error' => 'Error, not enough coins'], 500);
+
+        if ($insured and Auth::user()->noloses < $amount)
+            return response()->json(['error' => 'Error, not enough noloses'], 500);
 
         $bet  = new Bet();
         $bet->amount = $amount;
@@ -34,10 +40,14 @@ class BetsController extends Controller
         $bet->match_id = $match->id;
         $bet->user_id = Auth::user()->id;
         $bet->team_id = $teamId;
+        $bet->insured = $insured;
         $bet->save();
 
         Auth::user()->coins -= $amount;
-        Auth::user()->noloses += $amount * 0.2;
+        if ($insured)
+            Auth::user()->noloses -= $amount;
+        else
+            Auth::user()->noloses += $amount * 0.2;
         Auth::user()->save();
 
         return response()->json(['message' => 'Success']);

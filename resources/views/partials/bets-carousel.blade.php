@@ -146,7 +146,7 @@
 
     const matches =
     [
-        @foreach ($matches as $match)
+        @foreach ($matches->reverse() as $match)
         {
             header: {
                 match_status: '{{$match->live == 1 ? 'Live' : 'Scheduled'}}',
