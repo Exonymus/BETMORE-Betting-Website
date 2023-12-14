@@ -31,7 +31,40 @@ class GameMatch extends Model
 
     public function bets()
     {
-        return $this->hasMany(Bet::class);
+        return $this->hasMany(Bet::class, 'match_id', 'id');
+    }
+
+    public function handleMatchEnd($status)
+    {
+        if ($status == 0)
+        {
+            $this->results = $this->team1->name;
+            $this->winner_id = $this->team1->id;
+        }
+        elseif ($status == 1)
+        {
+            $this->results = $this->team2->name;
+            $this->winner_id = $this->team2->id;
+        }
+
+        $this->save();
+
+        foreach ($this->bets as $bet)
+        {
+            if ($bet->team->name == $this->results)
+            {
+                $bet->user->coins += $bet->amount * $bet->coefficient;
+                $bet->user->save();
+            }
+            else
+            {
+                if ($bet->insured == '1')
+                {
+                    $bet->user->coins += $bet->amount;
+                    $bet->user->save();
+                }
+            }
+        }
     }
 
     public function loadDetails()
@@ -74,6 +107,20 @@ class GameMatch extends Model
         @$dom->loadHTML($response);
 
         $xpath = new \DOMXPath($dom);
+
+        $check = $xpath->query('//div[@class="text-2xl sm:text-3xl my-auto"]');
+        $win = $xpath->query('//div[@class="absolute right-0 -bottom-8 uppercase font-bold my-auto md:ml-4 md:static text-positive"]');
+        if ($check[0] and $win[0])
+        {
+            Log::info($check[0]->textContent);
+            $score1 = substr($check[0]->textContent, 0, 1);
+            $score2 = substr($check[0]->textContent, 4, 1);
+            if ($score1 > $score2)
+                $this->handleMatchEnd(0);
+            else
+                $this->handleMatchEnd(1);
+            return;
+        }
 
         $format = $xpath->query('//div[@class="match_properties__Bt08M text-xs"]');
         $children = $format->item(0)->getElementsByTagName('div');

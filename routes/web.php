@@ -40,6 +40,11 @@ Route::get('/profile/{id}', [App\Http\Controllers\HomeController::class, 'profil
 
 Route::get('/load-data', [\App\Http\Controllers\MatchesController::class, 'loadDataFromApi'])->name('matches.load');
 Route::get('/run_schedule', [\App\Http\Controllers\MatchesController::class, 'run_schedule'])->name('matches.schedule');
+Route::get('/matches/simulate', [\App\Http\Controllers\MatchesController::class, 'simulate'])->name('matches.simulate');
+
+Route::post('/matches/simulate/team1/{id}', [\App\Http\Controllers\MatchesController::class, 'win1'])->name('matches.team1');
+Route::post('/matches/simulate/team2/{id}', [\App\Http\Controllers\MatchesController::class, 'win2'])->name('matches.team2');
+Route::post('/matches/simulate/load/{id}', [\App\Http\Controllers\MatchesController::class, 'load_details'])->name('matches.load.id');
 
 Route::get('/withdraw/approve', [\App\Http\Controllers\WithdrawController::class, 'approve'])->name('withdraw.approve');
 Route::get('/withdraw', [\App\Http\Controllers\WithdrawController::class, 'index'])->name('withdraw.index');
