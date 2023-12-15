@@ -86,7 +86,7 @@ class GameMatch extends Model
 
         $url = "https://www.strafe.com" . $this->scrap_url;
         $BASE_URL = "https://app.scrapingbee.com/api/v1/?";
-        $API_KEY = "YY43W25L2YJCHJQQDWIN5IVMY4HRGD6ZV6DYFF3JWOO2SSNNEQ4ZNJSYIC6PQKHY3480GWIRDPW6VS43";
+        $API_KEY = "8I795R9NMOT3PP6K7GOQJUFWCJDCLHEUWP4ZJQT8DCZTD0CKLTSYVWMDFBRMVW0PMQRRKC7YZX77OX5M";
 
         $parameters = array(
             'api_key' => $API_KEY,
@@ -152,12 +152,14 @@ class GameMatch extends Model
 
 
         $points = [];
-        if (!$xpath->query('//div[@class="text-2xl sm:text-3xl my-auto"]/div[@class="font-semibold"]')[0])
+        if (!$xpath->query('//div[@class="text-2xl sm:text-3xl my-auto"]/span[@class="font-semibold"]')[0])
             $points = [0, 0];
         else
         {
-            $points[] = $xpath->query('//div[@class="text-2xl sm:text-3xl my-auto"]/div[@class="font-semibold"]')[0]->textContent;
-            $points[] = $xpath->query('//div[@class="text-2xl sm:text-3xl my-auto"]/div[@class="font-semibold"]')[1]->textContent;
+            $points[] = $xpath->query('//div[@class="text-2xl sm:text-3xl my-auto"]/span[@class="font-semibold"]')[0]->textContent;
+            $points[] = $xpath->query('//div[@class="text-2xl sm:text-3xl my-auto"]/span[@class="font-semibold"]')[1]->textContent;
+            if ($points[0] === '')
+                $points = [0, 0];
         }
 
         Log::info('this change');

@@ -41,6 +41,27 @@ class BetsController extends Controller
         if ($amount >= 10000)
             return response()->json(['error' => 'Too high amount'], 500);
 
+        $sum = 0;
+        $last_date = null;
+
+        foreach (Auth::user()->loans as $loan) {
+            if ($sum == 0) {
+                $last_date = $loan->created_at;
+            }
+
+            if ($loan->action == 'take') {
+                $sum += $loan->amount;
+            } else {
+                $sum -= $loan->amount;
+            }
+        }
+
+        if ($sum != 0) {
+            $days_since_last_zero_sum = now()->diffInDays($last_date);
+            if ($days_since_last_zero_sum > 30)
+                return response()->json(['error' => 'Account is blocked, pay debt'], 500);
+        }
+
         $bet  = new Bet();
         $bet->amount = $amount;
         $bet->coefficient = $coefficient;
