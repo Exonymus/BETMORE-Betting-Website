@@ -278,11 +278,35 @@
                                                     </p>
                                                     <p class="settings-subcategory">
                                                         <i>Days to pay:</i>
-                                                        <span id="days-to-pay">infinite</span>
+                                                        <span id="days-to-pay">
+                                                        @php
+                                                            $sum = 0;
+                                                            $last_date = null;
+
+                                                            foreach ($user->loans as $loan) {
+                                                                if ($sum == 0) {
+                                                                    $last_date = $loan->created_at;
+                                                                }
+
+                                                                if ($loan->action == 'take') {
+                                                                    $sum += $loan->amount;
+                                                                } else {
+                                                                    $sum -= $loan->amount;
+                                                                }
+                                                            }
+
+                                                            if ($sum != 0) {
+                                                                $days_since_last_zero_sum = now()->diffInDays($last_date);
+                                                                echo $days_since_last_zero_sum > 30 ? '-' : 30 - $days_since_last_zero_sum;
+                                                            } else {
+                                                                echo '-';
+                                                            }
+                                                        @endphp
+                                                        </span>
                                                     </p>
                                                     <p class="settings-subcategory">
                                                         <i>Available amount:</i>
-                                                        <span id="available-amount">infinite</span>
+                                                        <span id="available-amount">{{ ((int)($user->exp / 5000) * 1000) - ($user->loans()->where('action', 'take')->sum('amount') - $user->loans()->where('action', 'return')->sum('amount')) }}</span>
                                                     </p>
                                                 </div>
                                                 <div class="row justify-content-around debt-buttons">

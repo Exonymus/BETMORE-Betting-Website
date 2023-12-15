@@ -32,7 +32,7 @@ class PartialsController extends Controller
     }
     public function bets__carousel()
     {
-        $matches = \App\Models\GameMatch::whereNull('results')->get();
+        $matches = \App\Models\GameMatch::whereNull('results')->where('team1_cef', '!=', '0')->get();
         return view('partials.bets-carousel', compact('matches'));
     }
     public function loading__screen()

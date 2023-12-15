@@ -31,6 +31,7 @@ class DepositController extends Controller
         $user = Auth::user();
         $coinsBonus = (int)$request->input('coinsBonus');
         $user->coins += $coinsBonus;
+        $user->exp += $coinsBonus * 10;
         $user->save();
 
         Deposit::create([

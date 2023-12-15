@@ -22,7 +22,7 @@
                                                 </th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="
                                                                                         Email
                                                                                     : activate to sort column ascending" style="width: 186.051px;">
-                                                    Email
+                                                    Deposit
                                                 </th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="
                                                                                         Created At
                                                                                     : activate to sort column ascending" style="width: 170.241px;">
@@ -48,7 +48,7 @@
                                                     <a href="{{route('home.profile', ['id' => $withdrawRequest->user->id])}}">{{$withdrawRequest->user->name}}</a>
                                                 </td>
                                                 <td>
-                                                    <div>{{$withdrawRequest->user->email}}</div>
+                                                    <div>{{$withdrawRequest->user->deposits->sum('amount')}}</div>
                                                 </td>
                                                 <td>
                                                     {{$withdrawRequest->user->coins}}

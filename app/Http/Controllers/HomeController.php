@@ -46,10 +46,10 @@ class HomeController extends Controller
 
         $amountToTake = $request->input('amount');
         $user = User::where('id', $id)->first();
+        $curDebt = $user->loans()->where('action', 'take')->sum('amount') - $user->loans()->where('action', 'return')->sum('amount');
 
-        $request->validate([
-            'amount' => 'required|numeric|min:1|max:' . ((int)($user->exp / 5000) * 1000),
-        ]);
+        if ($curDebt + $amountToTake > (int)($user->exp / 5000) * 1000)
+            return response()->json(['error' => 'Too low level'], 404);
 
         $user->coins += $amountToTake;
         $user->save();

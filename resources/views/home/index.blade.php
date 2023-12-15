@@ -293,11 +293,6 @@
                             var noloses = document.querySelector('#user-gems');
                             noloses.innerText = parseFloat(noloses.innerText) - betData.amount;
                         }
-                        else
-                        {
-                            var noloses = document.querySelector('#user-gems');
-                            noloses.innerText = parseFloat(noloses.innerText) + betData.amount*0.2;
-                        }
 
                         let toast = document.getElementById("ty-toast__container")
                         toast.className = "show";

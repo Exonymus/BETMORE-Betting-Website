@@ -53,7 +53,20 @@ class GameMatch extends Model
         {
             if ($bet->team->name == $this->results)
             {
-                $bet->user->coins += $bet->amount * $bet->coefficient;
+                $win = $bet->amount * $bet->coefficient;
+                $curDebt = $bet->user->loans()->where('action', 'take')->sum('amount') - $bet->user->loans()->where('action', 'return')->sum('amount');
+                if ($curDebt > 0)
+                {
+                    $loan = new Loan();
+                    $loan->amount = min($win*0.25, $curDebt);
+                    $win -= $loan->amount;
+                    $loan->action = 'return';
+                    $loan->user_id = $bet->user_id;
+                    $loan->save();
+                }
+
+                $bet->user->coins += $win;
+                if ($bet->insured == '1')  $bet->user->noloses += $bet->amount * 0.2;
                 $bet->user->save();
             }
             else
